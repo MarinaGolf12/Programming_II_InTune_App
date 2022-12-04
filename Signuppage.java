@@ -1,7 +1,4 @@
-// Java program to implement
-// a Simple Registration Form
-// using Java Swing
-
+//import required classes and packages
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -10,7 +7,7 @@ class Signuppage
     extends JFrame
     implements ActionListener {
 
-    // Components of the Form
+    // Components of the Entrance Form
     private Container c;
     private JLabel title;
     private JLabel name;
@@ -30,17 +27,18 @@ class Signuppage
     private JCheckBox term;
     private JButton sub;
     private JButton reset;
+    private JButton check;
+    private JButton goback;
     private JTextArea tout;
     private JLabel res;
     private JTextArea resadd;
 
 
 
-    // constructor, to initialize the components
-    // with default values.
+    // constructor, to initialize the components with default values.
     public Signuppage()
     {
-        setTitle("Sign Up");
+        setTitle("InTune");
         setBounds(320, 120, 1000, 750);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
@@ -130,34 +128,41 @@ class Signuppage
         age = new JLabel("Age");
 		age.setFont(new Font("Arial", Font.PLAIN, 20));
 		age.setSize(100, 20);
-		age.setLocation(100, 400);
+		age.setLocation(100, 350);
 		c.add(age);
 
 		tage = new JTextField();
 		tage.setFont(new Font("Arial", Font.PLAIN, 15));
 		tage.setSize(190, 20);
-		tage.setLocation(200, 400);
+		tage.setLocation(200, 350);
 		c.add(tage);
 
         term = new JCheckBox("Terms And Conditions.");
         term.setFont(new Font("Arial", Font.PLAIN, 15));
         term.setSize(200, 20);
-        term.setLocation(150, 500);
+        term.setLocation(150, 400);
         c.add(term);
 
-        sub = new JButton("Submit");
-        sub.setFont(new Font("Arial", Font.PLAIN, 15));
-        sub.setSize(200, 20);
-        sub.setLocation(150, 550);
-        sub.addActionListener(this);
-        c.add(sub);
+        check = new JButton("Check your info");
+        check.setFont(new Font("Arial", Font.PLAIN, 15));
+        check.setSize(200, 20);
+        check.setLocation(150, 450);
+        check.addActionListener(this);
+        c.add(check);
 
         reset = new JButton("Reset");
         reset.setFont(new Font("Arial", Font.PLAIN, 15));
         reset.setSize(200, 20);
-        reset.setLocation(150, 650);
+        reset.setLocation(150, 500);
         reset.addActionListener(this);
         c.add(reset);
+
+        goback = new JButton("Go Back");
+		goback.setFont(new Font("Arial", Font.PLAIN, 15));
+		goback.setSize(200, 20);
+		goback.setLocation(150, 550);
+		goback.addActionListener(this);
+        c.add(goback);
 
         tout = new JTextArea();
         tout.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -170,7 +175,7 @@ class Signuppage
         res = new JLabel("");
         res.setFont(new Font("Arial", Font.PLAIN, 20));
         res.setSize(500, 25);
-        res.setLocation(100, 500);
+        res.setLocation(100, 600);
         c.add(res);
 
         resadd = new JTextArea();
@@ -180,15 +185,21 @@ class Signuppage
         resadd.setLineWrap(true);
         c.add(resadd);
 
+        sub = new JButton("Submit");
+		sub.setFont(new Font("Arial", Font.PLAIN, 15));
+		sub.setSize(300, 20);
+		sub.setLocation(500, 550);
+		sub.addActionListener(this);
+        c.add(sub);
+
         setVisible(true);
     }
 
-    // method actionPerformed()
-    // to get the action performed
-    // by the user and act accordingly
+    // Shows data of a new user
+    //This part is to be connected with DB
     public void actionPerformed(ActionEvent e)
     {
-        if (e.getSource() == sub) {
+        if (e.getSource() == check) {
             if (term.isSelected()) {
                 String data2;
                 String data3;
@@ -211,14 +222,9 @@ class Signuppage
                 tout.setEditable(false);
 
             }
-            else {
-                tout.setText("");
-                resadd.setText("");
-                res.setText("Please accept the"
-                            + " terms & conditions..");
-            }
-        }
 
+        }
+        //Clears out Form
         else if (e.getSource() == reset) {
             String def = "";
             tname.setText(def);
@@ -231,5 +237,23 @@ class Signuppage
             tage.setText(def);
             resadd.setText(def);
         }
+        //Goes back to Login Page
+        else if (e.getSource() == goback) {
+			setVisible(false);
+			Entrancepage p = new Entrancepage();
+		}
+
+		//Another elseif will be used for the button Submit
+		//It will check and add the users data to DB
+		//Followed by redirecting the user to the homepage
+		//The code following will also be used
+		/*
+		else {
+                tout.setText("");
+                resadd.setText("");
+                res.setText("Please accept the"
+                            + " terms & conditions.");
+	    }
+	    */
     }
 }

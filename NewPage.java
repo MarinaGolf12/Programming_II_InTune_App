@@ -8,9 +8,8 @@ class NewPage extends JFrame
     //constructor
     NewPage()
     {
-        setDefaultCloseOperation(javax.swing.
-        WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Welcome");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setTitle("InTune");
         setSize(400, 200);
     }
 }
