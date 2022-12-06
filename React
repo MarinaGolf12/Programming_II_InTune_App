@@ -29,12 +29,15 @@ public class React {
 		frame.add(r5);
 		bg.add(r5);
 
+//H eikona den emfanizetai kala :(
+//Elpizw h Elena na ta kataferei!!!
+//Parataw th react gia to Maven !
 
-		r2.setIcon(new ImageIcon("2764.jpg"));
-		frame.add(r2);
-		r2.setSize(1,1);
-		r2.setPreferredSize(new Dimension(100,100));
-		frame.setVisible(true);
+	//	r2.setIcon(new ImageIcon("2764.jpg"));
+	//	frame.add(r2);
+	//	r2.setSize(1,1);
+	//	r2.setPreferredSize(new Dimension(100,100));
+	//	frame.setVisible(true);
 
 	}
 
