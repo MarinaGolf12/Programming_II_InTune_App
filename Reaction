@@ -1,0 +1,63 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class Reaction{
+
+	public void comment() {
+
+		JFrame frame = new JFrame("Comment");
+		frame.setVisible(true);
+		frame.setSize(700,700);
+		frame.setLayout(new FlowLayout());
+		JLabel label1 = new JLabel("Comment");
+		frame.add(label1);
+
+		JTextField text = new JTextField(30);
+		frame.add(text);
+		Font font = new Font("SanSerif",Font.ITALIC,25);
+		text.setFont(font);
+
+		JButton button = new JButton("Post your comment");
+		frame.add(button);
+
+		button.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				JOptionPane.showMessageDialog(null,"Your post is online!");
+			}
+		});
+
+	}
+
+
+
+	public void react() {
+
+		JFrame frame = new JFrame("React");
+		frame.setVisible(true);
+		frame.setSize(1000,300);
+		frame.setLayout(new FlowLayout());
+		JLabel label1 = new JLabel("React to this post!");
+		frame.add(label1);
+
+		ButtonGroup bg = new ButtonGroup();
+		JRadioButton r1 = new JRadioButton("My favourite");
+		frame.add(r1);
+		bg.add(r1);
+		JRadioButton r2 = new JRadioButton("Like");
+		frame.add(r2);
+		bg.add(r2);
+		JRadioButton r3 = new JRadioButton("Catchy");
+		frame.add(r3);
+		bg.add(r3);
+		JRadioButton r4 = new JRadioButton("Sound Off");
+		frame.add(r4);
+		bg.add(r4);
+		JRadioButton r5 = new JRadioButton("Earache");
+		frame.add(r5);
+		bg.add(r5);
+
+	}
+
+}
