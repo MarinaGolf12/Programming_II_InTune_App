@@ -1,0 +1,33 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class Comment {
+
+	public static void main(String[] args){
+
+		JFrame frame = new JFrame("Comment");
+		frame.setVisible(true);
+		frame.setSize(700,700);
+		frame.setLayout(new FlowLayout());
+		JLabel label1 = new JLabel("Comment");
+		frame.add(label1);
+
+		JTextField text = new JTextField(30);
+		frame.add(text);
+		Font font = new Font("SanSerif",Font.ITALIC,25);
+		text.setFont(font);
+
+		JButton button = new JButton("Post your comment");
+		frame.add(button);
+
+		button.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				JOptionPane.showMessageDialog(null,"Your post is online!");
+			}
+		});
+
+	}
+
+}
