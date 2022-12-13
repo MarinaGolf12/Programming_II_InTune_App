@@ -55,11 +55,8 @@ public class Homepage extends JFrame {
 
 		 frame.setLocationRelativeTo(null);
 
-		 postbutton.addActionListener(e -> newpostbutton.newPost());
-
+		 postbutton.addActionListener(e -> newpostbutton.post());
 
 	 }
-
-
 
 }
