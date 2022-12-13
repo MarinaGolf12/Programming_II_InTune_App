@@ -13,7 +13,7 @@ class Entrancepage extends JFrame implements ActionListener {
     private JLabel username;
 	private JTextField tfusername;
 	private JLabel password;
-    private JTextField tfpassword;
+    private JPasswordField tfpassword;
     private JButton login;
     private JLabel newuser;
     private JTextArea twrong;
@@ -53,12 +53,15 @@ class Entrancepage extends JFrame implements ActionListener {
 		cp.add(tfusername);
 
 		password = new JLabel("Password");
+
 		password.setFont(new Font("Arial", Font.PLAIN, 20));
 		password.setSize(300, 30);
 		password.setLocation(100, 250);
 		cp.add(password);
 
-		tfpassword = new JTextField();
+		tfpassword = new JPasswordField(25);
+		//tfpassword.setActionCommand("OK");
+		//tfpassword.setActionListener(this);
 		tfpassword.setFont(new Font("Arial", Font.PLAIN, 15));
 		tfpassword.setSize(550, 30);
 		tfpassword.setLocation(200, 250);
@@ -101,7 +104,7 @@ class Entrancepage extends JFrame implements ActionListener {
 
 					try {
 						Class.forName("org.sqlite.JDBC");
-						Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//ProggIIApp.db");
+						Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
 						String sqlinsert = "SELECT * FROM User WHERE username LIKE ? AND password LIKE ?";
 						PreparedStatement pstmt = conn.prepareStatement(sqlinsert);
 						pstmt.setString(1,usernameValue);
@@ -125,22 +128,6 @@ class Entrancepage extends JFrame implements ActionListener {
 
 					}catch (Exception ex) {
 					}
-						/*if (usernameValue.equals("marina") && passwordValue.equals("pass")) {  //this part should be connected with db
-
-					    NewPage mainpage = new NewPage(); //will use other code instead of that in NewPage.java
-					    setVisible(false);
-					    mainpage.setVisible(true);
-					    JLabel mainlabel = new JLabel("Welcome: "+usernameValue);
-					    mainpage.getContentPane().add(mainlabel);
-
-					} else{
-
-					    String def = " ";
-						res.setText("Wrong Username or Password");
-                        tfusername.setText(def);
-                        tfpassword.setText(def);
-
-                    }*/
 
 
             //Redirect to Signup Page

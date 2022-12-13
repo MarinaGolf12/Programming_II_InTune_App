@@ -2,6 +2,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.*;
 
 class Signuppage
     extends JFrame
@@ -21,6 +22,7 @@ class Signuppage
     private JLabel gender;
     private JRadioButton male;
     private JRadioButton female;
+    private JRadioButton other;
     private ButtonGroup gengp;
     private JLabel age;
     private JTextField tage;
@@ -32,6 +34,7 @@ class Signuppage
     private JTextArea tout;
     private JLabel res;
     private JTextArea resadd;
+    private boolean usernameExists;
 
 
 
@@ -121,9 +124,17 @@ class Signuppage
         female.setLocation(275, 300);
         c.add(female);
 
+        other = new JRadioButton("Other");
+		other.setFont(new Font("Arial", Font.PLAIN, 15));
+		other.setSelected(false);
+		other.setSize(85, 20);
+		other.setLocation(365, 300);
+        c.add(other);
+
         gengp = new ButtonGroup();
         gengp.add(male);
         gengp.add(female);
+        gengp.add(other);
 
         age = new JLabel("Age");
 		age.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -195,12 +206,31 @@ class Signuppage
         setVisible(true);
     }
 
+    public void checkUsernameExists() {
+
+	     usernameExists = false;
+	     try
+		 {
+		     Class.forName("org.sqlite.JDBC");
+	         Connection connection = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//INTUNE.db");
+	         PreparedStatement st = connection.prepareStatement("select * from User where username = ?");
+		     st.setString(1, tusername.getText());
+		     ResultSet r1=st.executeQuery();
+		     if(r1.next()) {
+		         usernameExists = true;
+             }
+         }catch (SQLException e) {
+	        System.out.println("SQL Exception: "+ e.toString());
+	     }catch (ClassNotFoundException cE) {
+	        System.out.println("Class Not Found Exception: "+ cE.toString());
+	     }
+
+    }
+
     // Shows data of a new user
-    //This part is to be connected with DB
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == check) {
-            if (term.isSelected()) {
                 String data2;
                 String data3;
                 String data1 = "Name : "
@@ -210,18 +240,20 @@ class Signuppage
                     data3 = "Age : "
                       + tage.getText() + "\n";
 
-                } else {
+                } else if (female.isSelected()) {
 
                     data2 = "Gender : Female" + "\n";
                     data3 = "Age : "
                       + tage.getText() + "\n";
 
-			    }
+			    } else {
 
+			         data2 = "Gender : Other" + "\n";
+					 data3 = "Age : "
+                      + tage.getText() + "\n";
+			   }
                 tout.setText(data1 + data2 + data3);
                 tout.setEditable(false);
-
-            }
 
         }
         //Clears out Form
@@ -242,18 +274,96 @@ class Signuppage
 			setVisible(false);
 			Entrancepage p = new Entrancepage();
 		}
+		else if (e.getSource() == sub) {
+		    if (term.isSelected()) {
+                if (tpassword.getText().equals(tpasscheck.getText())) {
+					if (usernameExists == false) {
+	                    String gender;
+	                    if (male.isSelected()) {
+	                        gender = "male";
+		                    try {
+		                        Class.forName("org.sqlite.JDBC");
+		                    	Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//INTUNE.db");
+		                    	String sqlinsert = "INSERT INTO User(name, username, password, passcheck, gender, age) VALUES(?,?,?,?,?,?)";
+		                    	PreparedStatement statement = conn.prepareStatement(sqlinsert);
+		                    	statement.setString(1, tname.getText());
+		                    	statement.setString(2, tusername.getText());
+		                    	statement.setString(3, tpassword.getText());
+		                    	statement.setString(4, tpasscheck.getText());
+		                    	statement.setString(5, gender);
+		                    	statement.setString(6, tage.getText());
 
-		//Another elseif will be used for the button Submit
-		//It will check and add the users data to DB
-		//Followed by redirecting the user to the homepage
-		//The code following will also be used
-		/*
-		else {
-                tout.setText("");
-                resadd.setText("");
-                res.setText("Please accept the"
-                            + " terms & conditions.");
+                            	statement.executeUpdate();
+		                	} catch (SQLException ex) {
+                            	System.out.println(ex.getMessage());
+                        	} catch (ClassNotFoundException ex) {
+		                    	System.out.println(ex.getMessage());
+		                	}
+	                	} else if (female.isSelected()) {
+	                    	gender = "female";
+		                	try {
+		                    	Class.forName("org.sqlite.JDBC");
+		                    	Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
+		                    	String sqlinsert = "INSERT INTO User (name, username, password, passcheck, gender, age) VALUES(?,?,?,?,?,?)";
+		                    	PreparedStatement statement = conn.prepareStatement(sqlinsert);
+		                    	statement.setString(1, tname.getText());
+		                    	statement.setString(2, tusername.getText());
+		                    	statement.setString(3, tpassword.getText());
+	                        	statement.setString(4, tpasscheck.getText());
+		                    	statement.setString(5, gender);
+		                    	statement.setString(6, tage.getText());
+
+		                    	statement.executeUpdate();
+		                	} catch (SQLException ex) {
+		                    	System.out.println(ex.getMessage());
+		                	} catch (ClassNotFoundException ex) {
+		                        System.out.println(ex.getMessage());
+							}
+	                    } else if (other.isSelected()) {
+					        gender = "other";
+						    try {
+						        Class.forName("org.sqlite.JDBC");
+								Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
+								String sqlinsert = "INSERT INTO User (name, username, password, passcheck, gender, age) VALUES(?,?,?,?,?,?)";
+								PreparedStatement statement = conn.prepareStatement(sqlinsert);
+								statement.setString(1, tname.getText());
+								statement.setString(2, tusername.getText());
+								statement.setString(3, tpassword.getText());
+							    statement.setString(4, tpasscheck.getText());
+								statement.setString(5, gender);
+								statement.setString(6, tage.getText());
+
+								statement.executeUpdate();
+								} catch (SQLException ex) {
+								    System.out.println(ex.getMessage());
+								} catch (ClassNotFoundException ex) {
+								    System.out.println(ex.getMessage());
+                                }
+                    	}
+                    	NewPage main = new NewPage();
+                    	setVisible(false);
+                    	main.setVisible(true);
+                    	JLabel mainlabel = new JLabel("Welcome: "+tusername.getText());
+					    main.getContentPane().add(mainlabel);
+
+				    } else {
+						res.setText("Username is already used.");
+						tusername.setText("");
+					}
+
+	            }else {
+
+		            res.setText("Password is not repeated correctly.");
+		            tpassword.setText("");
+                    tpasscheck.setText("");
+                }
+            } else {
+		        tout.setText("");
+		        resadd.setText("");
+	            res.setText("Please accept the"
+	                + " terms & conditions.");
+	        }
 	    }
-	    */
+
     }
 }
