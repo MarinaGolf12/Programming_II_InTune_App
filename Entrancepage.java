@@ -11,7 +11,7 @@ class Entrancepage extends JFrame implements ActionListener {
     private JButton signup;
     private JLabel title;
     private JLabel username;
-	private JTextField tfusername;
+	protected static JTextField tfusername;
 	private JLabel password;
     private JPasswordField tfpassword;
     private JButton login;
@@ -112,11 +112,9 @@ class Entrancepage extends JFrame implements ActionListener {
 						ResultSet rs = pstmt.executeQuery();
 						if (rs.next()) {
 							JOptionPane.showMessageDialog(null,"Login Successful");
-						    NewPage mainpage = new NewPage(); //will use other code instead of that in NewPage.java
+						    Homepage mainpage = new Homepage();
 							setVisible(false);
 							mainpage.setVisible(true);
-							JLabel mainlabel = new JLabel("Welcome: "+usernameValue);
-					        mainpage.getContentPane().add(mainlabel);
 						} else {
 							String def = " ";
 							res.setText("Wrong Username or Password");

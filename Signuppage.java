@@ -340,7 +340,7 @@ class Signuppage
 								    System.out.println(ex.getMessage());
                                 }
                     	}
-                    	NewPage main = new NewPage();
+                    	Homepage main = new Homepage();
                     	setVisible(false);
                     	main.setVisible(true);
                     	JLabel mainlabel = new JLabel("Welcome: "+tusername.getText());
