@@ -20,6 +20,7 @@ class Entrancepage extends JFrame implements ActionListener {
     private JLabel res;
     private JTextArea resadd;
 
+
     public Entrancepage() {
 
 		setVisible(true);
@@ -28,7 +29,7 @@ class Entrancepage extends JFrame implements ActionListener {
         setBounds(320, 120, 1000, 750);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(true);
-        //setSize(400, 200);
+
 
         cp = getContentPane();
         cp.setLayout(null);
@@ -60,8 +61,6 @@ class Entrancepage extends JFrame implements ActionListener {
 		cp.add(password);
 
 		tfpassword = new JPasswordField(25);
-		//tfpassword.setActionCommand("OK");
-		//tfpassword.setActionListener(this);
 		tfpassword.setFont(new Font("Arial", Font.PLAIN, 15));
 		tfpassword.setSize(550, 30);
 		tfpassword.setLocation(200, 250);
@@ -102,19 +101,24 @@ class Entrancepage extends JFrame implements ActionListener {
 	                String usernameValue = tfusername.getText();
 					String passwordValue = tfpassword.getText();
 
+                    Connection conn = null;
 					try {
-						Class.forName("org.sqlite.JDBC");
-						Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
+
+                        Class.forName("org.sqlite.JDBC");
+						conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
 						String sqlinsert = "SELECT * FROM User WHERE username LIKE ? AND password LIKE ?";
 						PreparedStatement pstmt = conn.prepareStatement(sqlinsert);
 						pstmt.setString(1,usernameValue);
 						pstmt.setString(2,passwordValue);
 						ResultSet rs = pstmt.executeQuery();
+
 						if (rs.next()) {
 							JOptionPane.showMessageDialog(null,"Login Successful");
 						    Homepage mainpage = new Homepage();
 							setVisible(false);
-							mainpage.setVisible(true);
+
+
+
 						} else {
 							String def = " ";
 							res.setText("Wrong Username or Password");
@@ -125,7 +129,17 @@ class Entrancepage extends JFrame implements ActionListener {
 
 
 					}catch (Exception ex) {
-					}
+
+                    }finally {
+                        if (conn != null) {
+                            try {
+                                conn.close(); // <-- This is important
+                            } catch (SQLException exc) {
+                              /* handle exception */
+                            }
+                        }
+
+				   }
 
 
             //Redirect to Signup Page

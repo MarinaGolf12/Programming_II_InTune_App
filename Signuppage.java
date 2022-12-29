@@ -34,7 +34,7 @@ class Signuppage
     private JTextArea tout;
     private JLabel res;
     private JTextArea resadd;
-    private boolean usernameExists;
+
 
 
 
@@ -206,26 +206,7 @@ class Signuppage
         setVisible(true);
     }
 
-    public void checkUsernameExists() {
 
-	     usernameExists = false;
-	     try
-		 {
-		     Class.forName("org.sqlite.JDBC");
-	         Connection connection = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//INTUNE.db");
-	         PreparedStatement st = connection.prepareStatement("select * from User where username = ?");
-		     st.setString(1, tusername.getText());
-		     ResultSet r1=st.executeQuery();
-		     if(r1.next()) {
-		         usernameExists = true;
-             }
-         }catch (SQLException e) {
-	        System.out.println("SQL Exception: "+ e.toString());
-	     }catch (ClassNotFoundException cE) {
-	        System.out.println("Class Not Found Exception: "+ cE.toString());
-	     }
-
-    }
 
     // Shows data of a new user
     public void actionPerformed(ActionEvent e)
@@ -277,13 +258,13 @@ class Signuppage
 		else if (e.getSource() == sub) {
 		    if (term.isSelected()) {
                 if (tpassword.getText().equals(tpasscheck.getText())) {
-					if (usernameExists == false) {
 	                    String gender;
+	                    Connection conn = null;
 	                    if (male.isSelected()) {
 	                        gender = "male";
 		                    try {
 		                        Class.forName("org.sqlite.JDBC");
-		                    	Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//INTUNE.db");
+		                    	conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
 		                    	String sqlinsert = "INSERT INTO User(name, username, password, passcheck, gender, age) VALUES(?,?,?,?,?,?)";
 		                    	PreparedStatement statement = conn.prepareStatement(sqlinsert);
 		                    	statement.setString(1, tname.getText());
@@ -298,12 +279,22 @@ class Signuppage
                             	System.out.println(ex.getMessage());
                         	} catch (ClassNotFoundException ex) {
 		                    	System.out.println(ex.getMessage());
-		                	}
+		                	}finally {
+                        if (conn != null) {
+                            try {
+                                conn.close(); // <-- This is important
+                            } catch (SQLException exc) {
+                              /* handle exception */
+                            }
+                        }
+
+				   }
+
 	                	} else if (female.isSelected()) {
 	                    	gender = "female";
 		                	try {
 		                    	Class.forName("org.sqlite.JDBC");
-		                    	Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
+		                    	conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
 		                    	String sqlinsert = "INSERT INTO User (name, username, password, passcheck, gender, age) VALUES(?,?,?,?,?,?)";
 		                    	PreparedStatement statement = conn.prepareStatement(sqlinsert);
 		                    	statement.setString(1, tname.getText());
@@ -318,12 +309,22 @@ class Signuppage
 		                    	System.out.println(ex.getMessage());
 		                	} catch (ClassNotFoundException ex) {
 		                        System.out.println(ex.getMessage());
-							}
+							} finally {
+                        if (conn != null) {
+                            try {
+                                conn.close(); // <-- This is important
+                            } catch (SQLException exc) {
+                              /* handle exception */
+                            }
+                        }
+
+				   }
+
 	                    } else if (other.isSelected()) {
 					        gender = "other";
 						    try {
 						        Class.forName("org.sqlite.JDBC");
-								Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
+								conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
 								String sqlinsert = "INSERT INTO User (name, username, password, passcheck, gender, age) VALUES(?,?,?,?,?,?)";
 								PreparedStatement statement = conn.prepareStatement(sqlinsert);
 								statement.setString(1, tname.getText());
@@ -338,18 +339,23 @@ class Signuppage
 								    System.out.println(ex.getMessage());
 								} catch (ClassNotFoundException ex) {
 								    System.out.println(ex.getMessage());
-                                }
+                                } finally {
+                        if (conn != null) {
+                            try {
+                                conn.close(); // <-- This is important
+                            } catch (SQLException exc) {
+                              /* handle exception */
+                            }
+                        }
+
+				   }
+
                     	}
                     	Homepage main = new Homepage();
                     	setVisible(false);
-                    	main.setVisible(true);
-                    	JLabel mainlabel = new JLabel("Welcome: "+tusername.getText());
-					    main.getContentPane().add(mainlabel);
+                    	/*JLabel mainlabel = new JLabel("Welcome: "+tusername.getText());
+					    main.getContentPane().add(mainlabel);*/
 
-				    } else {
-						res.setText("Username is already used.");
-						tusername.setText("");
-					}
 
 	            }else {
 
