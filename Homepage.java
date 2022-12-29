@@ -1,62 +1,121 @@
 import java.util.Scanner;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 
-public class Homepage extends JFrame {
+public class Homepage extends JFrame implements ActionListener {
+
+	private Container ch;
+
+	private JFrame frame;
+
+	private JLabel label;
+
+	//private ButtonGroup menugroup;
+
+	private JButton postbutton;
+
+	private JButton chatbutton;
+
+	private JButton profilebutton;
+
+	private JButton logoffbutton;
 
 
-	public static void main(String[] args) {
+	public  Homepage() {
 
-		 Post newpostbutton = new Post();
+         setVisible(true);
 
-		 JFrame frame = new JFrame("Home Page");
+		 setTitle("Home Page");
 
-		 frame.setVisible(true);
+		 setBounds(320, 120, 1000, 750);
 
-		 frame.setSize(1000,1000);
+		 setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		 frame.setLayout(new FlowLayout());
+         setResizable(true);
 
-		 JLabel label = new JLabel("Menu");
+		 //frame.setLayout(new FlowLayout());
 
- 		 frame.add(label);
+		 ch = getContentPane();
+
+		 ch.setLayout(new FlowLayout());
+
+		 label = new JLabel("Menu");
+
+ 		 //frame.add(label);
+ 		 ch.add(label);
+
+		 //menugroup = new ButtonGroup();
+
+		 postbutton = new JButton("New Post");
+		 postbutton.addActionListener(this);
+
+		 //menugroup.add(postbutton);
+
+		 //frame.add(postbutton);
+		 ch.add(postbutton);
+
+		 chatbutton = new JButton("Chat");
+		 chatbutton.addActionListener(this);
+
+		 //menugroup.add(chatbutton);
+
+		 //frame.add(chatbutton);
+		 ch.add(chatbutton);
+
+		 profilebutton = new JButton("Profile");
+		 profilebutton.addActionListener(this);
+
+		 //menugroup.add(profilebutton);
+
+		 //frame.add(profilebutton);
+		 ch.add(profilebutton);
+
+		 logoffbutton = new JButton("Logoff");
+		 logoffbutton.addActionListener(this);
+
+		 //menugroup.add(logoffbutton);
+
+		 //frame.add(logoffbutton);
+         ch.add(logoffbutton);
+
+		 //frame.setLocationRelativeTo(null);
 
 
-		 ButtonGroup menugroup = new ButtonGroup();
+	}
 
-		 JButton postbutton = new JButton("New Post");
+	public void actionPerformed(ActionEvent ae) {
 
-		 menugroup.add(postbutton);
+        if (ae.getSource() == postbutton) {
 
-		 frame.add(postbutton);
-
-		 JButton chatbutton = new JButton("Chat");
-
-		 menugroup.add(chatbutton);
-
-		 frame.add(chatbutton);
-
-		 JButton profilebutton = new JButton("Profile");
-
-		 menugroup.add(profilebutton);
-
-		 frame.add(profilebutton);
-
-		 JButton logoffbutton = new JButton("Logoff");
-
-		 menugroup.add(logoffbutton);
-
-		 frame.add(logoffbutton);
+				Post post = new Post();
+			    setVisible(false);
 
 
-		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		 frame.setLocationRelativeTo(null);
+        /*} else if (e.getSource() == chatbutton) {
 
-		 postbutton.addActionListener(e -> newpostbutton.post());
+			Chat chat = new Chat();
+			setVisible(false);
+			chat.setVisible(true);
 
-	 }
+		} else if (e.getSource() == profilebutton) {
+
+			Profile profile = new Profile();
+			setVisible(false);
+			profile.setVisible(true);
+
+		} else if (e.getSource() == logoffbutton) {
+
+			Logoff logoff = new Logoff();
+			setVisible(false);
+			logoff.setVisible(true);
+			*/
+		}
+
+	}
+
+
 
 }
