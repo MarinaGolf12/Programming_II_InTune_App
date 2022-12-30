@@ -282,9 +282,9 @@ class Signuppage
 		                	}finally {
                         if (conn != null) {
                             try {
-                                conn.close(); // <-- This is important
+                                conn.close();
                             } catch (SQLException exc) {
-                              /* handle exception */
+
                             }
                         }
 
@@ -312,9 +312,8 @@ class Signuppage
 							} finally {
                         if (conn != null) {
                             try {
-                                conn.close(); // <-- This is important
+                                conn.close();
                             } catch (SQLException exc) {
-                              /* handle exception */
                             }
                         }
 
@@ -342,9 +341,8 @@ class Signuppage
                                 } finally {
                         if (conn != null) {
                             try {
-                                conn.close(); // <-- This is important
+                                conn.close();
                             } catch (SQLException exc) {
-                              /* handle exception */
                             }
                         }
 
@@ -353,9 +351,6 @@ class Signuppage
                     	}
                     	Homepage main = new Homepage();
                     	setVisible(false);
-                    	/*JLabel mainlabel = new JLabel("Welcome: "+tusername.getText());
-					    main.getContentPane().add(mainlabel);*/
-
 
 	            }else {
 

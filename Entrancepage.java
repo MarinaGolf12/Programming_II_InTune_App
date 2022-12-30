@@ -7,6 +7,7 @@ import java.sql.*;
 //Set up graphics for Login Page
 class Entrancepage extends JFrame implements ActionListener {
 
+    // Components of the Entrancepage Form
     private Container cp;
     private JButton signup;
     private JLabel title;
@@ -20,7 +21,7 @@ class Entrancepage extends JFrame implements ActionListener {
     private JLabel res;
     private JTextArea resadd;
 
-
+    // constructor, to structure Entrancepage window
     public Entrancepage() {
 
 		setVisible(true);
@@ -94,7 +95,7 @@ class Entrancepage extends JFrame implements ActionListener {
 
     }
 
-    //Check with DB before connecting a user to app
+    //Checks with DB before connecting a user to app
     public void actionPerformed(ActionEvent e) {
 	        if (e.getSource() == login) {
 
@@ -133,9 +134,8 @@ class Entrancepage extends JFrame implements ActionListener {
                     }finally {
                         if (conn != null) {
                             try {
-                                conn.close(); // <-- This is important
+                                conn.close();
                             } catch (SQLException exc) {
-                              /* handle exception */
                             }
                         }
 
