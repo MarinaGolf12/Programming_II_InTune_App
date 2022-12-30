@@ -349,7 +349,7 @@ class Signuppage
 				   }
 
                     	}
-                    	Homepage main = new Homepage();
+                    	Entrancepage ep = new Entrancepage();
                     	setVisible(false);
 
 	            }else {
