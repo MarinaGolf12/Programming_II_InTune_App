@@ -329,7 +329,7 @@ class Signuppage
 								statement.setString(1, tname.getText());
 								statement.setString(2, tusername.getText());
 								statement.setString(3, tpassword.getText());
-							    statement.setString(4, tpasscheck.getText());
+							        statement.setString(4, tpasscheck.getText());
 								statement.setString(5, gender);
 								statement.setString(6, tage.getText());
 
@@ -349,7 +349,7 @@ class Signuppage
 				   }
 
                     	}
-                    	Homepage main = new Homepage();
+                    	Entrancepage ep = new Entrancepage();
                     	setVisible(false);
 
 	            }else {
