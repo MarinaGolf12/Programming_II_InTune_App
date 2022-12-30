@@ -12,13 +12,13 @@ public class LogOff {
 
     //Declare the exit method
     public static void exit() {
-	    //Body of the method
+        //Body of the method
 
 
         //Display a Dialog Box
-	    JPanel dialBox = new JPanel();
-	    dialBox.setSize(new Dimension(300, 100));
-	    dialBox.setLayout(null);
+        JPanel dialBox = new JPanel();
+        dialBox.setSize(new Dimension(300, 100));
+        dialBox.setLayout(null);
 
         //Display a message(text) on the Dialog Box
         JLabel msg1 = new JLabel("Do you want to exit from InTune?");
@@ -30,46 +30,40 @@ public class LogOff {
 
 
         //Title available options of the Dialog Box
-	    UIManager.put("OptionPane.minimumSize", new Dimension(500, 250));
-	    int response = JOptionPane.showConfirmDialog(null, dialBox, "Logout From InTune App?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+	UIManager.put("OptionPane.minimumSize", new Dimension(500, 250));
+	int response = JOptionPane.showConfirmDialog(null, dialBox, "Logout From InTune App?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
         //Consider the case where the choice is yes
-	    if (response == JOptionPane.YES_OPTION) {
+	if (response == JOptionPane.YES_OPTION) {
 
             //Display a new Panel
-		    JPanel confBox = new JPanel();
-			confBox.setSize(new Dimension(300,100));
-			confBox.setLayout(null);
+            JPanel confBox = new JPanel();
+	    confBox.setSize(new Dimension(300,100));
+	    confBox.setLayout(null);
 
             //Display an informational message to the user
-			JLabel msg2 = new JLabel("You are successfully logged off. Press OK to continue!");
-			msg2.setVerticalAlignment(SwingConstants.BOTTOM);
-			msg2.setBounds(20,20,425,50);
-			msg2.setHorizontalAlignment(SwingConstants.CENTER);
-			confBox.add(msg2);
+	    JLabel msg2 = new JLabel("You are successfully logged off. Press OK to continue!");
+	    msg2.setVerticalAlignment(SwingConstants.BOTTOM);
+	    msg2.setBounds(20,20,425,50);
+	    msg2.setHorizontalAlignment(SwingConstants.CENTER);
+	    confBox.add(msg2);
 
             //Title and available options of the Panel
-		    UIManager.put("OptionPane.minimumSize", new Dimension(500, 250));
-	        int resp = JOptionPane.showConfirmDialog(null, confBox, "Logout Successful", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+	    UIManager.put("OptionPane.minimumSize", new Dimension(500, 250));
+	    int resp = JOptionPane.showConfirmDialog(null, confBox, "Logout Successful", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
 
-	        System.out.println();
+	    System.out.println();
 
-		}
+        }
 
 
-	}//End of exit method
+    }//End of exit method
 
 	//Declare the main method
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-        LogOff object = new LogOff();//Declare object of the class LogOff
-
-        object.exit();//Call the exit method
+        LogOff.exit();//Call the exit method
 
     }//End of main method
-
-
-
-
 
 }//End of class LogOff
