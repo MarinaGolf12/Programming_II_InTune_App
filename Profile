@@ -1,0 +1,204 @@
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
+
+import javax.swing.AbstractAction;
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.InputMap;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
+
+
+public class SwingJButtonDemo extends JFrame{
+
+   public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+
+				new SwingJButtonDemo().setVisible(true);
+			}
+		});
+
+	}
+public class UserTest {
+
+
+	public UserTest(){}
+	private int a;
+
+ public String neo() {
+
+ 	   User p = new User();
+ 	   p.addFriend("KOSTAS");
+ 	   p.addFriend("NIKOS");
+ 	   p.addFriend("FOTIS");
+       a = p.getFriendCount();
+
+
+ 	   String fr = p.getFriends();
+ 	   return fr;
+
+  }
+
+ public int friendsCount() {
+
+ 	   return a;
+
+  }
+
+ public String usersData(){
+
+	 String t = "Name: "+"Aba "+"Mail: "+"aba8@gmail.com "+"Username: "+"abathegod "+"Password: "+"aba123890 "+"Age: "+"19";
+	 return t;
+
+	 }
+
+
+ }
+ UserTest f = new UserTest();
+
+static int count = 0;
+static int ch = 1;
+
+//The method that calls the main() method of text class
+ static void mainCaller() {
+
+     count++;
+     if (count <= ch) {
+	 text.main(null);
+     }
+
+ }
+
+	public SwingJButtonDemo() {
+        super("YOUR PROFILE");
+
+		setLayout(new FlowLayout());
+
+
+		// a default button
+		JButton button1 = new JButton("YOUR FRIENDS");
+		add(button1);
+
+
+
+		// add event listener - shortcut
+		button1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent evt) {
+				JOptionPane.showMessageDialog(SwingJButtonDemo.this, f.neo());
+			}
+		});
+
+		// a default button
+				JButton button2 = new JButton("NUMBER OF FRIENDS");
+				add(button2);
+
+
+
+				// add event listener - shortcut
+				button2.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent evt) {
+						JOptionPane.showMessageDialog(SwingJButtonDemo.this, f.friendsCount());
+					}
+		});
+
+		// a default button
+						JButton button3 = new JButton("YOUR INFO");
+						add(button3);
+
+
+
+						// add event listener - shortcut
+				 button3.addActionListener(new ActionListener() {
+					  @Override
+					  public void actionPerformed(ActionEvent evt) {
+						  JOptionPane.showMessageDialog(SwingJButtonDemo.this, f.usersData());
+				      }
+		});
+
+		// a default button
+								JButton button4 = new JButton("ADD OR DELETE FRIEND");
+								add(button4);
+
+
+
+								// add event listener - shortcut
+						 button4.addActionListener(new ActionListener() {
+							  @Override
+							  public void actionPerformed(ActionEvent evt) {
+
+                                            mainCaller();
+                                            ch++;
+
+						      }
+		});
+
+
+
+
+		// set mnemonic
+		button1.setMnemonic(KeyEvent.VK_E);
+
+
+
+
+		// customize button's appearance
+		button1.setFont(new java.awt.Font("Arial", Font.BOLD, 15));
+		button1.setBackground(Color.PINK);
+		button1.setForeground(Color.GRAY);
+
+		button1.setText("<html><color=black><b>YOUR FRIENDS</b></font></html>");
+
+		setSize(300, 100);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+
+		// customize button's appearance
+				button2.setFont(new java.awt.Font("Arial", Font.BOLD, 15));
+				button2.setBackground(Color.PINK);
+				button2.setForeground(Color.GRAY);
+
+				button2.setText("<html><color=black><b>NUMBER OF FRIENDS</b></font></html>");
+
+				setSize(300, 100);
+				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+
+		// customize button's appearance
+				button3.setFont(new java.awt.Font("Arial", Font.BOLD, 15));
+				button3.setBackground(Color.PINK);
+				button3.setForeground(Color.GRAY);
+
+				button3.setText("<html><color=black><b>YOUR INFO</b></font></html>");
+
+				setSize(300, 100);
+				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+
+		// customize button's appearance
+						button4.setFont(new java.awt.Font("Arial", Font.BOLD, 15));
+						button4.setBackground(Color.PINK);
+						button4.setForeground(Color.GRAY);
+
+						button4.setText("<html><color=black><b>ADD OR DELETE FRIEND</b></font></html>");
+
+						setSize(300, 100);
+						setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+	}
+
+
+}
