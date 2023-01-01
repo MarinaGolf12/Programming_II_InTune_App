@@ -1,21 +1,27 @@
+//import required classes and packages
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-public class Chat extends JFrame{
+import java.sql.*;
 
+public class Chat extends JFrame implements ActionListener {
+
+	// Components of the Chat window
 	private Container c;
 	private JTextArea textArea_send;
 	private JTextArea textArea_mes;
-	private JButton button;
+	private JButton send;
 	private JButton button_back;
 	private String str;
 	private JLabel title;
+	private String textto = "";
 
+	// constructor, to structure Messages window, with an argument that specifies whom the user is messaging
 	public Chat(String name) {
 
         //set the frame
 		setVisible(true);
-		setTitle("Chat");
+		setTitle("InTune");
 		setBounds(320, 120, 1000, 750);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(true);
@@ -46,39 +52,76 @@ public class Chat extends JFrame{
 		textArea_mes.setLocation(200, 100);
 		c.add(textArea_mes);
 
-		//set the dutton to send the message
-		button = new JButton("send");
-				button.setFont(new Font("Arial", Font.PLAIN, 15));
-				button.setBackground(new java.awt.Color(27, 38, 67));
-		        button.setForeground(Color.WHITE);
-				button.setSize(100, 30);
-				button.setLocation(530, 300);
-				button.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e)
-						{
-						str = textArea_send.getText();
-						textArea_send.setText("");
-						textArea_mes.append(str + "\n");
-						textArea_mes.setEditable(false);
+		//set the button to send the message
+		send = new JButton("send");
+		send.setFont(new Font("Arial", Font.PLAIN, 15));
+		send.setBackground(new java.awt.Color(27, 38, 67));
+	    send.setForeground(Color.WHITE);
+		send.setSize(100, 30);
+		send.setLocation(530, 300);
+		send.addActionListener(this);
+		c.add(send);
 
-						}
-					});
-        c.add(button);
-
-		//set the dutton to go back to the message page
+		//set the button to go back to the message page
         button_back = new JButton("back");
-				button_back.setFont(new Font("Arial", Font.PLAIN, 15));
-				button_back.setBackground(new java.awt.Color(27, 38, 67));
-		        button_back.setForeground(Color.WHITE);
-				button_back.setSize(100, 30);
-				button_back.setLocation(200, 350);
-				button_back.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-					 new Messages();
-					 dispose();
-					}
-				});
-        c.add(button_back);
+		button_back.setFont(new Font("Arial", Font.PLAIN, 15));
+		button_back.setBackground(new java.awt.Color(27, 38, 67));
+		button_back.setForeground(Color.WHITE);
+		button_back.setSize(100, 30);
+		button_back.setLocation(200, 350);
+		button_back.addActionListener(this);
+		c.add(button_back);
+
+		textto = name;
 
 	}
+
+
+	public void actionPerformed(ActionEvent e) {
+
+	    if (e.getSource() == send) { //sends message
+
+			Connection conn = null;
+
+			    try {
+
+			        Class.forName("org.sqlite.JDBC");
+				    conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
+					String sqlinsert = "INSERT INTO MESSAGES(textmessage, textfrom, texto, status) VALUES(?,?,?,?)";
+					PreparedStatement statement = conn.prepareStatement(sqlinsert);
+					statement.setString(1, textArea_send.getText());
+					statement.setString(2, Entrancepage.tfusername.getText());
+					statement.setString(3, textto);
+					statement.setInt(4, 0);
+
+                    statement.executeUpdate();
+
+                    JOptionPane.showMessageDialog(null,"Message sent!");
+
+                    textArea_mes.setText(textArea_send.getText());
+
+                } catch (SQLException ex) {
+				    System.out.println(ex.getMessage());
+				} catch (ClassNotFoundException ex) {
+					System.out.println(ex.getMessage());
+				}finally {
+				    if (conn != null) {
+				        try {
+				            conn.close();
+				        } catch (SQLException exc) {
+				        }
+				    }
+				}
+
+
+
+		} else if (e.getSource() == button_back) { //goes back to messages
+
+            Messages msg = new Messages();
+            setVisible(false);
+
+		}
+
+	}
+
 }

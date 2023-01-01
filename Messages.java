@@ -1,17 +1,21 @@
+//import required classes and packages
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-public class Messages extends JFrame {
+import java.sql.*;
+public class Messages extends JFrame implements ActionListener {
 
+	// Components of the Messages window
 	private Container c;
 	private JLabel title;
 	private JButton button;
 	private JLabel label;
 	private JTextField textField;
 	private String str;
-	//private JButton button_back;
+	private JButton goback;
+	private JButton unread;
 
-
+    // constructor, to structure Messages window
 	public Messages() {
 
 		//set the frame
@@ -25,7 +29,7 @@ public class Messages extends JFrame {
         c.setLayout(null);
 
 		//set a title
-        title = new JLabel("Messages");
+        title = new JLabel("InTune");
         title.setFont(new Font("Arial", Font.PLAIN, 20));
 		title.setSize(500, 50);
 		title.setLocation(180, 30);
@@ -53,35 +57,115 @@ public class Messages extends JFrame {
 		button.setFont(new Font("Arial", Font.PLAIN, 15));
 		button.setSize(550, 30);
 		button.setLocation(280, 170);
-		button.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e)
-				{
-					str = textField.getText();
-					new Chat(str);
-					dispose();
-				}
-			});
+		button.addActionListener(this);
 
-       /* connection with the previous class
-       button_back = new JButton("GO");
-       button_back.setFont(new Font("Arial", Font.PLAIN, 15));
-       button.setBackground(new java.awt.Color(27, 38, 67));
-	   button.setForeground(Color.WHITE);
-	   button_back.setSize(550, 60);
-	   button_back.setLocation(200, 350);
-	   button_back.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e)
-						{
-							new className();
-							dispose();
-						}
-					});
-        c.add(button_back); */
+		//set button to go back to homepage
+		goback = new JButton("Homepage");
+		c.add(goback);
+		goback.setBackground(new java.awt.Color(27, 38, 67));
+		goback.setForeground(Color.WHITE);
+		goback.setFont(new Font("Arial", Font.PLAIN, 15));
+		goback.setSize(550, 30);
+		goback.setLocation(280, 220);
+		goback.addActionListener(this);
+
+		//set button to see new messages
+		unread = new JButton("See unread messages");
+		c.add(unread);
+		unread.setBackground(new java.awt.Color(27, 38, 67));
+		unread.setForeground(Color.WHITE);
+		unread.setFont(new Font("Arial", Font.PLAIN, 15));
+		unread.setSize(550, 30);
+		unread.setLocation(280, 270);
+		unread.addActionListener(this);
 
 	}
 
-	public static void main(String[] args) {
 
-		Messages ms = new Messages();
-    }
+		public void actionPerformed(ActionEvent e) {
+
+			if (e.getSource() == button) { //choose a user to message
+
+		        str = textField.getText();
+		        Connection conn = null;
+
+                if (str.equals(Entrancepage.tfusername.getText()) != true) {
+				    try {
+
+				        Class.forName("org.sqlite.JDBC");
+						conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
+						String sqlinsert = "SELECT username FROM User WHERE username LIKE ?";
+						PreparedStatement pstmt = conn.prepareStatement(sqlinsert);
+						pstmt.setString(1,str);
+						ResultSet rs = pstmt.executeQuery();
+
+						if (rs.next()) {
+
+							new Chat(str);
+		                    setVisible(false);
+
+						} else {
+
+							JOptionPane.showMessageDialog(null,"Please enter an existing user");
+
+						}
+					} catch (Exception ex) {
+					} finally {
+					    if (conn != null) {
+						    try {
+						        conn.close();
+						    } catch (SQLException exc) {
+						    }
+						 }
+				    }
+
+				} else {
+
+					JOptionPane.showMessageDialog(null,"Can not send message to yourself!");
+
+				}
+
+			} else if (e.getSource() == goback) { //redirects to homepage
+
+				Homepage hp = new Homepage();
+				setVisible(false);
+
+			} else if (e.getSource() == unread) {
+
+			    Connection conn = null;
+
+				    try {
+
+				        Class.forName("org.sqlite.JDBC");
+						conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
+						String sqlinsert = "SELECT textmessage FROM Messages WHERE status LIKE ?";
+						PreparedStatement pstmt = conn.prepareStatement(sqlinsert);
+						pstmt.setInt(1,0);
+						ResultSet rs = pstmt.executeQuery();
+
+						if (rs.next()) {
+
+							Unread unread = new Unread();
+							setVisible(false);
+
+						} else {
+
+							JOptionPane.showMessageDialog(null,"No new messages!");
+
+						}
+
+					} catch (Exception ex) {
+					} finally {
+						if (conn != null) {
+							try {
+							    conn.close();
+							} catch (SQLException exc) {
+						    }
+					    }
+				    }
+
+			}
+
+	}
+
 }
