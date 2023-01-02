@@ -17,19 +17,25 @@ class React extends JFrame implements ActionListener {
     private JButton goback;
     private JButton sub;
     private JTextArea ta;
+    private JFrame frame;
 
     // constructor, to structure React window
     public React() {
 
-		setVisible(true);
-		setTitle("InTune");
-		setBounds(320, 120, 1000, 750);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(true);
-		crr = getContentPane();
-		crr.setLayout(new FlowLayout());
+		frame = new JFrame();
+		frame.setTitle("InTune");
+		frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+		frame.setBounds(320, 120, 1000, 750);
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.setResizable(true);
+		crr = frame.getContentPane();
+		crr.setLayout(null);
 
-		react = new JLabel("React to this post!");
+		react = new JLabel("React");
+		react.setFont(new Font("Arial", Font.BOLD, 30));
+		react.setForeground(new java.awt.Color(27, 38, 67));
+		react.setSize(300, 50);
+        react.setLocation(130, 30);
 		crr.add(react);
 
 		bg = new ButtonGroup();
@@ -37,8 +43,8 @@ class React extends JFrame implements ActionListener {
 		r1 = new JRadioButton("My favourite");
 		r1.setFont(new Font("Arial", Font.PLAIN, 15));
 		r1.setSelected(true);
-		r1.setSize(75, 20);
-        r1.setLocation(200, 300);
+		r1.setSize(105, 20);
+        r1.setLocation(130, 130);
 		crr.add(r1);
 		bg.add(r1);
 
@@ -46,57 +52,61 @@ class React extends JFrame implements ActionListener {
 		r2.setFont(new Font("Arial", Font.PLAIN, 15));
 		r2.setSelected(true);
 		r2.setSize(75, 20);
-        r2.setLocation(210, 300);
+        r2.setLocation(130, 190);
 		crr.add(r2);
 		bg.add(r2);
 
 		r3 = new JRadioButton("Catchy");
 		r3.setFont(new Font("Arial", Font.PLAIN, 15));
 		r3.setSelected(true);
-		r3.setSize(75, 20);
-        r3.setLocation(220, 300);
+		r3.setSize(100, 20);
+        r3.setLocation(130, 250);
 		crr.add(r3);
 		bg.add(r3);
 
 		r4 = new JRadioButton("Sound Off");
 		r4.setFont(new Font("Arial", Font.PLAIN, 15));
 		r4.setSelected(true);
-		r4.setSize(75, 20);
-        r4.setLocation(230, 300);
+		r4.setSize(100, 20);
+        r4.setLocation(130, 310);
 		crr.add(r4);
 		bg.add(r4);
 
 		r5 = new JRadioButton("Earache");
 		r5.setFont(new Font("Arial", Font.PLAIN, 15));
 		r5.setSelected(true);
-		r5.setSize(75, 20);
-        r5.setLocation(240, 300);
+		r5.setSize(100, 20);
+        r5.setLocation(130, 370);
 		crr.add(r5);
 		bg.add(r5);
 
-        goback = new JButton("Back to reacting!!");
-        goback.setFont(new Font("Arial", Font.PLAIN, 15));
-		goback.setSelected(true);
-		goback.setSize(75, 20);
-        goback.setLocation(250, 300);
+        goback = new JButton("Go Back");
+        goback.setBackground(new java.awt.Color(27, 38, 67));
+        goback.setForeground(Color.WHITE);
+		goback.setFont(new Font("Arial", Font.BOLD, 15));
+		goback.setSize(240, 35);
+		goback.setLocation(500, 150);
         goback.addActionListener(this);
         crr.add(goback);
 
         sub = new JButton("Submit Reaction");
-        sub.setFont(new Font("Arial", Font.PLAIN, 15));
-		sub.setSelected(true);
-		sub.setSize(75, 20);
-        sub.setLocation(260, 300);
+        sub.setBackground(new java.awt.Color(27, 38, 67));
+		sub.setForeground(Color.WHITE);
 		sub.addActionListener(this);
+		sub.setFont(new Font("Arial", Font.BOLD, 15));
+		sub.setSize(240, 35);
+		sub.setLocation(500, 100);
         crr.add(sub);
 
         ta = new JTextArea();
 		ta.setFont(new Font("Arial", Font.PLAIN, 15));
-		ta.setSize(300, 400);
-		ta.setLocation(500, 500);
+		ta.setSize(240, 200);
+		ta.setLocation(500, 200);
 		ta.setLineWrap(true);
 		ta.setEditable(false);
         crr.add(ta);
+
+        frame.setVisible(true);
 
     }
 
@@ -127,12 +137,12 @@ class React extends JFrame implements ActionListener {
 			}
 
 
-
+            JOptionPane.showMessageDialog(null,"Reaction sent!");
 		}
 		if (ae.getSource() == goback) {
 
 			Reaction reaction = new Reaction();
-			setVisible(false);
+			frame.setVisible(false);
 
 		}
 
@@ -174,6 +184,7 @@ class React extends JFrame implements ActionListener {
 
 	    }
 
-
+	public static void main(String[] args) {
+		React hm = new React();
+	}
 }
-

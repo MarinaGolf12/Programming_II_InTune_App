@@ -9,8 +9,8 @@ class Entrancepage extends JFrame implements ActionListener {
 
     // Components of the Entrancepage Form
     private Container cp;
+    private JFrame frame;
     private JButton signup;
-    private JLabel title;
     private JLabel username;
 	protected static JTextField tfusername;
 	private JLabel password;
@@ -20,70 +20,68 @@ class Entrancepage extends JFrame implements ActionListener {
     private JTextArea twrong;
     private JLabel res;
     private JTextArea resadd;
+    private JLabel img;
 
     // constructor, to structure Entrancepage window
     public Entrancepage() {
 
-		setVisible(true);
+		frame = new JFrame();
+        frame.setTitle("InTune");
+        frame.setBounds(320, 120, 1000, 750);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setResizable(true);
 
-        setTitle("InTune");
-        setBounds(320, 120, 1000, 750);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setResizable(true);
-
-
-        cp = getContentPane();
+		frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+        cp = frame.getContentPane();
         cp.setLayout(null);
-
-        title = new JLabel("Welcome to InTune!");
-		title.setFont(new Font("Arial", Font.PLAIN, 30));
-		title.setSize(500, 30);
-		title.setLocation(300, 30);
-		cp.add(title);
 
 
         username = new JLabel("Username");
 	    username.setFont(new Font("Arial", Font.PLAIN, 20));
 		username.setSize(300, 30);
-		username.setLocation(100, 150);
+		username.setLocation(200, 140);
 		cp.add(username);
 
 		tfusername = new JTextField();
 		tfusername.setFont(new Font("Arial", Font.PLAIN, 15));
 		tfusername.setSize(550, 30);
-		tfusername.setLocation(200, 150);
+		tfusername.setLocation(200, 190);
 		cp.add(tfusername);
 
 		password = new JLabel("Password");
 
 		password.setFont(new Font("Arial", Font.PLAIN, 20));
 		password.setSize(300, 30);
-		password.setLocation(100, 250);
+		password.setLocation(200, 240);
 		cp.add(password);
 
 		tfpassword = new JPasswordField(25);
 		tfpassword.setFont(new Font("Arial", Font.PLAIN, 15));
 		tfpassword.setSize(550, 30);
-		tfpassword.setLocation(200, 250);
+		tfpassword.setLocation(200, 290);
 		cp.add(tfpassword);
 
-		login = new JButton("Login");
+		login = new JButton("Log in");
 		login.setFont(new Font("Arial", Font.PLAIN, 15));
-		login.setSize(550, 60);
-		login.setLocation(200, 350);
+		login.setBackground(new java.awt.Color(27, 38, 67));
+		login.setForeground(Color.WHITE);
+		login.setSize(550, 30);
+		login.setLocation(200, 390);
 		login.addActionListener(this);
         cp.add(login);
 
-        newuser = new JLabel("Are you new?");
+        newuser = new JLabel("Don't have an account?");
 		newuser.setFont(new Font("Arial", Font.PLAIN, 16));
 		newuser.setSize(500, 60);
-		newuser.setLocation(430, 450);
+		newuser.setLocation(400, 450);
 		cp.add(newuser);
 
 		signup = new JButton("Sign Up");
-		signup.setFont(new Font("Arial", Font.PLAIN, 15));
-		signup.setSize(550, 60);
-		signup.setLocation(200, 550);
+		signup.setFont(new Font("Arial",Font.BOLD, 15));
+		signup.setBackground(new java.awt.Color(232, 237, 244));
+		signup.setForeground(new java.awt.Color(27, 38, 67));
+		signup.setSize(150, 30);
+		signup.setLocation(400, 500);
 		signup.addActionListener(this);
         cp.add(signup);
 
@@ -92,6 +90,14 @@ class Entrancepage extends JFrame implements ActionListener {
 		res.setSize(500, 25);
 		res.setLocation(350, 650);
 		cp.add(res);
+
+		img = new JLabel();
+		img.setIcon(new ImageIcon("logo.png"));
+		Dimension size = img.getPreferredSize(); //Gets the size of the image
+		img.setBounds(380, 20, size.width, size.height); //Sets the location of the image
+		cp.add(img);
+
+		frame.setVisible(true);
 
     }
 
@@ -116,15 +122,13 @@ class Entrancepage extends JFrame implements ActionListener {
 						if (rs.next()) {
 							JOptionPane.showMessageDialog(null,"Login Successful");
 						    Homepage mainpage = new Homepage();
-							setVisible(false);
-
-
+							frame.setVisible(false);
 
 						} else {
-							String def = " ";
-							res.setText("Wrong Username or Password");
-							tfusername.setText(def);
-							tfpassword.setText(def);
+
+							JOptionPane.showMessageDialog(null,"Wrong username or password");
+							Entrancepage ent = new Entrancepage();
+							frame.setVisible(false);
 						}
 
 
@@ -146,7 +150,7 @@ class Entrancepage extends JFrame implements ActionListener {
 	        } else if (e.getSource() == signup) {
 
 				    Signuppage signuppage = new Signuppage();
-				    setVisible(false);
+				    frame.setVisible(false);
 
 		    }
 
@@ -154,4 +158,3 @@ class Entrancepage extends JFrame implements ActionListener {
 
 
 }
-
