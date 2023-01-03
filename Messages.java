@@ -20,7 +20,7 @@ public class Messages extends JFrame implements ActionListener {
 
 		//set the frame
 		setVisible(true);
-		setTitle("Messages");
+		setTitle("InTune");
 		setBounds(320, 120, 1000, 750);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(true);
@@ -29,7 +29,7 @@ public class Messages extends JFrame implements ActionListener {
         c.setLayout(null);
 
 		//set a title
-        title = new JLabel("InTune");
+        title = new JLabel("Messages");
         title.setFont(new Font("Arial", Font.PLAIN, 20));
 		title.setSize(500, 50);
 		title.setLocation(180, 30);
