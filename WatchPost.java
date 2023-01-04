@@ -18,60 +18,72 @@ class WatchPost extends JFrame implements ActionListener {
 	private JButton goback;
 	private JTextField tfshowchoice;
 	private JButton play;
+	private JFrame frame;
+	private JLabel watchpost;
 
     // constructor, to structure WatchPost window
     public WatchPost() {
 
-        setVisible(true);
+		frame = new JFrame();
+	    frame.setTitle("InTune");
+	    frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+	    frame.setBounds(320, 120, 1000, 750);
+	    frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    frame.setResizable(true);
 
-	    setTitle("InTune");
+	    cw = frame.getContentPane();
+		cw.setLayout(null);
 
-	    setBounds(320, 120, 1000, 750);
-
-	    setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-	    setResizable(true);
-
-	    cw = getContentPane();
-
-		cw.setLayout(new FlowLayout());
-
+		watchpost = new JLabel("Watch Post");
+		watchpost.setFont(new Font("Arial", Font.BOLD, 30));
+		watchpost.setForeground(new java.awt.Color(27, 38, 67));
+		watchpost.setSize(300, 50);
+	    watchpost.setLocation(110, 40);
+ 		cw.add(watchpost);
 
 		space = new JTextArea();
 		space.setText("");
 		space.setFont(new Font("Arial", Font.PLAIN, 15));
-		space.setSize(500, 800);
-		space.setLocation(100, 500);
+		space.setSize(500, 400);
+		space.setLocation(410, 130);
 		space.setLineWrap(true);
 		space.setEditable(false);
         cw.add(space);
 
         choose = new JButton("Choose a post to react to!");
-        choose.setFont(new Font("Arial", Font.PLAIN, 15));
-		choose.setSize(200, 20);
-		choose.setLocation(150, 500);
+        choose.setFont(new Font("Arial", Font.BOLD, 15));
+        choose.setBackground(new java.awt.Color(27, 38, 67));
+		choose.setForeground(Color.WHITE);
+		choose.setSize(240, 35);
+		choose.setLocation(110, 190);
         choose.addActionListener(this);
         cw.add(choose);
 
-        goback = new JButton("Homepage");
-        goback.setFont(new Font("Arial", Font.PLAIN, 15));
-		goback.setSize(200, 20);
-		goback.setLocation(150, 600);
+        goback = new JButton("Go Back");
+        goback.setBackground(new java.awt.Color(27, 38, 67));
+		goback.setForeground(Color.WHITE);
+		goback.setFont(new Font("Arial", Font.BOLD, 15));
+		goback.setSize(240, 35);
+		goback.setLocation(110, 300);
         goback.addActionListener(this);
         cw.add(goback);
 
 		tfshowchoice = new JTextField(30);
 		tfshowchoice.setFont(new Font("Arial", Font.PLAIN, 15));
-		tfshowchoice.setSize(190, 20);
-		tfshowchoice.setLocation(200,100);
+		tfshowchoice.setSize(240, 35);
+		tfshowchoice.setLocation(110,130);
 		cw.add(tfshowchoice);
 
 		play = new JButton("Play a post");
-		play.setFont(new Font("Arial", Font.PLAIN, 15));
-		play.setSize(200, 20);
-		play.setLocation(150, 700);
+		play.setFont(new Font("Arial", Font.BOLD, 15));
+		play.setBackground(new java.awt.Color(27, 38, 67));
+		play.setForeground(Color.WHITE);
+		play.setSize(240, 35);
+		play.setLocation(110, 245);
 		play.addActionListener(this);
         cw.add(play);
+
+        frame.setVisible(true);
 
         //Show all Posts
 		Connection conn = null;
@@ -122,7 +134,7 @@ class WatchPost extends JFrame implements ActionListener {
 													    if (rs.next()) {
 
 															Reaction reaction = new Reaction();
-															setVisible(false);
+															frame.setVisible(false);
 													    }
 													} catch (SQLException ex) {
 													    System.out.println(ex.getMessage());
@@ -142,7 +154,7 @@ class WatchPost extends JFrame implements ActionListener {
 		} else if (ae.getSource() == goback) { // redirects to homepage
 
 			Homepage mainpage = new Homepage();
-			setVisible(false);
+			frame.setVisible(false);
 
 		} else if (ae.getSource() == play) {
 
@@ -191,5 +203,7 @@ class WatchPost extends JFrame implements ActionListener {
 
 	}
 
+	public static void main(String[] args) {
+		WatchPost hm = new WatchPost();
+	}
 }
-

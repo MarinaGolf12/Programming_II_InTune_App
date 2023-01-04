@@ -14,70 +14,75 @@ public class Messages extends JFrame implements ActionListener {
 	private String str;
 	private JButton goback;
 	private JButton unread;
+	private JFrame frame;
 
     // constructor, to structure Messages window
 	public Messages() {
 
 		//set the frame
-		setVisible(true);
-		setTitle("InTune");
-		setBounds(320, 120, 1000, 750);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(true);
+		frame = new JFrame();
+		frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+		frame.setTitle("InTune");
+		frame.setBounds(320, 120, 1000, 750);
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.setResizable(true);
 
-		c = getContentPane();
+		c = frame.getContentPane();
         c.setLayout(null);
 
 		//set a title
         title = new JLabel("Messages");
-        title.setFont(new Font("Arial", Font.PLAIN, 20));
-		title.setSize(500, 50);
-		title.setLocation(180, 30);
+        title.setFont(new Font("Arial", Font.BOLD, 30));
+		title.setForeground(new java.awt.Color(27, 38, 67));
+		title.setSize(300, 50);
+		title.setLocation(110, 40);;
 		c.add(title);
 
 		//set a label
 		label = new JLabel("Message to :");
-		label.setFont(new Font("Arial", Font.PLAIN, 15));
+		label.setFont(new Font("Arial", Font.BOLD, 15));
 		label.setSize(500, 30);
-		label.setLocation(180, 100);
+		label.setLocation(110, 100);
 		c.add(label);
 
 		//set the text field to write the name of the person we want to chat with
 		textField = new JTextField();
 		textField.setFont(new Font("Arial", Font.PLAIN, 18));
 		textField.setSize(550, 30);
-		textField.setLocation(280, 100);
+		textField.setLocation(220, 105);
 		c.add(textField);
 
 		//set button go to chat
 		button = new JButton("GO");
-		c.add(button);
 		button.setBackground(new java.awt.Color(27, 38, 67));
 		button.setForeground(Color.WHITE);
-		button.setFont(new Font("Arial", Font.PLAIN, 15));
-		button.setSize(550, 30);
-		button.setLocation(280, 170);
+		button.setFont(new Font("Arial", Font.BOLD, 15));
+	   	button.setSize(240, 35);
+		button.setLocation(220, 170);
 		button.addActionListener(this);
+		c.add(button);
 
 		//set button to go back to homepage
-		goback = new JButton("Homepage");
-		c.add(goback);
+		goback = new JButton("Go Back");
 		goback.setBackground(new java.awt.Color(27, 38, 67));
 		goback.setForeground(Color.WHITE);
-		goback.setFont(new Font("Arial", Font.PLAIN, 15));
-		goback.setSize(550, 30);
-		goback.setLocation(280, 220);
+	    goback.setFont(new Font("Arial", Font.BOLD, 15));
+	   	goback.setSize(240, 35);
+		goback.setLocation(220, 220);
 		goback.addActionListener(this);
+		c.add(goback);
 
 		//set button to see new messages
 		unread = new JButton("See unread messages");
-		c.add(unread);
 		unread.setBackground(new java.awt.Color(27, 38, 67));
 		unread.setForeground(Color.WHITE);
-		unread.setFont(new Font("Arial", Font.PLAIN, 15));
-		unread.setSize(550, 30);
-		unread.setLocation(280, 270);
+		unread.setFont(new Font("Arial", Font.BOLD, 15));
+	   	unread.setSize(240, 35);
+		unread.setLocation(220, 270);
 		unread.addActionListener(this);
+		c.add(unread);
+
+		frame.setVisible(true);
 
 	}
 
@@ -101,8 +106,8 @@ public class Messages extends JFrame implements ActionListener {
 
 						if (rs.next()) {
 
-							new Chat(str);
-		                    setVisible(false);
+							Chat ch = new Chat(str);
+		                    frame.setVisible(false);
 
 						} else {
 
@@ -128,7 +133,7 @@ public class Messages extends JFrame implements ActionListener {
 			} else if (e.getSource() == goback) { //redirects to homepage
 
 				Homepage hp = new Homepage();
-				setVisible(false);
+				frame.setVisible(false);
 
 			} else if (e.getSource() == unread) {
 
@@ -138,15 +143,16 @@ public class Messages extends JFrame implements ActionListener {
 
 				        Class.forName("org.sqlite.JDBC");
 						conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
-						String sqlinsert = "SELECT textmessage FROM Messages WHERE status LIKE ?";
+						String sqlinsert = "SELECT textmessage FROM Messages WHERE status LIKE ? AND texto LIKE ?";
 						PreparedStatement pstmt = conn.prepareStatement(sqlinsert);
 						pstmt.setInt(1,0);
+						pstmt.setString(2,Entrancepage.tfusername.getText());
 						ResultSet rs = pstmt.executeQuery();
 
 						if (rs.next()) {
 
 							Unread unread = new Unread();
-							setVisible(false);
+							frame.setVisible(false);
 
 						} else {
 
@@ -167,5 +173,4 @@ public class Messages extends JFrame implements ActionListener {
 			}
 
 	}
-
 }

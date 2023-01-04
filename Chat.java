@@ -15,18 +15,21 @@ public class Chat extends JFrame implements ActionListener {
 	private String str;
 	private JLabel title;
 	private String textto = "";
+	private JFrame frame;
 
 	// constructor, to structure Messages window, with an argument that specifies whom the user is messaging
 	public Chat(String name) {
 
         //set the frame
-		setVisible(true);
-		setTitle("InTune");
-		setBounds(320, 120, 1000, 750);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(true);
+        frame = new JFrame();
+		frame.setVisible(true);
+		frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+		frame.setTitle("InTune");
+		frame.setBounds(320, 120, 1000, 750);
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.setResizable(true);
 
-		c = getContentPane();
+		c = frame.getContentPane();
         c.setLayout(null);
 
 		//set as a title the name of the person we want to chat with
@@ -118,7 +121,7 @@ public class Chat extends JFrame implements ActionListener {
 		} else if (e.getSource() == button_back) { //goes back to messages
 
             Messages msg = new Messages();
-            setVisible(false);
+            frame.setVisible(false);
 
 		}
 

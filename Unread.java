@@ -13,49 +13,59 @@ class Unread extends JFrame implements ActionListener {
     private JButton answer;
     private JTextField tanswer;
     private JButton read;
+    private JFrame frame;
+    private JLabel unread;
 
     // constructor, to structure unread messages window
     public Unread() {
 
-        setVisible(true);
-	    setTitle("InTune");
-	    setBounds(320, 120, 1000, 750);
-	    setDefaultCloseOperation(EXIT_ON_CLOSE);
-	    setResizable(true);
-	    cu = getContentPane();
-	    cu.setLayout(new FlowLayout());
+		frame = new JFrame();
+		frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+	    frame.setTitle("InTune");
+	    frame.setBounds(320, 120, 1000, 750);
+	    frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    frame.setResizable(true);
+	    cu = frame.getContentPane();
+	    cu.setLayout(null);
+
+	    unread = new JLabel("New Messages");
+		unread.setFont(new Font("Arial", Font.BOLD, 30));
+		unread.setForeground(new java.awt.Color(27, 38, 67));
+		unread.setSize(300, 50);
+		unread.setLocation(110, 40);
+ 		cu.add(unread);
 
 	    goback = new JButton("Go back to messages");
 	    goback.setBackground(new java.awt.Color(27, 38, 67));
 	    goback.setForeground(Color.WHITE);
-	    goback.setFont(new Font("Arial", Font.PLAIN, 15));
-	    goback.setSize(550, 30);
-	    goback.setLocation(180, 470);
+	   	goback.setFont(new Font("Arial", Font.BOLD, 15));
+	   	goback.setSize(240, 35);
+		goback.setLocation(110, 300);
 	    goback.addActionListener(this);
 	    cu.add(goback);
 
 	    answer = new JButton("Answer");
 	    answer.setBackground(new java.awt.Color(27, 38, 67));
 		answer.setForeground(Color.WHITE);
-		answer.setFont(new Font("Arial", Font.PLAIN, 15));
-	    answer.setSize(550, 30);
-		answer.setLocation(280, 470);
+		answer.setFont(new Font("Arial", Font.BOLD, 15));
+		answer.setSize(240, 35);
+		answer.setLocation(110, 190);
 		answer.addActionListener(this);
 	    cu.add(answer);
 
 	    read = new JButton("I read all my messages");
 		read.setBackground(new java.awt.Color(27, 38, 67));
 		read.setForeground(Color.WHITE);
-		read.setFont(new Font("Arial", Font.PLAIN, 15));
-		read.setSize(550, 30);
-		read.setLocation(380, 470);
+		read.setFont(new Font("Arial", Font.BOLD, 15));
+		read.setSize(240, 35);
+		read.setLocation(110, 245);
 		read.addActionListener(this);
 	    cu.add(read);
 
 	    tanswer = new JTextField(50);
 		tanswer.setFont(new Font("Arial", Font.PLAIN, 15));
-		tanswer.setSize(190, 20);
-		tanswer.setLocation(380, 470);
+		tanswer.setSize(240,35);
+		tanswer.setLocation(110,130);
 		cu.add(tanswer);
 
 		urmes = new JTextArea();
@@ -64,12 +74,14 @@ class Unread extends JFrame implements ActionListener {
 		urmes.setLineWrap(true);
 		urmes.setEditable(false);
 		urmes.setFont(new Font("Arial", Font.PLAIN, 15));
-		urmes.setSize(850, 850);
-		urmes.setLocation(800, 800);
+		urmes.setSize(500, 400);
+		urmes.setLocation(410, 130);
 		cu.add(urmes);
 
         Connection conn = null;
         String r = "";
+
+        frame.setVisible(true);
 
         //show unread messages
         try {
@@ -113,7 +125,7 @@ class Unread extends JFrame implements ActionListener {
 		if (e.getSource() == goback) { //go back to writing a message
 
 			Messages mes = new Messages();
-			setVisible(false);
+			frame.setVisible(false);
 
 		} else if(e.getSource() == read) { //establish that all current messages were read
 
@@ -148,7 +160,7 @@ class Unread extends JFrame implements ActionListener {
 
 	    } else if (e.getSource() == answer) { // answer to a message
 
-            if (urmes.getText() != "") {
+            if (urmes.getText().equals("") == false) {
 			Connection conn = null;
 
 			    try {
@@ -162,7 +174,7 @@ class Unread extends JFrame implements ActionListener {
 					    if (rs.next()) {
 
 							Chat chat = new Chat(rs.getString("textfrom"));
-							setVisible(false);
+							frame.setVisible(false);
 
 						}
 
@@ -185,6 +197,9 @@ class Unread extends JFrame implements ActionListener {
 
 		}
 
+    }
+    public static void main(String[] args) {
+		new Unread();
     }
 
 }

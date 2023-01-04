@@ -10,6 +10,7 @@ class Signuppage
 
     // Components of the Entrance Form
     private Container c;
+    private JFrame frame;
     private JLabel title;
     private JLabel name;
     private JTextField tname;
@@ -41,94 +42,97 @@ class Signuppage
     // constructor, to initialize the components with default values.
     public Signuppage()
     {
-        setTitle("InTune");
-        setBounds(320, 120, 1000, 750);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setResizable(false);
 
-        c = getContentPane();
+		frame = new JFrame();
+        frame.setTitle("InTune");
+        frame.setBounds(320, 120, 1000, 750);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
+		frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+        c = frame.getContentPane();
         c.setLayout(null);
 
         title = new JLabel("Sign Up");
-        title.setFont(new Font("Arial", Font.PLAIN, 30));
-        title.setSize(300, 30);
-        title.setLocation(300, 30);
+        title.setFont(new Font("Arial", Font.BOLD, 30));
+        title.setForeground(new java.awt.Color(27, 38, 67));
+        title.setSize(300, 50);
+        title.setLocation(130, 30);
         c.add(title);
 
         name = new JLabel("Name");
-        name.setFont(new Font("Arial", Font.PLAIN, 20));
+        name.setFont(new Font("Arial", Font.PLAIN, 15));
         name.setSize(100, 20);
-        name.setLocation(100, 100);
+        name.setLocation(130, 110);
         c.add(name);
 
         tname = new JTextField();
         tname.setFont(new Font("Arial", Font.PLAIN, 15));
         tname.setSize(190, 20);
-        tname.setLocation(200, 100);
+        tname.setLocation(130, 135);
         c.add(tname);
 
         username = new JLabel("Username");
-	    username.setFont(new Font("Arial", Font.PLAIN, 20));
+	    username.setFont(new Font("Arial", Font.PLAIN, 15));
 	    username.setSize(100, 20);
-		username.setLocation(100, 150);
+		username.setLocation(130, 165);
 		c.add(username);
 
 		tusername = new JTextField();
 		tusername.setFont(new Font("Arial", Font.PLAIN, 15));
 		tusername.setSize(190, 20);
-		tusername.setLocation(200, 150);
+		tusername.setLocation(130, 190);
 		c.add(tusername);
 
 		password = new JLabel("Password");
-		password.setFont(new Font("Arial", Font.PLAIN, 20));
+		password.setFont(new Font("Arial", Font.PLAIN, 15));
 		password.setSize(100, 20);
-		password.setLocation(100, 200);
+		password.setLocation(130, 220);
 		c.add(password);
 
 		tpassword = new JTextField();
 		tpassword.setFont(new Font("Arial", Font.PLAIN, 15));
 		tpassword.setSize(190, 20);
-		tpassword.setLocation(200, 200);
+		tpassword.setLocation(130, 245);
 		c.add(tpassword);
 
 		passcheck = new JLabel("Repeat");
-		passcheck.setFont(new Font("Arial", Font.PLAIN, 20));
+		passcheck.setFont(new Font("Arial", Font.PLAIN, 15));
 		passcheck.setSize(100, 20);
-		passcheck.setLocation(100, 250);
+		passcheck.setLocation(130, 275);
 		c.add(passcheck);
 
 		tpasscheck = new JTextField();
 		tpasscheck.setFont(new Font("Arial", Font.PLAIN, 15));
 		tpasscheck.setSize(190, 20);
-		tpasscheck.setLocation(200, 250);
+		tpasscheck.setLocation(130, 300);
 		c.add(tpasscheck);
 
 
         gender = new JLabel("Gender");
-        gender.setFont(new Font("Arial", Font.PLAIN, 20));
+        gender.setFont(new Font("Arial", Font.PLAIN, 15));
         gender.setSize(100, 20);
-        gender.setLocation(100, 300);
+        gender.setLocation(130, 330);
         c.add(gender);
 
         male = new JRadioButton("Male");
         male.setFont(new Font("Arial", Font.PLAIN, 15));
         male.setSelected(true);
         male.setSize(75, 20);
-        male.setLocation(200, 300);
+        male.setLocation(130, 355);
         c.add(male);
 
         female = new JRadioButton("Female");
         female.setFont(new Font("Arial", Font.PLAIN, 15));
         female.setSelected(false);
         female.setSize(80, 20);
-        female.setLocation(275, 300);
+        female.setLocation(205, 355);
         c.add(female);
 
         other = new JRadioButton("Other");
 		other.setFont(new Font("Arial", Font.PLAIN, 15));
 		other.setSelected(false);
 		other.setSize(85, 20);
-		other.setLocation(365, 300);
+		other.setLocation(280, 355);
         c.add(other);
 
         gengp = new ButtonGroup();
@@ -137,48 +141,54 @@ class Signuppage
         gengp.add(other);
 
         age = new JLabel("Age");
-		age.setFont(new Font("Arial", Font.PLAIN, 20));
+		age.setFont(new Font("Arial", Font.PLAIN, 15));
 		age.setSize(100, 20);
-		age.setLocation(100, 350);
+		age.setLocation(130, 385);
 		c.add(age);
 
 		tage = new JTextField();
 		tage.setFont(new Font("Arial", Font.PLAIN, 15));
 		tage.setSize(190, 20);
-		tage.setLocation(200, 350);
+		tage.setLocation(130, 410);
 		c.add(tage);
 
         term = new JCheckBox("Terms And Conditions.");
         term.setFont(new Font("Arial", Font.PLAIN, 15));
         term.setSize(200, 20);
-        term.setLocation(150, 400);
+        term.setLocation(130, 450);
         c.add(term);
 
         check = new JButton("Check your info");
         check.setFont(new Font("Arial", Font.PLAIN, 15));
-        check.setSize(200, 20);
-        check.setLocation(150, 450);
+        check.setBackground(new java.awt.Color(216, 223, 233));
+		check.setForeground(new java.awt.Color(27, 38, 67));
+		check.setSize(200, 20);
+        check.setLocation(130, 500);
         check.addActionListener(this);
         c.add(check);
 
         reset = new JButton("Reset");
         reset.setFont(new Font("Arial", Font.PLAIN, 15));
+        reset.setBackground(new java.awt.Color(216, 223, 233));
+		reset.setForeground(new java.awt.Color(27, 38, 67));
         reset.setSize(200, 20);
-        reset.setLocation(150, 500);
+        reset.setLocation(130, 535);
         reset.addActionListener(this);
         c.add(reset);
 
         goback = new JButton("Go Back");
 		goback.setFont(new Font("Arial", Font.PLAIN, 15));
+		goback.setBackground(new java.awt.Color(216, 223, 233));
+		goback.setForeground(new java.awt.Color(27, 38, 67));
 		goback.setSize(200, 20);
-		goback.setLocation(150, 550);
+		goback.setLocation(130, 570);
 		goback.addActionListener(this);
         c.add(goback);
 
         tout = new JTextArea();
         tout.setFont(new Font("Arial", Font.PLAIN, 15));
         tout.setSize(300, 400);
-        tout.setLocation(500, 100);
+        tout.setLocation(500, 120);
         tout.setLineWrap(true);
         tout.setEditable(false);
         c.add(tout);
@@ -192,18 +202,21 @@ class Signuppage
         resadd = new JTextArea();
         resadd.setFont(new Font("Arial", Font.PLAIN, 15));
         resadd.setSize(200, 75);
-        resadd.setLocation(580, 175);
+        resadd.setLocation(580, 185);
         resadd.setLineWrap(true);
         c.add(resadd);
 
         sub = new JButton("Submit");
 		sub.setFont(new Font("Arial", Font.PLAIN, 15));
-		sub.setSize(300, 20);
-		sub.setLocation(500, 550);
+		sub.setBackground(new java.awt.Color(27, 38, 67));
+		sub.setForeground(Color.WHITE);
+		sub.setSize(170, 30);
+		sub.setLocation(570, 550);
 		sub.addActionListener(this);
         c.add(sub);
 
-        setVisible(true);
+	    frame.setVisible(true);
+
     }
 
 
@@ -252,7 +265,7 @@ class Signuppage
         }
         //Goes back to Login Page
         else if (e.getSource() == goback) {
-			setVisible(false);
+			frame.setVisible(false);
 			Entrancepage p = new Entrancepage();
 		}
 		else if (e.getSource() == sub) {
@@ -350,7 +363,7 @@ class Signuppage
 
                     	}
                     	Entrancepage ep = new Entrancepage();
-                    	setVisible(false);
+                    	frame.setVisible(false);
 
 	            }else {
 

@@ -10,46 +10,57 @@ import java.sql.*;
 public class Post extends JFrame implements ActionListener{
 
     // Components of the Post window
-	private JFrame postframe;
+	private JFrame frame;
 	private JLabel postlabel;
 	protected static JTextField text;
-	private Font font;
 	private JButton submitbutton;
 	private Container cp;
+	private JButton goback;
 
     // constructor, to structure Post window
 	public  Post () {
 
-         setVisible(true);
-
-		 setTitle("InTune");
-
-		 setBounds(320, 120, 1000, 750);
-
-		 setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-         setResizable(true);
-
-		 cp = getContentPane();
-
-		 cp.setLayout(new FlowLayout());
+		 frame = new JFrame();
+		 frame.setTitle("InTune");
+		 frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+		 frame.setBounds(320, 120, 1000, 750);
+		 frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+         frame.setResizable(true);
+		 cp = frame.getContentPane();
+		 cp.setLayout(null);
 
 		 postlabel = new JLabel("Post");
-
+		 postlabel.setFont(new Font("Arial", Font.BOLD, 30));
+		 postlabel.setForeground(new java.awt.Color(27, 38, 67));
+		 postlabel.setSize(300, 50);
+         postlabel.setLocation(130, 40);
  		 cp.add(postlabel);
 
 		 text = new JTextField (50);
-
+		 text.setFont(new Font("Arial",Font.BOLD,20));
+		 text.setSize(400, 40);
+		 text.setLocation(130, 110);
 		 cp.add(text);
 
-		 font = new Font("Calibri",Font.BOLD,20);
-
-		 text.setFont(font);
-
-		 submitbutton = new JButton("Submit");
+		 submitbutton = new JButton("Share");
+		 submitbutton.setBackground(new java.awt.Color(27, 38, 67));
+		 submitbutton.setForeground(Color.WHITE);
+		 submitbutton.setFont(new Font("Arial", Font.BOLD, 15));
+		 submitbutton.setSize(240, 35);
+		 submitbutton.setLocation(130, 190);
 		 submitbutton.addActionListener(this);
+         cp.add(submitbutton);
 
-		 cp.add(submitbutton);
+         goback = new JButton("Go Back");
+		 goback.setFont(new Font("Arial", Font.BOLD, 15));
+		 goback.setBackground(new java.awt.Color(27, 38, 67));
+		 goback.setForeground(Color.WHITE);
+		 goback.setSize(240, 35);
+		 goback.setLocation(130, 245);
+		 goback.addActionListener(this);
+         cp.add(goback);
+
+		 frame.setVisible(true);
 
 		 }
 
@@ -85,10 +96,14 @@ public class Post extends JFrame implements ActionListener{
 
 				   }
 
+                   JOptionPane.showMessageDialog(null,"Post is online!");
                    Homepage mainpage = new Homepage();
-                   setVisible(false);
+                   frame.setVisible(false);
 
-	         }
-     }
+	         } else if (ae.getSource() == goback) {
+			 	frame.setVisible(false);
+			 	Homepage p = new Homepage();
+		     }
+  }
 
 }
