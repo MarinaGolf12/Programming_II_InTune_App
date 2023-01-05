@@ -15,6 +15,7 @@ class Friends extends JFrame implements ActionListener {
     private JButton goback;
     private JTextField friendname;
     private JLabel writefn;
+    private JLabel title;
 
     // constructor, to structure Friends window
     public Friends() {
@@ -29,50 +30,57 @@ class Friends extends JFrame implements ActionListener {
 	cf = frame.getContentPane();
 	cf.setLayout(null);
 
+	title = new JLabel("Friends");
+	title.setFont(new Font("Arial", Font.BOLD, 30));
+	title.setForeground(new java.awt.Color(27, 38, 67));
+	title.setSize(300, 50);
+	title.setLocation(130, 30);
+    cf.add(title);
+
 	friendslist = new JTextArea();
 	JScrollPane scrollPane = new JScrollPane(friendslist);
 	friendslist.setEditable(false);
 	friendslist.setFont(new Font("Arial", Font.PLAIN, 15));
-	friendslist.setSize(550, 150);
-	friendslist.setLocation(200, 100);
+	friendslist.setSize(550, 190);
+	friendslist.setLocation(200, 120);
 	cf.add(friendslist);
 
     writefn = new JLabel("Choose friend to add or delete");
-	writefn.setFont(new Font("Arial", Font.PLAIN, 15));
-	writefn.setSize(200, 20);
-	writefn.setLocation(200, 325);
+	writefn.setFont(new Font("Arial", Font.PLAIN, 17));
+	writefn.setSize(300, 30);
+	writefn.setLocation(200, 320);
     cf.add(writefn);
 
-	friendname = new JTextField(30);
+	friendname = new JTextField(40);
 	friendname.setFont(new Font("Arial", Font.PLAIN, 15));
-	friendname.setSize(550, 20);
+	friendname.setSize(550, 25);
 	friendname.setLocation(200, 350);
 	cf.add(friendname);
 
 	add = new JButton("Add new friend");
-	add.setFont(new Font("Arial", Font.PLAIN, 15));
 	add.setBackground(new java.awt.Color(27, 38, 67));
 	add.setForeground(Color.WHITE);
-	add.setSize(550, 30);
-	add.setLocation(200, 400);
+	add.setFont(new Font("Arial", Font.BOLD, 15));
+	add.setSize(240, 35);
+	add.setLocation(350, 400);
 	add.addActionListener(this);
     cf.add(add);
 
     delete = new JButton("Delete friend");
-	delete.setFont(new Font("Arial", Font.PLAIN, 15));
 	delete.setBackground(new java.awt.Color(27, 38, 67));
 	delete.setForeground(Color.WHITE);
-	delete.setSize(550, 30);
-	delete.setLocation(200, 500);
+	delete.setFont(new Font("Arial", Font.BOLD, 15));
+	delete.setSize(240, 35);
+	delete.setLocation(350, 450);
 	delete.addActionListener(this);
     cf.add(delete);
 
     goback = new JButton("Profile");
-	goback.setFont(new Font("Arial", Font.PLAIN, 15));
 	goback.setBackground(new java.awt.Color(27, 38, 67));
 	goback.setForeground(Color.WHITE);
-	goback.setSize(550, 30);
-	goback.setLocation(200, 600);
+	goback.setFont(new Font("Arial", Font.BOLD, 15));
+	goback.setSize(240, 35);
+	goback.setLocation(350, 500);
 	goback.addActionListener(this);
     cf.add(goback);
 
@@ -202,5 +210,4 @@ class Friends extends JFrame implements ActionListener {
         }
 
     }
-
 }

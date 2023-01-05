@@ -13,6 +13,7 @@ class Profile extends JFrame implements ActionListener {
     private JButton friends;
     private JButton goback;
     private JTextArea profile;
+    private JLabel img;
 
     public Profile() {
 
@@ -26,30 +27,36 @@ class Profile extends JFrame implements ActionListener {
 	    cp = frame.getContentPane();
 	    cp.setLayout(null);
 
+		img = new JLabel();
+		img.setIcon(new ImageIcon("profile.png"));
+		Dimension size = img.getPreferredSize(); //Gets the size of the image
+		img.setBounds(390, 40, size.width, size.height); //Sets the location of the image
+		cp.add(img);
+
 	    changepersonal = new JButton("Edit Profile");
-	    changepersonal.setFont(new Font("Arial", Font.PLAIN, 15));
 	    changepersonal.setBackground(new java.awt.Color(27, 38, 67));
-	    changepersonal.setForeground(Color.WHITE);
-	    changepersonal.setSize(550, 30);
-	    changepersonal.setLocation(200, 400);
+		changepersonal.setForeground(Color.WHITE);
+		changepersonal.setFont(new Font("Arial", Font.BOLD, 15));
+		changepersonal.setSize(240, 35);
+	    changepersonal.setLocation(340, 350);
 	    changepersonal.addActionListener(this);
         cp.add(changepersonal);
 
 	    friends = new JButton("My Friends");
-	    friends.setFont(new Font("Arial", Font.PLAIN, 15));
 	    friends.setBackground(new java.awt.Color(27, 38, 67));
-	    friends.setForeground(Color.WHITE);
-	    friends.setSize(550, 30);
-	    friends.setLocation(200, 500);
+		friends.setForeground(Color.WHITE);
+		friends.setFont(new Font("Arial", Font.BOLD, 15));
+		friends.setSize(240, 35);
+	    friends.setLocation(340, 400);
 	    friends.addActionListener(this);
         cp.add(friends);
 
         goback = new JButton("Homepage");
-	    goback.setFont(new Font("Arial", Font.PLAIN, 15));
 	    goback.setBackground(new java.awt.Color(27, 38, 67));
-	    goback.setForeground(Color.WHITE);
-	    goback.setSize(550, 30);
-	    goback.setLocation(200, 600);
+		goback.setForeground(Color.WHITE);
+		goback.setFont(new Font("Arial", Font.BOLD, 15));
+		goback.setSize(240, 35);
+	    goback.setLocation(340, 450);
 	    goback.addActionListener(this);
         cp.add(goback);
 
@@ -58,7 +65,7 @@ class Profile extends JFrame implements ActionListener {
 	    profile.setEditable(false);
 	    profile.setFont(new Font("Arial", Font.PLAIN, 15));
 	    profile.setSize(550, 150);
-	    profile.setLocation(200, 100);
+	    profile.setLocation(200, 170);
 	    cp.add(profile);
 
 	    frame.setVisible(true);
@@ -116,7 +123,4 @@ class Profile extends JFrame implements ActionListener {
         }
 
     }
-
 }
-
-

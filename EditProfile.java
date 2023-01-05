@@ -22,6 +22,7 @@ class EditProfile extends JFrame implements ActionListener {
     private JButton goback;
     private JLabel tchangeno;
     private JLabel tchangevalue;
+    private JLabel title;
 
     // constructor, to structure profile editing window
     public EditProfile() {
@@ -36,53 +37,60 @@ class EditProfile extends JFrame implements ActionListener {
 	cep = frame.getContentPane();
 	cep.setLayout(null);
 
+	title = new JLabel("Edit your Profile");
+	title.setFont(new Font("Arial", Font.BOLD, 30));
+	title.setForeground(new java.awt.Color(27, 38, 67));
+	title.setSize(300, 50);
+	title.setLocation(130, 30);
+    cep.add(title);
+
 	profile = new JTextArea();
 	JScrollPane scrollPane = new JScrollPane(profile);
 	profile.setEditable(false);
 	profile.setFont(new Font("Arial", Font.PLAIN, 15));
-	profile.setSize(550, 150);
+	profile.setSize(550, 190);
 	profile.setLocation(200, 100);
 	cep.add(profile);
 
 	tchangeno = new JLabel("Select number to edit");
-    tchangeno.setFont(new Font("Arial", Font.PLAIN, 15));
-    tchangeno.setSize(200, 20);
-    tchangeno.setLocation(200, 275);
+    tchangeno.setFont(new Font("Arial", Font.PLAIN, 17));
+   	tchangeno.setSize(300, 30);
+	tchangeno.setLocation(200, 320);
     cep.add(tchangeno);
 
     changeno = new JTextField(30);
 	changeno.setFont(new Font("Arial", Font.PLAIN, 15));
-	changeno.setSize(550, 20);
-	changeno.setLocation(200, 300);
+	changeno.setSize(550, 25);
+	changeno.setLocation(200, 350);
 	cep.add(changeno);
 
 	tchangevalue = new JLabel("Write new info");
-	tchangevalue.setFont(new Font("Arial", Font.PLAIN, 15));
-	tchangevalue.setSize(200, 20);
-	tchangevalue.setLocation(200, 375);
+	tchangevalue.setFont(new Font("Arial", Font.PLAIN, 17));
+   	tchangevalue.setSize(300, 30);
+	tchangevalue.setLocation(200, 377);
 	cep.add(tchangevalue);
 
 	changevalue = new JTextField(30);
 	changevalue.setFont(new Font("Arial", Font.PLAIN, 15));
-	changevalue.setSize(550, 20);
-	changevalue.setLocation(200, 400);
+	changevalue.setSize(550, 25);
+	changevalue.setLocation(200, 405);
 	cep.add(changevalue);
 
 	subchange = new JButton("Submit Change");
-	subchange.setFont(new Font("Arial", Font.BOLD, 15));
 	subchange.setBackground(new java.awt.Color(27, 38, 67));
 	subchange.setForeground(Color.WHITE);
-	subchange.setSize(550, 35);
-	subchange.setLocation(200, 500);
+	subchange.setFont(new Font("Arial", Font.BOLD, 15));
+	subchange.setSize(240, 35);
+	subchange.setLocation(350, 480);
 	subchange.addActionListener(this);
 	cep.add(subchange);
 
 	goback = new JButton("Profile");
-	goback.setFont(new Font("Arial", Font.BOLD, 15));
 	goback.setBackground(new java.awt.Color(27, 38, 67));
 	goback.setForeground(Color.WHITE);
-	goback.setSize(550, 35);
-	goback.setLocation(200, 600);
+	goback.setFont(new Font("Arial", Font.BOLD, 15));
+	goback.setSize(240, 35);
+	goback.setLocation(350, 530);
 	goback.addActionListener(this);
 	cep.add(goback);
 
@@ -291,7 +299,4 @@ class EditProfile extends JFrame implements ActionListener {
         }
 
     }
-
 }
-
-
