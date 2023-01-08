@@ -113,7 +113,5 @@ class Homepage extends JFrame implements ActionListener {
 		}
 
 	}
-	public static void main(String[] args) {
-		Homepage hm = new Homepage();
-	}
+	
 }
