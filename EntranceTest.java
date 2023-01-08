@@ -2,7 +2,7 @@ import org.junit.*;
 
 public class EntranceTest {
 
-	Entrance entrance;
+	private Entrance entrance;
 
 	@Before
 	public void setUp()  {
