@@ -1,12 +1,11 @@
-import java.io.*;
-import org.junit.Before;
+import org.junit.*;
 
-class EntranceTest {
+public class EntranceTest {
 
 	Entrance entrance;
 
 	@Before
-	void setUp() throws Exception {
+	public void setUp()  {
 
 		entrance = new Entrance();
 	}
