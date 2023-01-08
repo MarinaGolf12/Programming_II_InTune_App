@@ -205,5 +205,5 @@ class WatchPost extends JFrame implements ActionListener {
 
 	public static void main(String[] args) {
 		WatchPost hm = new WatchPost();
-	}
+	
 }
