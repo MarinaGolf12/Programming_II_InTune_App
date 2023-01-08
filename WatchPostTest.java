@@ -1,14 +1,14 @@
 //import required classes and packages
 import org.junit.*;
 
-public class EntranceTest {
+class WatchPostTest {
 
-	private Entrance entrance;
+	private WatchPost watchpost;
 
 	@Before
 	public void setUp()  {
 
-		entrance = new Entrance();
+		watchpost = new WatchPost();
 
 	}
 
