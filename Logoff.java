@@ -63,7 +63,5 @@ public class Logoff {
 
 
     }//End of exit method
-    public static void main(String[] args) {
-			Logoff com = new Logoff();
-   }
+   
 }//End of class LogOff
