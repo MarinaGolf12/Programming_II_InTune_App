@@ -25,79 +25,78 @@ class Entrancepage extends JFrame implements ActionListener {
     // constructor, to structure Entrancepage window
     public Entrancepage() {
 
-		frame = new JFrame();
+	frame = new JFrame();
         frame.setTitle("InTune");
         frame.setBounds(320, 120, 1000, 750);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setResizable(true);
 
-		frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+	frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
         cp = frame.getContentPane();
         cp.setLayout(null);
 
 
         username = new JLabel("Username");
-	    username.setFont(new Font("Arial", Font.PLAIN, 20));
-		username.setSize(300, 30);
-		username.setLocation(200, 140);
-		cp.add(username);
+	username.setFont(new Font("Arial", Font.PLAIN, 15));
+	username.setSize(280, 35);
+	username.setLocation(340, 170);
+	cp.add(username);
 
-		tfusername = new JTextField();
-		tfusername.setFont(new Font("Arial", Font.PLAIN, 15));
-		tfusername.setSize(550, 30);
-		tfusername.setLocation(200, 190);
-		cp.add(tfusername);
+	tfusername = new JTextField();
+	tfusername.setFont(new Font("Arial", Font.PLAIN, 15));
+	tfusername.setSize(280, 35);
+	tfusername.setLocation(340, 200);
+	cp.add(tfusername);
 
-		password = new JLabel("Password");
+	password = new JLabel("Password");
+	password.setFont(new Font("Arial", Font.PLAIN, 15));
+	password.setSize(280, 35);
+	password.setLocation(340, 250);
+	cp.add(password);
 
-		password.setFont(new Font("Arial", Font.PLAIN, 20));
-		password.setSize(300, 30);
-		password.setLocation(200, 240);
-		cp.add(password);
+	tfpassword = new JPasswordField(25);
+	tfpassword.setFont(new Font("Arial", Font.PLAIN, 15));
+	tfpassword.setSize(280, 35);
+	tfpassword.setLocation(340, 280);
+	cp.add(tfpassword);
 
-		tfpassword = new JPasswordField(25);
-		tfpassword.setFont(new Font("Arial", Font.PLAIN, 15));
-		tfpassword.setSize(550, 30);
-		tfpassword.setLocation(200, 290);
-		cp.add(tfpassword);
-
-		login = new JButton("Log in");
-		login.setFont(new Font("Arial", Font.PLAIN, 15));
-		login.setBackground(new java.awt.Color(27, 38, 67));
-		login.setForeground(Color.WHITE);
-		login.setSize(550, 30);
-		login.setLocation(200, 390);
-		login.addActionListener(this);
+	login = new JButton("Log in");
+	login.setBackground(new java.awt.Color(27, 38, 67));
+	login.setForeground(Color.WHITE);
+	login.setFont(new Font("Arial", Font.BOLD, 15));
+	login.setSize(280, 35);
+	login.setLocation(340, 390);
+	login.addActionListener(this);
         cp.add(login);
 
         newuser = new JLabel("Don't have an account?");
-		newuser.setFont(new Font("Arial", Font.PLAIN, 16));
-		newuser.setSize(500, 60);
-		newuser.setLocation(400, 450);
-		cp.add(newuser);
+	newuser.setFont(new Font("Arial", Font.PLAIN, 16));
+	newuser.setSize(500, 60);
+	newuser.setLocation(400, 450);
+	cp.add(newuser);
 
-		signup = new JButton("Sign Up");
-		signup.setFont(new Font("Arial",Font.BOLD, 15));
-		signup.setBackground(new java.awt.Color(232, 237, 244));
-		signup.setForeground(new java.awt.Color(27, 38, 67));
-		signup.setSize(150, 30);
-		signup.setLocation(400, 500);
-		signup.addActionListener(this);
+	signup = new JButton("Sign Up");
+	signup.setFont(new Font("Arial",Font.BOLD, 15));
+	signup.setBackground(new java.awt.Color(232, 237, 244));
+	signup.setForeground(new java.awt.Color(27, 38, 67));
+	signup.setSize(150, 30);
+	signup.setLocation(400, 500);
+	signup.addActionListener(this);
         cp.add(signup);
 
         res = new JLabel("");
-		res.setFont(new Font("Arial", Font.PLAIN, 20));
-		res.setSize(500, 25);
-		res.setLocation(350, 650);
-		cp.add(res);
+	res.setFont(new Font("Arial", Font.PLAIN, 20));
+	res.setSize(500, 25);
+	res.setLocation(350, 650);
+	cp.add(res);
 
-		img = new JLabel();
-		img.setIcon(new ImageIcon("logo.png"));
-		Dimension size = img.getPreferredSize(); //Gets the size of the image
-		img.setBounds(380, 20, size.width, size.height); //Sets the location of the image
-		cp.add(img);
+	img = new JLabel();
+	img.setIcon(new ImageIcon("logo.png"));
+	Dimension size = img.getPreferredSize(); //Gets the size of the image
+	img.setBounds(380, 20, size.width, size.height); //Sets the location of the image
+	cp.add(img);
 
-		frame.setVisible(true);
+	frame.setVisible(true);
 
     }
 
