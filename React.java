@@ -18,6 +18,7 @@ class React extends JFrame implements ActionListener {
     private JButton sub;
     private JTextArea ta;
     private JFrame frame;
+    private static final long serialVersionUID = 7526472295622776147L;
 
     // constructor, to structure React window
     public React() {
@@ -184,5 +185,5 @@ class React extends JFrame implements ActionListener {
 
 	    }
 
-	
+
 }
