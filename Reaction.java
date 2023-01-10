@@ -12,10 +12,11 @@ class Reaction extends JFrame implements ActionListener {
 	private Font font;
 	private JButton button;
 	private JButton react;
-	private JButton comment;
+	private JButton comment1;
 	private JButton goback;
 	private JFrame frame;
 	private JLabel img;
+	private static final long serialVersionUID = 7526472295622776147L;
 
     // constructor, to structure Reaction window
 	public Reaction() {
@@ -39,15 +40,15 @@ class Reaction extends JFrame implements ActionListener {
          react.addActionListener(this);
          cr.add(react);
 
-         comment = new JButton("Comment");
-         comment.setFont(new Font("Arial", Font.BOLD, 15));
-         comment.setBackground(new java.awt.Color(27, 38, 67));
-		 comment.setForeground(Color.WHITE);
-		 comment.setFont(new Font("Arial", Font.BOLD, 15));
-		 comment.setSize(280, 35);
-		 comment.setLocation(330, 250);
-         comment.addActionListener(this);
-         cr.add(comment);
+         comment1 = new JButton("Comment");
+         comment1.setFont(new Font("Arial", Font.BOLD, 15));
+         comment1.setBackground(new java.awt.Color(27, 38, 67));
+		 comment1.setForeground(Color.WHITE);
+		 comment1.setFont(new Font("Arial", Font.BOLD, 15));
+		 comment1.setSize(280, 35);
+		 comment1.setLocation(330, 250);
+         comment1.addActionListener(this);
+         cr.add(comment1);
 
          goback = new JButton("Back to Posts");
 		 goback.setFont(new Font("Arial", Font.BOLD, 15));
@@ -77,7 +78,7 @@ class Reaction extends JFrame implements ActionListener {
 			    React react = new React();
 			    frame.setVisible(false);
 
-		    } else if (ae.getSource() == comment) { //user to comment
+		    } else if (ae.getSource() == comment1) { //user to comment
 
 			    Comm comment = new Comm();
 			    frame.setVisible(false);
@@ -95,6 +96,7 @@ class Reaction extends JFrame implements ActionListener {
 		}
 
 	}
-		
+
 
 }
+
