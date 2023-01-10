@@ -1,10 +1,6 @@
-//import required classes and packages
-import java.util.Scanner;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.FlowLayout;
-import java.io.FileWriter;
 import java.sql.*;
 
 public class Post extends JFrame implements ActionListener{
@@ -16,6 +12,7 @@ public class Post extends JFrame implements ActionListener{
 	private JButton submitbutton;
 	private Container cp;
 	private JButton goback;
+	 private static final long serialVersionUID = 7526472295622776147L;
 
     // constructor, to structure Post window
 	public  Post () {
@@ -74,7 +71,7 @@ public class Post extends JFrame implements ActionListener{
 				 String posttext = text.getText();
 				 try {
 				     Class.forName("org.sqlite.JDBC");
-				 	 conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
+				 	 conn = DriverManager.getConnection("jdbc:sqlite:C://Users//30697//Documents//INTUNE FINAL//INTUNE.db");
 				 	 String sqlinsert = "INSERT INTO Post (postext,username) VALUES(?,?)";
 				 	 PreparedStatement statement = conn.prepareStatement(sqlinsert);
 				 	 statement.setString(1, posttext);
