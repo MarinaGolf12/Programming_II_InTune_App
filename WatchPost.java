@@ -7,7 +7,7 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Scanner;
+
 
 class WatchPost extends JFrame implements ActionListener {
 
@@ -20,6 +20,7 @@ class WatchPost extends JFrame implements ActionListener {
 	private JButton play;
 	private JFrame frame;
 	private JLabel watchpost;
+	private static final long serialVersionUID = 7526472295622776147L;
 
     // constructor, to structure WatchPost window
     public WatchPost() {
@@ -203,4 +204,5 @@ class WatchPost extends JFrame implements ActionListener {
 
 	}
 
-	
+}
+
