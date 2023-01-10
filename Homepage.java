@@ -15,6 +15,7 @@ class Homepage extends JFrame implements ActionListener {
 	private JButton logoffbutton;
 	private JButton newpostbutton;
 	private JLabel img;
+	private static final long serialVersionUID = 7526472295622776147L;
 
     // constructor, to structure Homepage window
 	public  Homepage() {
@@ -113,5 +114,5 @@ class Homepage extends JFrame implements ActionListener {
 		}
 
 	}
-	
+
 }
