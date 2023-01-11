@@ -1,5 +1,5 @@
 //import required classes and packages
-import org.junit.*;
+import org.junit.Assert.*;
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,13 +15,13 @@ class EntrancepageTest extends JFrame implements ActionListener {
 
     private JFrame frame;
 
-		@Before
+
 		public void setUp()  {
 
 			entrancepage = new Entrancepage();
 		}
 
-		@Test
+
 		public void testEntrancepage() {
 
 

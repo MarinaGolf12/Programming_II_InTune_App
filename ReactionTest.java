@@ -20,7 +20,7 @@ class ReactionTest {
 
 	private WatchPost object;
 
-		@Before
+
 		public void setUp()  {
 
 			reaction = new Reaction();

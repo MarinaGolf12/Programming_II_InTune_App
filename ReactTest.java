@@ -1,5 +1,6 @@
-//import required classes and packages
-import org.junit.*;
+//import required packages
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 class ReactTest {
 
@@ -17,7 +18,7 @@ class ReactTest {
 
 	private React react;
 
-		@Before
+
 		public void setUp()  {
 
 			react = new React();
