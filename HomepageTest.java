@@ -2,10 +2,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import org.junit.*;
+
 
 public class HomepageTest {
-    
+
     private Homepage homepage;
     private JButton postbutton = new JButton("New Post");
     private JButton newpostbutton = new JButton("Watch posts");
@@ -19,7 +19,7 @@ public class HomepageTest {
     private Profile profile;
     private Logoff logoff;
 
-    @Before
+
 		public void setUp()  {
 			homepage = new Homepage();
 		}
