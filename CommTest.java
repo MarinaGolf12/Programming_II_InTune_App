@@ -2,7 +2,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import org.junit.*;
+
 
 
 class CommTest {
@@ -16,8 +16,8 @@ class CommTest {
     private JButton test = new JButton("Go Back");
 
     private Homepage back;
-    
-    @Before
+
+
 		public void setUp()  {
 
 			comm = new Comm();
@@ -34,7 +34,5 @@ class CommTest {
                 back = new Homepage();
             }
         }
-                
+
 }
-
-
