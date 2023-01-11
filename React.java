@@ -1,11 +1,23 @@
-//import required classes and packages
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+/**import required classes and packages*/
+
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 
 class React extends JFrame implements ActionListener {
 
-    // Components of the React window
+    /** Components of the React window*/
+
 	private Container crr;
 	private JLabel react;
 	private ButtonGroup bg;
@@ -20,7 +32,8 @@ class React extends JFrame implements ActionListener {
     private JFrame frame;
     private static final long serialVersionUID = 7526472295622776147L;
 
-    // constructor, to structure React window
+    /**constructor, to structure React window*/
+
     public React() {
 
 		frame = new JFrame();
@@ -111,7 +124,8 @@ class React extends JFrame implements ActionListener {
 
     }
 
-    //show reactions to a post
+    /**show reactions to a post*/
+
     public void actionPerformed(ActionEvent ae) {
 
 		if(ae.getSource() == sub) {
@@ -155,7 +169,8 @@ class React extends JFrame implements ActionListener {
 	int x4 = 0;
 	int x5 = 0;
 
-    //count reactions to a post
+    /**count reactions to a post*/
+
 	public void newPost( int a) {
 
 
