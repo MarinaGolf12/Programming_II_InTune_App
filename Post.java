@@ -1,11 +1,22 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JFrame;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
 
 public class Post extends JFrame implements ActionListener{
 
-    // Components of the Post window
+    /**Components of the Post window*/
+
 	private JFrame frame;
 	private JLabel postlabel;
 	protected static JTextField text;
@@ -14,7 +25,8 @@ public class Post extends JFrame implements ActionListener{
 	private JButton goback;
 	 private static final long serialVersionUID = 7526472295622776147L;
 
-    // constructor, to structure Post window
+    /**constructor, to structure Post window*/
+
 	public  Post () {
 
 		 frame = new JFrame();
@@ -61,7 +73,7 @@ public class Post extends JFrame implements ActionListener{
 
 		 }
 
-         //submits Post
+         /**submits Post*/
 		 public void actionPerformed(ActionEvent ae) {
 
              if (ae.getSource() == submitbutton) {
