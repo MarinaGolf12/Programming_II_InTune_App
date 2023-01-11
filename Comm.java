@@ -1,19 +1,27 @@
-//import required classes and packages
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+/**import required classes and packages*/
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
 
 class Comm extends JFrame implements ActionListener {
 
-    // Components of the Comment window
+    /**Components of the Comment window*/
 	private Container cc;
 	private JLabel comment;
 	private JTextField text;
 	private JButton post;
 	private JFrame frame;
 	private JButton goback;
+	private static final long serialVersionUID = 7526472295622776147L;
 
-    // constructor, to structure Comment window
+    /**constructor, to structure Comment window*/
     public Comm() {
 
         frame = new JFrame();
@@ -60,7 +68,7 @@ class Comm extends JFrame implements ActionListener {
 
 	}
 
-    //Confirms that comment was posted
+    /**Confirms that comment was posted*/
 	public void actionPerformed(ActionEvent ae) {
 
 		if (ae.getSource() == post) {
@@ -69,12 +77,15 @@ class Comm extends JFrame implements ActionListener {
 			WatchPost wp = new WatchPost();
             frame.setVisible(false);
 
-		}else if (ae.getSource() == goback) { // redirects to homepage
+		}else if (ae.getSource() == goback) {
+
+			/**redirects to homepage*/
 
 			Reaction mainpage = new Reaction();
 			frame.setVisible(false);
 		}
 
 	}
-	
+
 }
+
