@@ -1,11 +1,26 @@
-//import required classes and packages
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
+/**import required classes and packages*/
+
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JFrame;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 public class Messages extends JFrame implements ActionListener {
 
-	// Components of the Messages window
+	/**Components of the Messages window*/
+
 	private Container c;
 	private JLabel title;
 	private JButton button;
@@ -15,11 +30,14 @@ public class Messages extends JFrame implements ActionListener {
 	private JButton goback;
 	private JButton unread;
 	private JFrame frame;
+	private static final long serialVersionUID = 7526472295622776147L;
 
-    // constructor, to structure Messages window
+    /**constructor, to structure Messages window*/
+
 	public Messages() {
 
-		//set the frame
+		/**set the frame*/
+
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
 		frame.setTitle("InTune");
@@ -30,7 +48,8 @@ public class Messages extends JFrame implements ActionListener {
 		c = frame.getContentPane();
         c.setLayout(null);
 
-		//set a title
+		/**set a title*/
+
         title = new JLabel("Messages");
         title.setFont(new Font("Arial", Font.BOLD, 30));
 		title.setForeground(new java.awt.Color(27, 38, 67));
@@ -38,21 +57,24 @@ public class Messages extends JFrame implements ActionListener {
 		title.setLocation(110, 40);;
 		c.add(title);
 
-		//set a label
+		/**set a label*/
+
 		label = new JLabel("Message to :");
 		label.setFont(new Font("Arial", Font.BOLD, 15));
 		label.setSize(500, 30);
 		label.setLocation(110, 100);
 		c.add(label);
 
-		//set the text field to write the name of the person we want to chat with
+		/**set the text field to write the name of the person we want to chat with*/
+
 		textField = new JTextField();
 		textField.setFont(new Font("Arial", Font.PLAIN, 18));
 		textField.setSize(550, 30);
 		textField.setLocation(220, 105);
 		c.add(textField);
 
-		//set button go to chat
+		/**set button go to chat*/
+
 		button = new JButton("GO");
 		button.setBackground(new java.awt.Color(27, 38, 67));
 		button.setForeground(Color.WHITE);
@@ -62,7 +84,8 @@ public class Messages extends JFrame implements ActionListener {
 		button.addActionListener(this);
 		c.add(button);
 
-		//set button to go back to homepage
+		/**set button to go back to homepage*/
+
 		goback = new JButton("Go Back");
 		goback.setBackground(new java.awt.Color(27, 38, 67));
 		goback.setForeground(Color.WHITE);
@@ -72,7 +95,8 @@ public class Messages extends JFrame implements ActionListener {
 		goback.addActionListener(this);
 		c.add(goback);
 
-		//set button to see new messages
+		/**set button to see new messages*/
+
 		unread = new JButton("See unread messages");
 		unread.setBackground(new java.awt.Color(27, 38, 67));
 		unread.setForeground(Color.WHITE);
@@ -89,7 +113,9 @@ public class Messages extends JFrame implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
 
-			if (e.getSource() == button) { //choose a user to message
+			if (e.getSource() == button) {
+
+				/**choose a user to message*/
 
 		        str = textField.getText();
 		        Connection conn = null;
@@ -130,7 +156,9 @@ public class Messages extends JFrame implements ActionListener {
 
 				}
 
-			} else if (e.getSource() == goback) { //redirects to homepage
+			} else if (e.getSource() == goback) {
+
+				/**redirects to homepage*/
 
 				Homepage hp = new Homepage();
 				frame.setVisible(false);
