@@ -1,11 +1,21 @@
-//import required classes and packages
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+/**import required classes and packages*/
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 class Reaction extends JFrame implements ActionListener {
 
-    // Components of the Homepage
+    /**Components of the Homepage*/
+
 	private Container cr;
 	private JLabel label1;
 	private JTextField text;
@@ -18,7 +28,8 @@ class Reaction extends JFrame implements ActionListener {
 	private JLabel img;
 	private static final long serialVersionUID = 7526472295622776147L;
 
-    // constructor, to structure Reaction window
+    /**constructor, to structure Reaction window*/
+
 	public Reaction() {
 
 		 frame = new JFrame();
@@ -61,29 +72,38 @@ class Reaction extends JFrame implements ActionListener {
 
          img = new JLabel();
 		 img.setIcon(new ImageIcon("logo.png"));
-		 Dimension size = img.getPreferredSize(); //Gets the size of the image
-		 img.setBounds(380, 20, size.width, size.height); //Sets the location of the image
+		 Dimension size = img.getPreferredSize();
+		 /**Gets the size of the image*/
+		 img.setBounds(380, 20, size.width, size.height);
+		 /**Sets the location of the image*/
 		 cr.add(img);
 
 		 frame.setVisible(true);
 	}
 
-    //Choose whether to react or comment
+    /**Choose whether to react or comment*/
+
 	public void actionPerformed(ActionEvent ae) {
 
 		if (ae.getSource() != goback) {
 
-			if (ae.getSource() == react) { //user to react
+			if (ae.getSource() == react) {
+
+				/**user to react*/
 
 			    React react = new React();
 			    frame.setVisible(false);
 
-		    } else if (ae.getSource() == comment1) { //user to comment
+		    } else if (ae.getSource() == comment1) {
+
+				/**user to comment*/
 
 			    Comm comment = new Comm();
 			    frame.setVisible(false);
 
-		    } else if (ae.getSource() == goback) { //go back to watching posts
+		    } else if (ae.getSource() == goback) {
+
+				/**go back to watching posts*/
 
 			    WatchPost wp = new WatchPost();
 			    frame.setVisible(false);
