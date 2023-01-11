@@ -1,8 +1,21 @@
-//import required classes and packages
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
+/**import required classes and packages*/
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JOptionPane;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -11,7 +24,7 @@ import java.net.URISyntaxException;
 
 class WatchPost extends JFrame implements ActionListener {
 
-    // Components of the WatchPost window
+    /**Components of the WatchPost window*/
 	private Container cw;
 	private JTextArea space;
 	private JButton choose;
@@ -22,7 +35,7 @@ class WatchPost extends JFrame implements ActionListener {
 	private JLabel watchpost;
 	private static final long serialVersionUID = 7526472295622776147L;
 
-    // constructor, to structure WatchPost window
+    /**constructor, to structure WatchPost window*/
     public WatchPost() {
 
 		frame = new JFrame();
@@ -86,7 +99,7 @@ class WatchPost extends JFrame implements ActionListener {
 
         frame.setVisible(true);
 
-        //Show all Posts
+        /**Show all Posts*/
 		Connection conn = null;
 		String r = "";
 		try {
@@ -118,7 +131,7 @@ class WatchPost extends JFrame implements ActionListener {
 
     }
 
-    //Choose a post to react or comment on
+    /**Choose a post to react or comment on*/
     public void actionPerformed(ActionEvent ae) {
 
 		if (ae.getSource() == choose) {
@@ -152,7 +165,9 @@ class WatchPost extends JFrame implements ActionListener {
 							   }
 
 
-		} else if (ae.getSource() == goback) { // redirects to homepage
+		} else if (ae.getSource() == goback) {
+
+			/**redirects to homepage*/
 
 			Homepage mainpage = new Homepage();
 			frame.setVisible(false);
