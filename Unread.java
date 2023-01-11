@@ -1,12 +1,26 @@
-//import required classes and packages
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
+/**import required classes and packages*/
+
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JOptionPane;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 class Unread extends JFrame implements ActionListener {
 
-    // Components of the Unread messages window
+    /**Components of the Unread messages window*/
     private Container cu;
     private JButton goback;
     private JTextArea urmes;
@@ -15,8 +29,9 @@ class Unread extends JFrame implements ActionListener {
     private JButton read;
     private JFrame frame;
     private JLabel unread;
+    private static final long serialVersionUID = 7526472295622776147L;
 
-    // constructor, to structure unread messages window
+    /**constructor, to structure unread messages window*/
     public Unread() {
 
 		frame = new JFrame();
@@ -83,7 +98,7 @@ class Unread extends JFrame implements ActionListener {
 
         frame.setVisible(true);
 
-        //show unread messages
+        /**show unread messages*/
         try {
 
 	        Class.forName("org.sqlite.JDBC");
@@ -198,5 +213,5 @@ class Unread extends JFrame implements ActionListener {
 		}
 
     }
-   
+
 }
