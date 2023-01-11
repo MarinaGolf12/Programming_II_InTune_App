@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-import org.junit.*;
+
 
 public class FriendsTest {
 
@@ -15,7 +15,7 @@ public class FriendsTest {
     private JButton test = new JButton("test");
     private Profile prof;
 
-    @Before
+
 		public void setUp()  {
 			friends = new Friends();
         }
