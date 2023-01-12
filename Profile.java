@@ -75,14 +75,21 @@ class Profile extends JFrame implements ActionListener {
 		try {
 
 		    Class.forName("org.sqlite.JDBC");
-			conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
+			conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina"+
+							   "//Desktop//DMST//sophomore year"+
+							   "//1st semester//Progr II//CODE//"+
+							   "Original Code//INTUNE.db");
 			String sqlinsert = "SELECT * FROM User WHERE username LIKE ?";
 			PreparedStatement statement = conn.prepareStatement(sqlinsert);
 			statement.setString(1, Entrancepage.tfusername.getText());
 			ResultSet rs = statement.executeQuery();
 
 			if (rs.next()) {
-			    String s = "1.Name: " + rs.getString("name") + "\n" + "2.Username: " + rs.getString("username") + "\n" + "3.Password: " + rs.getString("password") + "\n" + "4.Gender: " + rs.getString("gender") + "\n" + "5.Age: " + rs.getInt("age");
+			    String s = "1.Name: " + rs.getString("name") + "\n" + "2."+
+				    "Username: " + rs.getString("username") + "\n" + "3."+
+				    "Password: " + rs.getString("password") + "\n" + "4."+
+				    "Gender: " + rs.getString("gender") + "\n" + "5."+
+				    "Age: " + rs.getInt("age");
 			    profile.setText(s);
 			    profile.setEditable(false);
 
