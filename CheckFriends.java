@@ -7,14 +7,15 @@ import java.sql.*;
 class CheckFriends {
 
     //check that a name given belongs to an already registered user
-    public static boolean friendExists(String friend) {
+    public static boolean friendExists(final String friend) {
 
         boolean flag = true;
         Connection conn = null;
-	try {
+        try {
 
-	    Class.forName("org.sqlite.JDBC");
-	    conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
+            Class.forName("org.sqlite.JDBC");
+	    conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//" + 
+					       "1st semester//Progr II//CODE//Original Code//INTUNE.db");
 	    String sqlinsert = "SELECT * FROM User WHERE username LIKE ?";
 	    PreparedStatement pstmt = conn.prepareStatement(sqlinsert);
 	    pstmt.setString(1, friend);
@@ -26,8 +27,8 @@ class CheckFriends {
 	        flag = false;
 	    }
 
-	}catch (Exception ex) {
-	}finally {
+	} catch (Exception ex) {
+	} finally {
 	    if (conn != null) {
 	        try {
 	            conn.close();
