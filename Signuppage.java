@@ -1,14 +1,29 @@
-//import required classes and packages
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
+/**import required classes and packages*/
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JOptionPane;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
 
 class Signuppage
     extends JFrame
     implements ActionListener {
 
-    // Components of the Entrance Form
+    /**Components of the Entrance Form*/
     private Container c;
     private JFrame frame;
     private JLabel title;
@@ -35,11 +50,12 @@ class Signuppage
     private JTextArea tout;
     private JLabel res;
     private JTextArea resadd;
+    private static final long serialVersionUID = 7526472295622776147L;
 
 
 
 
-    // constructor, to initialize the components with default values.
+    /**constructor, to initialize the components with default values.*/
     public Signuppage()
     {
 
@@ -221,7 +237,7 @@ class Signuppage
 
 
 
-    // Shows data of a new user
+    /**Shows data of a new user*/
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == check) {
@@ -250,7 +266,7 @@ class Signuppage
                 tout.setEditable(false);
 
         }
-        //Clears out Form
+        /**Clears out Form*/
         else if (e.getSource() == reset) {
             String def = "";
             tname.setText(def);
@@ -263,7 +279,7 @@ class Signuppage
             tage.setText(def);
             resadd.setText(def);
         }
-        //Goes back to Login Page
+        /**Goes back to Login Page*/
         else if (e.getSource() == goback) {
 			frame.setVisible(false);
 			Entrancepage p = new Entrancepage();
