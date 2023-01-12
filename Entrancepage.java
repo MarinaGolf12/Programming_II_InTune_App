@@ -1,13 +1,29 @@
-//import required classes and packages
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
+/**import required classes and packages*/
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JOptionPane;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
-//Set up graphics for Login Page
+/**Set up graphics for Login Page*/
 class Entrancepage extends JFrame implements ActionListener {
 
-    // Components of the Entrancepage Form
+    /**Components of the Entrancepage Form*/
     private Container cp;
     private JFrame frame;
     private JButton signup;
@@ -21,8 +37,9 @@ class Entrancepage extends JFrame implements ActionListener {
     private JLabel res;
     private JTextArea resadd;
     private JLabel img;
+    private static final long serialVersionUID = 7526472295622776147L;
 
-    // constructor, to structure Entrancepage window
+    /**constructor, to structure Entrancepage window*/
     public Entrancepage() {
 
 	frame = new JFrame();
@@ -92,15 +109,17 @@ class Entrancepage extends JFrame implements ActionListener {
 
 	img = new JLabel();
 	img.setIcon(new ImageIcon("logo.png"));
-	Dimension size = img.getPreferredSize(); //Gets the size of the image
-	img.setBounds(380, 20, size.width, size.height); //Sets the location of the image
+	Dimension size = img.getPreferredSize();
+	/**Gets the size of the image*/
+	img.setBounds(380, 20, size.width, size.height);
+	/**Sets the location of the image*/
 	cp.add(img);
 
 	frame.setVisible(true);
 
     }
 
-    //Checks with DB before connecting a user to app
+    /**Checks with DB before connecting a user to app*/
     public void actionPerformed(ActionEvent e) {
 	        if (e.getSource() == login) {
 
@@ -145,7 +164,7 @@ class Entrancepage extends JFrame implements ActionListener {
 				   }
 
 
-            //Redirect to Signup Page
+            /**Redirect to Signup Page*/
 	        } else if (e.getSource() == signup) {
 
 				    Signuppage signuppage = new Signuppage();
@@ -157,3 +176,4 @@ class Entrancepage extends JFrame implements ActionListener {
 
 
 }
+
