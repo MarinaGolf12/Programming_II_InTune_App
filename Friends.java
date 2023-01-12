@@ -21,9 +21,9 @@ class Friends extends JFrame implements ActionListener {
     public Friends() {
 
     frame = new JFrame();
-	frame.setTitle("InTune");
+        frame.setTitle("InTune");
 	frame.setBounds(320, 120, 1000, 750);
-	frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	frame.setResizable(true);
 
 	frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
@@ -92,8 +92,11 @@ class Friends extends JFrame implements ActionListener {
 	try {
 
 	    Class.forName("org.sqlite.JDBC");
-	    conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
-	    String sqlinsert = "SELECT friendusername FROM Friends WHERE fusername LIKE ?";
+	    conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//"+
+		 "sophomore year//1st semester//Progr II//CODE//"+
+		 "Original Code//INTUNE.db");
+	    String sqlinsert = "SELECT friendusername FROM Friends"+
+		    " WHERE fusername LIKE ?";
 	    PreparedStatement statement = conn.prepareStatement(sqlinsert);
 	    statement.setString(1, Entrancepage.tfusername.getText());
 	    ResultSet rs = statement.executeQuery();
@@ -121,7 +124,7 @@ class Friends extends JFrame implements ActionListener {
 
     }
 
-    public void actionPerformed(ActionEvent ae) {
+    public void actionPerformed(final ActionEvent ae) {
 
         if (ae.getSource() == add) { //add a friend
 
@@ -133,14 +136,18 @@ class Friends extends JFrame implements ActionListener {
 				    try {
 
 					    Class.forName("org.sqlite.JDBC");
-						conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
-						String sqlinsert = "INSERT INTO Friends(fusername, friendusername) VALUES(?, ?)";
+						conn = DriverManager.getConnection("jdbc:sqlite:C://Users//"+
+							"Marina//Desktop//DMST//sophomore year"+
+						   "//1st semester//Progr II//CODE//Original"+
+									"Code//INTUNE.db");
+						String sqlinsert = "INSERT INTO Friends(fusername, friendusername)"+
+							" VALUES(?, ?)";
 						PreparedStatement pstmt = conn.prepareStatement(sqlinsert);
 						pstmt.setString(1, Entrancepage.tfusername.getText());
 						pstmt.setString(2, friendname.getText());
 						pstmt.executeUpdate();
 
-						JOptionPane.showMessageDialog(null,"Friend was added!");
+						JOptionPane.showMessageDialog(null, "Friend was added!");
 						Friends fr = new Friends();
 						frame.setVisible(false);
 
@@ -154,12 +161,12 @@ class Friends extends JFrame implements ActionListener {
 						}
 					}
 				} else {
-					JOptionPane.showMessageDialog(null,"Can not add yourself!");
+					JOptionPane.showMessageDialog(null, "Can not add yourself!");
 				}
 
 			} else {
 
-				JOptionPane.showMessageDialog(null,"Please enter an existing user!");
+				JOptionPane.showMessageDialog(null, "Please enter an existing user!");
 
 			}
 
@@ -172,14 +179,18 @@ class Friends extends JFrame implements ActionListener {
 					try {
 
 						Class.forName("org.sqlite.JDBC");
-						conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
-						String sqlinsert = "DELETE FROM Friends WHERE fusername = ? AND friendusername = ?";
+						conn = DriverManager.getConnection("jdbc:sqlite:C://"+
+									   "Users//Marina//Desktop//"+
+								   "DMST//sophomore year//1st semester//"+
+									"Progr II//CODE//Original Code//INTUNE.db");
+						String sqlinsert = "DELETE FROM Friends WHERE fusername = ? "+
+							"AND friendusername = ?";
 						PreparedStatement pstmt = conn.prepareStatement(sqlinsert);
 						pstmt.setString(1, Entrancepage.tfusername.getText());
 						pstmt.setString(2, friendname.getText());
 						pstmt.executeUpdate();
 
-						JOptionPane.showMessageDialog(null,"Friend was deleted");
+						JOptionPane.showMessageDialog(null, "Friend was deleted");
 					    Friends fr = new Friends();
 						frame.setVisible(false);
 
@@ -193,12 +204,12 @@ class Friends extends JFrame implements ActionListener {
 						}
 					}
 				} else {
-					JOptionPane.showMessageDialog(null,"Can not delete yourself!");
+					JOptionPane.showMessageDialog(null, "Can not delete yourself!");
 				}
 
 			} else {
 
-				JOptionPane.showMessageDialog(null,"Please enter an existing user!");
+				JOptionPane.showMessageDialog(null, "Please enter an existing user!");
 
 			}
 
