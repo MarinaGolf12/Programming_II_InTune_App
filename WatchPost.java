@@ -42,7 +42,8 @@ class WatchPost extends JFrame implements ActionListener {
 
 		frame = new JFrame();
 	    frame.setTitle("InTune");
-	    frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+	    frame.getContentPane().setBackground(new java.awt.
+	    		Color(232, 237, 244));
 	    frame.setBounds(320, 120, 1000, 750);
 	    frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	    frame.setResizable(true);
@@ -105,66 +106,89 @@ class WatchPost extends JFrame implements ActionListener {
 		Connection conn = null;
 		String r = "";
 		try {
-								        Class.forName("org.sqlite.JDBC");
-										conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\30698\\OneDrive\\Υπολογιστής\\SQLite\\sqlite-tools-win32-x86-3400100\\sqlite-tools-win32-x86-3400100\\INTUNE1.db");
-										String sqlinsert = "SELECT * FROM Post";
-										PreparedStatement statement = conn.prepareStatement(sqlinsert);
-										ResultSet rs = statement.executeQuery();
-										    while (rs.next()) {
-												String s = rs.getString("postno") + "\t" + rs.getString("postext") + "\t" + " from " + "\t" + rs.getString("username") + "\n";
-												r = r + s;
-												space.setText(r);
-												space.setEditable(false);
+			
+		    Class.forName("org.sqlite.JDBC");
+			conn = DriverManager.getConnection("jdbc:sqlite:"
+					+ "C:\\Users\\30698\\OneDrive"
+					+ "\\Υπολογιστής\\SQLite"
+					+ "\\sqlite-tools-"
+					+ "win32-x86-3400100"
+					+ "\\sqlite-tools"
+					+ "-win32-x86-"
+					+ "3400100\\INTUNE1.db");
+			String sqlinsert = "SELECT * FROM Post";
+			PreparedStatement statement = conn.
+					prepareStatement(sqlinsert);
+			ResultSet rs = statement.executeQuery();
+			while (rs.next()) {
+			    String s = rs.getString("postno") 
+			    		+ "\t" + rs.getString("postext") 
+			    		+ "\t" + " from " + "\t" 
+			    		+ rs.getString("username") + "\n";
+				r = r + s;
+				space.setText(r);
+				space.setEditable(false);
 
-										    }
-										} catch (SQLException ex) {
-										    System.out.println(ex.getMessage());
-										} catch (ClassNotFoundException ex) {
-										    System.out.println(ex.getMessage());
-		                                } finally {
-		                        if (conn != null) {
-		                            try {
-		                                conn.close();
-		                            } catch (SQLException exc) {
-		                            }
-		                        }
+			}
+		} catch (SQLException ex) {
+		    System.out.println(ex.getMessage());
+		} catch (ClassNotFoundException ex) {
+		    System.out.println(ex.getMessage());
+		} finally {
+		    if (conn != null) {
+		        try {
+		            conn.close();
+		        } catch (SQLException exc) {
+		        
+		        }
+		    }
 
-				   }
+		}
 
     }
 
     /**Choose a post to react or comment on.*/
     public void actionPerformed(ActionEvent ae) {
 
-		if (ae.getSource() == choose) {
+	    if (ae.getSource() == choose) {
 
 
-			Connection conn = null;
-					try {
-											        Class.forName("org.sqlite.JDBC");
-													conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\30698\\OneDrive\\Υπολογιστής\\SQLite\\sqlite-tools-win32-x86-3400100\\sqlite-tools-win32-x86-3400100\\INTUNE1.db");
-													String sqlinsert = "SELECT * FROM Post WHERE postno LIKE ?";
-													PreparedStatement statement = conn.prepareStatement(sqlinsert);
-													statement.setString(1, tfshowchoice.getText());
-													ResultSet rs = statement.executeQuery();
-													    if (rs.next()) {
+		    Connection conn = null;
+			try {
+			    Class.forName("org.sqlite.JDBC");
+			    conn = DriverManager.getConnection("jdbc:sqlite:C:"
+			    		+ "\\Users\\30698\\OneDrive"
+			    		+ "\\Υπολογιστής"
+			    		+ "\\SQLite"
+			    		+ "\\sqlite-tools-win32-x86-3400100"
+			    		+ "\\sqlite-tools-win32-x86-3400100"
+			    		+ "\\INTUNE1.db");
+			    String sqlinsert = "SELECT * "
+			    		+ "FROM Post "
+			    		+ "WHERE postno LIKE ?";
+			    PreparedStatement statement = conn.
+			    		prepareStatement(sqlinsert);
+			    statement.setString(1, tfshowchoice.getText());
+			    ResultSet rs = statement.executeQuery();
+			    if (rs.next()) {
 
-															Reaction reaction = new Reaction();
-															frame.setVisible(false);
-													    }
-													} catch (SQLException ex) {
-													    System.out.println(ex.getMessage());
-													} catch (ClassNotFoundException ex) {
-													    System.out.println(ex.getMessage());
-					                                } finally {
-					                        if (conn != null) {
-					                            try {
-					                                conn.close();
-					                            } catch (SQLException exc) {
-					                            }
-					                        }
+			        Reaction reaction = new Reaction();
+				    frame.setVisible(false);
+			    }
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			} catch (ClassNotFoundException ex) {
+				System.out.println(ex.getMessage());
+			} finally {
+				if (conn != null) {
+			        try {
+					    conn.close();
+					} catch (SQLException exc) {
+					
+					}
+				}
 
-							   }
+		    }
 
 
 		} else if (ae.getSource() == goback) {
@@ -178,45 +202,58 @@ class WatchPost extends JFrame implements ActionListener {
 
             String url = "";
 			Connection conn = null;
-				try {
-					Class.forName("org.sqlite.JDBC");
-					conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\30698\\OneDrive\\Υπολογιστής\\SQLite\\sqlite-tools-win32-x86-3400100\\sqlite-tools-win32-x86-3400100\\INTUNE1.db");
-					String sqlinsert = "SELECT postext FROM Post WHERE postno LIKE ?";
-					PreparedStatement statement = conn.prepareStatement(sqlinsert);
-					statement.setString(1, tfshowchoice.getText());
-					ResultSet rs = statement.executeQuery();
-					if (rs.next()) {
+			try {
+			    Class.forName("org.sqlite.JDBC");
+				conn = DriverManager.
+						getConnection("jdbc:sqlite:C:"
+						+ "\\Users\\30698\\OneDrive"
+						+ "\\Υπολογιστής"
+						+ "\\SQLite"
+						+ "\\sqlite-tools-"
+						+ "win32-x86-3400100"
+						+ "\\sqlite-"
+						+ "tools-win32-x86-3400100"
+						+ "\\INTUNE1.db");
+				String sqlinsert = "SELECT postext "
+						+ "FROM Post "
+						+ "WHERE postno LIKE ?";
+				PreparedStatement statement = conn.
+						prepareStatement(sqlinsert);
+				statement.setString(1, tfshowchoice.getText());
+				ResultSet rs = statement.executeQuery();
+				if (rs.next()) {
 
-			            url = rs.getString(1);
-				    }
-			 try {
-			     URI uri = new URI(url);
-			     Desktop desktop = null;
-			     if (Desktop.isDesktopSupported()) {
-			         desktop = Desktop.getDesktop();
-			     }
-			     if (desktop != null) {
-			        desktop.browse(uri);
-			     }
-			 } catch (IOException ioe) {
-			     ioe.printStackTrace();
-			 } catch (URISyntaxException use) {
-			      use.printStackTrace();
-             }
+			        url = rs.getString(1);
+				}
+			    try {
+			         URI uri = new URI(url);
+			         Desktop desktop = null;
+			         if (Desktop.isDesktopSupported()) {
+			             desktop = Desktop.getDesktop();
+			         }
+			         if (desktop != null) {
+			             desktop.browse(uri);
+			         }
+			    } catch (IOException ioe) {
+			        ioe.printStackTrace();
+			    } catch (URISyntaxException use) {
+			        use.printStackTrace();
+                }
 
-             } catch (SQLException ex) {
-			 				 	 System.out.println(ex.getMessage());
-			 				  } catch (ClassNotFoundException ex) {
-			 				 	 System.out.println(ex.getMessage());
-			                   } finally {
-			                         if (conn != null) {
-			                             try {
-			                                 conn.close();
-			                             } catch (SQLException exc) {
-			                             }
-			                         }
+            } catch (SQLException ex) {
+			    System.out.println(ex.getMessage());
+			} catch (ClassNotFoundException ex) {
+			 	System.out.println(ex.getMessage());
+			} finally {
+			    if (conn != null) {
+			        try {
+			            conn.close();
+			        } catch (SQLException exc) {
+			      
+			        }
+			    }
 
-				   }
+			}
 
 		}
 

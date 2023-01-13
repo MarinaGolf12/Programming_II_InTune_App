@@ -37,7 +37,8 @@ class Unread extends JFrame implements ActionListener {
     public Unread() {
 
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+		frame.getContentPane().setBackground(new java.
+				awt.Color(232, 237, 244));
 	    frame.setTitle("InTune");
 	    frame.setBounds(320, 120, 1000, 750);
 	    frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -104,9 +105,19 @@ class Unread extends JFrame implements ActionListener {
         try {
 
 	        Class.forName("org.sqlite.JDBC");
-	 	    conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\30698\\OneDrive\\Υπολογιστής\\SQLite\\sqlite-tools-win32-x86-3400100\\sqlite-tools-win32-x86-3400100\\INTUNE1.db");
-	        String sqlinsert = "SELECT textmessage, textfrom, textno, status FROM Messages WHERE texto LIKE ? AND status LIKE ?";
-	 	    PreparedStatement statement = conn.prepareStatement(sqlinsert);
+	 	    conn = DriverManager.getConnection("jdbc:sqlite:C:"
+	 	    		+ "\\Users\\30698"
+	 	    		+ "\\OneDrive\\Υπολογιστής"
+	 	    		+ "\\SQLite"
+	 	    		+ "\\sqlite-tools-win32-x86-3400100"
+	 	    		+ "\\sqlite-tools-win32-x86-3400100"
+	 	    		+ "\\INTUNE1.db");
+	        String sqlinsert = "SELECT textmessage, "
+	        		+ "textfrom, textno, status "
+	        		+ "FROM Messages "
+	        		+ "WHERE texto LIKE ? AND status LIKE ?";
+	 	    PreparedStatement statement = conn.
+	 	    		prepareStatement(sqlinsert);
 	 	    statement.setString(1, Entrancepage.tfusername.getText());
 	 	    statement.setInt(2, 0);
 
@@ -114,7 +125,10 @@ class Unread extends JFrame implements ActionListener {
 
 				while (rs.next()) {
 
-			        String s = rs.getString("textno") + "\t" + rs.getString("textmessage") + "\t" + " from " + "\t" + rs.getString("textfrom") + "\n";
+			        String s = rs.getString("textno") + "\t" 
+			        + rs.getString("textmessage") 
+			        + "\t" + " from " + "\t" 
+			        + rs.getString("textfrom") + "\n";
 				    r = r + s;
 				    urmes.setText(r);
 				    urmes.setEditable(false);
@@ -144,25 +158,58 @@ class Unread extends JFrame implements ActionListener {
 			Messages mes = new Messages();
 			frame.setVisible(false);
 
-		} else if(e.getSource() == read) { //establish that all current messages were read
-
+		} else if (e.getSource() == read) { 
+			
+			//establish that all current 
+            //messages were read
+			
 			 Connection con = null;
 
 				    try {
 
 					    Class.forName("org.sqlite.JDBC");
-						con = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\30698\\OneDrive\\Υπολογιστής\\SQLite\\sqlite-tools-win32-x86-3400100\\sqlite-tools-win32-x86-3400100\\INTUNE1.db");
-						String sqlin = "UPDATE Messages SET status = ? WHERE texto LIKE ?";
-						PreparedStatement stmt = con.prepareStatement(sqlin);
+						con = DriverManager.
+							getConnection("jdbc"
+								+ ":"
+								+ "sqlite:C:"
+								+ "\\Users"
+								+ "\\30698"
+								+ "\\OneDrive"
+								+ "\\"
+								+ "Υπολογιστής"
+								+ "\\SQLite"
+								+ "\\sqlite-"
+								+ "tools-win32-"
+								+ "x86-3400100"
+								+ "\\sqlite-"
+								+ "tools-win32-"
+								+ "x86-3400100"
+								+ "\\"
+								+ "INTUNE1.db");
+						String sqlin = "UPDATE "
+								+ "Messages "
+								+ "SET "
+								+ "status = ? "
+								+ "WHERE "
+								+ "texto "
+								+ "LIKE ?";
+						PreparedStatement 
+						   stmt = con.
+							prepareStatement(sqlin);
 						stmt.setInt(1, 1);
-						stmt.setString(2, Entrancepage.tfusername.getText());
+						stmt.setString(2, 
+								Entrancepage.
+								tfusername.
+								getText());
 
 						stmt.executeUpdate();
 
 					} catch (SQLException ex) {
-						System.out.println(ex.getMessage());
+						System.out.
+						println(ex.getMessage());
 					} catch (ClassNotFoundException ex) {
-						System.out.println(ex.getMessage());
+						System.out.
+						println(ex.getMessage());
 					} finally {
 						if (con != null) {
 					        try {
@@ -182,15 +229,35 @@ class Unread extends JFrame implements ActionListener {
 
 			    try {
 				    Class.forName("org.sqlite.JDBC");
-					conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\30698\\OneDrive\\Υπολογιστής\\SQLite\\sqlite-tools-win32-x86-3400100\\sqlite-tools-win32-x86-3400100\\INTUNE1.db");
-					String sqlinsert = "SELECT * FROM Messages WHERE textno LIKE ?";
-					PreparedStatement statement = conn.prepareStatement(sqlinsert);
-					statement.setString(1, tanswer.getText());
+					conn = DriverManager.
+							getConnection("jdbc:"
+							+ "sqlite:C:"
+							+ "\\Users"
+							+ "\\30698"
+							+ "\\OneDrive"
+							+ "\\Υπολογιστής"
+							+ "\\SQLite"
+							+ "\\sqlite-"
+							+ "tools-win32-"
+							+ "x86-3400100"
+							+ "\\sqlite-tools-"
+							+ "win32-x86-"
+							+ "3400100"
+							+ "\\INTUNE1.db");
+					String sqlinsert = "SELECT * "
+							+ "FROM Messages "
+							+ "WHERE textno LIKE ?";
+					PreparedStatement 
+					statement = conn.
+					prepareStatement(sqlinsert);
+					statement.setString(1, 
+							tanswer.getText());
 					ResultSet rs = statement.executeQuery();
 
 					    if (rs.next()) {
 
-							Chat chat = new Chat(rs.getString("textfrom"));
+							Chat chat = new Chat(rs.
+							getString("textfrom"));
 							frame.setVisible(false);
 
 						}
@@ -207,7 +274,8 @@ class Unread extends JFrame implements ActionListener {
 
 	        } else {
 
-				JOptionPane.showMessageDialog(null, "Nothing new to answer to");
+				JOptionPane.showMessageDialog(null, 
+						"Nothing new to answer to");
 
 			}
 
