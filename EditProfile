@@ -1,9 +1,15 @@
+/**
+ * @author Marina_Gkolfinopoulou
+ * @author Konstantinos_Diamantoudis
+ */
+package application;
 //import required classes and packages
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
+/**Declare EditPrifile class.*/
 class EditProfile extends JFrame implements ActionListener {
 
     // Components of the profile editing window
@@ -24,7 +30,7 @@ class EditProfile extends JFrame implements ActionListener {
     private JLabel tchangevalue;
     private JLabel title;
 
-    // constructor, to structure profile editing window
+    /**constructor, to structure profile editing window.*/
     public EditProfile() {
 
     frame = new JFrame();
@@ -101,11 +107,7 @@ class EditProfile extends JFrame implements ActionListener {
 	    try {
 
 	        Class.forName("org.sqlite.JDBC");
-		conn = DriverManager.getConnection("jdbc:sqlite:"
-			+ "C://Users//Marina//Desktop//DMST//"
-			+ "sophomore year//1st semester//"
-			+ "Progr II//CODE//Original Code//"
-			+ "INTUNE.db");
+		conn = DriverManager.getConnection("jdbc:sqlite:C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\user\\\\\\\\\\\\\\\\Desktop\\\\\\\\\\\\\\\\SQLITE\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100//intune2.db");
 		String sqlinsert =
 			"SELECT * FROM User WHERE username LIKE ?";
 		PreparedStatement statement =
@@ -144,6 +146,7 @@ class EditProfile extends JFrame implements ActionListener {
 
     }
 
+    /**Declare actionPerformed method.*/
     public void actionPerformed(final ActionEvent e) {
 
         if (e.getSource() == subchange) { //submits change to profile
@@ -155,13 +158,7 @@ class EditProfile extends JFrame implements ActionListener {
 
 			        Class.forName("org.sqlite.JDBC");
 					conn = DriverManager.getConnection(
-						"jdbc:sqlite:"
-						+ "C://Users//Marina//"
-						+ "Desktop//DMST//"
-						+ "sophomore year//"
-						+ "1st semester//"
-						+ "Progr II//CODE//"
-						+ "Original Code//INTUNE.db");
+						"jdbc:sqlite:C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\user\\\\\\\\\\\\\\\\Desktop\\\\\\\\\\\\\\\\SQLITE\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100//intune2.db");
                     String sqlinsert =
                     	"UPDATE User "
                     	+ "SET name = ? "
@@ -205,13 +202,7 @@ class EditProfile extends JFrame implements ActionListener {
 
 			        Class.forName("org.sqlite.JDBC");
 					conn = DriverManager.getConnection(
-						"jdbc:sqlite:"
-						+ "C://Users//Marina//"
-						+ "Desktop//DMST//"
-						+ "sophomore year//"
-						+ "1st semester//Progr II//"
-						+ "CODE//Original Code//"
-						+ "INTUNE.db");
+						"jdbc:sqlite:C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\user\\\\\\\\\\\\\\\\Desktop\\\\\\\\\\\\\\\\SQLITE\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100//intune2.db");
                     String sqlinsert =
                     	"UPDATE User "
                     	+ "SET username = ? "
@@ -253,15 +244,7 @@ class EditProfile extends JFrame implements ActionListener {
 
 			        Class.forName("org.sqlite.JDBC");
 					conn = DriverManager.getConnection(
-							"jdbc:sqlite:"
-							+ "C://Users//Marina//"
-							+ "Desktop//DMST//"
-							+ "sophomore year//"
-							+ "1st semester//"
-							+ "Progr II//"
-							+ "CODE//"
-							+ "Original Code//"
-							+ "INTUNE.db");
+							"jdbc:sqlite:C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\user\\\\\\\\\\\\\\\\Desktop\\\\\\\\\\\\\\\\SQLITE\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100//intune2.db");
                     String sqlinsert =
                     		"UPDATE User SET password = ?,"
                     		+ " passcheck = ?"
@@ -305,13 +288,7 @@ class EditProfile extends JFrame implements ActionListener {
 
 			        Class.forName("org.sqlite.JDBC");
 					conn = DriverManager.
-						getConnection("jdbc:sqlite:"
-						+ "C://Users//Marina//"
-						+ "Desktop//DMST//"
-						+ "sophomore year//"
-						+ "1st semester//Progr II//"
-						+ "CODE//Original Code//"
-						+ "INTUNE.db");
+						getConnection("jdbc:sqlite:C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\user\\\\\\\\\\\\\\\\Desktop\\\\\\\\\\\\\\\\SQLITE\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100//intune2.db");
                     String sqlinsert =
                     	"UPDATE User SET gender = ? "
                     	+ "WHERE username LIKE ?";
@@ -353,14 +330,7 @@ class EditProfile extends JFrame implements ActionListener {
 
 			        Class.forName("org.sqlite.JDBC");
 					conn = DriverManager.
-						getConnection("jdbc:sqlite:"
-						+ "C://Users//Marina//"
-						+ "Desktop//DMST//"
-						+ "sophomore year//"
-						+ "1st semester//"
-						+ "Progr II//"
-						+ "CODE//Original Code//"
-						+ "INTUNE.db");
+						getConnection("jdbc:sqlite:C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\user\\\\\\\\\\\\\\\\Desktop\\\\\\\\\\\\\\\\SQLITE\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100//intune2.db");
                     String sqlinsert =
                     	"UPDATE User "
                     	+ "SET age = ? "
