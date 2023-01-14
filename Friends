@@ -1,9 +1,16 @@
+/**
+ * @author Marina_Gkolfinopoulou
+ * @author Konstantinos_Diamantoudis
+ */
+package application;
 //import required classes and packages
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
+/**Declare Friends class.*/
 class Friends extends JFrame implements ActionListener {
 
     // Components of the Friends window
@@ -17,7 +24,7 @@ class Friends extends JFrame implements ActionListener {
     private JLabel writefn;
     private JLabel title;
 
-    // constructor, to structure Friends window
+    /**constructor, to structure Friends window.*/
     public Friends() {
 
     	frame = new JFrame();
@@ -93,10 +100,7 @@ class Friends extends JFrame implements ActionListener {
         try {
 
         	Class.forName("org.sqlite.JDBC");
-        	conn = DriverManager.getConnection("jdbc:sqlite:"
-        	+ "C://Users//Marina//Desktop//DMST//"
-        	+ "sophomore year//1st semester//Progr II//CODE//"
-        	+ "Original Code//INTUNE.db");
+        	conn = DriverManager.getConnection("jdbc:sqlite:C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\user\\\\\\\\\\\\\\\\Desktop\\\\\\\\\\\\\\\\SQLITE\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100//intune2.db");
         	String sqlinsert =
         	"SELECT friendusername FROM Friends"
         	+ "WHERE fusername LIKE ?";
@@ -146,12 +150,7 @@ class Friends extends JFrame implements ActionListener {
 
 					    Class.forName("org.sqlite.JDBC");
 						conn = DriverManager.
-						getConnection("jdbc:sqlite:"
-						+ "C://Users//Marina//Desktop//"
-						+ "DMST//sophomore year//"
-						+ "1st semester//Progr II//"
-						+ "CODE//Original Code//"
-						+ "INTUNE.db");
+						getConnection("jdbc:sqlite:C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\user\\\\\\\\\\\\\\\\Desktop\\\\\\\\\\\\\\\\SQLITE\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100//intune2.db");
 						String sqlinsert =
 						"INSERT INTO "
 						+ "Friends(fusername,"
@@ -212,13 +211,7 @@ class Friends extends JFrame implements ActionListener {
 						Class.
 						forName("org.sqlite.JDBC");
 						conn = DriverManager.
-						getConnection("jdbc:sqlite:"
-						+ "C://Users//Marina//"
-						+ "Desktop//DMST//"
-						+ "sophomore year//"
-						+ "1st semester//Progr II//"
-						+ "CODE//Original Code//"
-						+ "INTUNE.db");
+						getConnection("jdbc:sqlite:C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\user\\\\\\\\\\\\\\\\Desktop\\\\\\\\\\\\\\\\SQLITE\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100//intune2.db");
 						String sqlinsert =
 						"DELETE FROM Friends"
 						+ " WHERE fusername = ?"
