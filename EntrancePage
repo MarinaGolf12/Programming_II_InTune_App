@@ -1,3 +1,6 @@
+/**
+ * @author Marina_Gkolfinopoulou
+ */package application;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -116,6 +119,7 @@ class Entrancepage extends JFrame implements ActionListener {
 
     }
 
+    /**Declare actionPerformed method*/
     public void actionPerformed(ActionEvent e) {
     	if (e.getSource() == login) {
 
@@ -127,12 +131,7 @@ class Entrancepage extends JFrame implements ActionListener {
 
             	Class.forName("org.sqlite.JDBC");
 				conn = DriverManager.
-				getConnection("jdbc:sqlite:"
-				+ "C://Users//Marina//Desktop//"
-				+ "DMST//sophomore year//"
-				+ "1st semester//Progr II//"
-				+ "CODE//Original Code//"
-				+ "INTUNE.db");
+				getConnection("jdbc:sqlite:C:\\\\\\\\\\\\\\\\Users\\\\\\\\\\\\\\\\user\\\\\\\\\\\\\\\\Desktop\\\\\\\\\\\\\\\\SQLITE\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100\\\\\\\\\\\\\\\\sqlite-tools-win32-x86-3400100//intune2.db");
 				String sqlinsert =
 				"SELECT * FROM User"
 				+ " WHERE username LIKE ? AND password LIKE ?";
