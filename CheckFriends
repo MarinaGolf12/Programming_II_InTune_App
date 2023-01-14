@@ -1,12 +1,18 @@
+/**
+ * @author Marina_Gkolfinopoulou
+ * @author Konstantinos_Diamantoudis
+ */
+package application;
 //import required classes and packages
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
+/**Declare CheckFriends class.*/
 class CheckFriends {
 
-    //check that a name given belongs to an already registered user
+	/**check that a name given belongs to an already registered user.*/
     public static boolean friendExists(final String friend) {
 
         boolean flag = true;
@@ -15,10 +21,7 @@ class CheckFriends {
 
             Class.forName("org.sqlite.JDBC");
 	        conn = DriverManager.getConnection(
-	        		"jdbc:sqlite:C://Users//Marina//"
-	        		+ "Desktop//DMST//sophomore year//"
-	        		+ "1st semester//Progr II//CODE//"
-	        		+ "Original Code//INTUNE.db");
+	        		"jdbc:sqlite:C:\\\\\\\\Users\\\\\\\\user\\\\\\\\Desktop\\\\\\\\SQLITE\\\\\\\\sqlite-tools-win32-x86-3400100\\\\\\\\sqlite-tools-win32-x86-3400100//intune2.db");
 	        String sqlinsert =
 	        		"SELECT * FROM User WHERE username LIKE ?";
 	        PreparedStatement pstmt =
@@ -47,3 +50,4 @@ class CheckFriends {
     }
 
 }
+
