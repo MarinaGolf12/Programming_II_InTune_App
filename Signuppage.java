@@ -1,4 +1,8 @@
-/**import required classes and packages*/
+/**
+ * @author Marina_Gkolfinopoulou
+ */
+package application;
+//import required classes and packages
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -18,13 +22,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+/**Declare the class Signuppage.*/
+class Signuppage extends JFrame implements ActionListener {
 
-class Signuppage
-    extends JFrame
-    implements ActionListener {
-
-    /**Components of the Entrance Form*/
-    private Container c;
+//Components of the Entrance Form
+	private Container c;
     private JFrame frame;
     private JLabel title;
     private JLabel name;
@@ -56,15 +58,15 @@ class Signuppage
 
 
     /**constructor, to initialize the components with default values.*/
-    public Signuppage()
-    {
+    public Signuppage() {
 
 		frame = new JFrame();
         frame.setTitle("InTune");
         frame.setBounds(320, 120, 1000, 750);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
-		frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+		frame.getContentPane().
+		setBackground(new java.awt.Color(232, 237, 244));
         c = frame.getContentPane();
         c.setLayout(null);
 
@@ -237,101 +239,128 @@ class Signuppage
 
 
 
-    /**Shows data of a new user*/
-    public void actionPerformed(ActionEvent e)
-    {
+    /**Shows data of a new user.*/
+    public void actionPerformed(ActionEvent e) {
         if (e.getSource() == check) {
-                String data2;
-                String data3;
-                String data1 = "Name : "
-                      + tname.getText() + "\n";
-                if (male.isSelected()) {
-                    data2 = "Gender : Male" + "\n" ;
-                    data3 = "Age : "
-                      + tage.getText() + "\n";
+            String data2;
+            String data3;
+            String data1 = "Name : "
+            + tname.getText() + "\n";
 
-                } else if (female.isSelected()) {
+            if (male.isSelected()) {
 
-                    data2 = "Gender : Female" + "\n";
-                    data3 = "Age : "
-                      + tage.getText() + "\n";
+                data2 = "Gender : Male" + "\n";
+                data3 = "Age : " + tage.getText() + "\n";
 
-			    } else {
+            } else if (female.isSelected()) {
 
-			         data2 = "Gender : Other" + "\n";
-					 data3 = "Age : "
-                      + tage.getText() + "\n";
-			   }
-                tout.setText(data1 + data2 + data3);
-                tout.setEditable(false);
+                  data2 = "Gender : Female" + "\n";
+                  data3 = "Age : " + tage.getText() + "\n";
 
-        }
-        /**Clears out Form*/
-        else if (e.getSource() == reset) {
-            String def = "";
-            tname.setText(def);
-            tusername.setText(def);
-            tpassword.setText(def);
-            tpasscheck.setText(def);
-            res.setText(def);
-            tout.setText(def);
-            term.setSelected(false);
-            tage.setText(def);
-            resadd.setText(def);
-        }
-        /**Goes back to Login Page*/
-        else if (e.getSource() == goback) {
-			frame.setVisible(false);
-			Entrancepage p = new Entrancepage();
-		}
-		else if (e.getSource() == sub) {
-		    if (term.isSelected()) {
-                if (tpassword.getText().equals(tpasscheck.getText())) {
+			} else {
+
+				data2 = "Gender : Other" + "\n";
+				data3 = "Age : " + tage.getText() + "\n";
+			}
+
+            tout.setText(data1 + data2 + data3);
+            tout.setEditable(false);
+
+        	} else if (e.getSource() == reset) {
+
+//Clears out Form
+        		String def = "";
+        		tname.setText(def);
+        		tusername.setText(def);
+        		tpassword.setText(def);
+        		tpasscheck.setText(def);
+        		res.setText(def);
+        		tout.setText(def);
+        		term.setSelected(false);
+        		tage.setText(def);
+        		resadd.setText(def);
+
+        	} else if (e.getSource() == goback) {
+
+//Goes back to Login Page
+        		frame.setVisible(false);
+        		Entrancepage p = new Entrancepage();
+        	} else if (e.getSource() == sub) {
+        		if (term.isSelected()) {
+        			if (tpassword.getText().
+        			equals(tpasscheck.getText())) {
 	                    String gender;
 	                    Connection conn = null;
 	                    if (male.isSelected()) {
 	                        gender = "male";
 		                    try {
-		                        Class.forName("org.sqlite.JDBC");
-		                    	conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
-		                    	String sqlinsert = "INSERT INTO User(name, username, password, passcheck, gender, age) VALUES(?,?,?,?,?,?)";
-		                    	PreparedStatement statement = conn.prepareStatement(sqlinsert);
-		                    	statement.setString(1, tname.getText());
-		                    	statement.setString(2, tusername.getText());
-		                    	statement.setString(3, tpassword.getText());
-		                    	statement.setString(4, tpasscheck.getText());
-		                    	statement.setString(5, gender);
-		                    	statement.setString(6, tage.getText());
+		                        Class.
+		                        forName("org.sqlite.JDBC");
+		                    	conn = DriverManager.getConnection("jdbc:sqlite:C:\\SQLITE//InTune.db");
+		                    	String sqlinsert =
+		                    	"INSERT INTO User(name,"
+		                    	+ "username, password,"
+		                    	+ "passcheck, gender, age)"
+		                    	+ " VALUES(?,?,?,?,?,?)";
+		                    	PreparedStatement statement =
+		                    	conn.
+		                    	prepareStatement(sqlinsert);
+		                    	statement.
+		                    	setString(1, tname.getText());
+		                    	statement.
+		                    	setString(2, tusername.getText());
+		                    	statement.
+		                    	setString(3, tpassword.getText());
+		                    	statement.
+		                    	setString(4, tpasscheck.getText());
+		                    	statement.
+		                    	setString(5, gender);
+		                    	statement.
+		                    	setString(6, tage.getText());
 
-                            	statement.executeUpdate();
+		                    	statement.executeUpdate();
 		                	} catch (SQLException ex) {
-                            	System.out.println(ex.getMessage());
-                        	} catch (ClassNotFoundException ex) {
+		                		System.out.println(
+		                		ex.getMessage());
+		                	} catch (ClassNotFoundException ex) {
 		                    	System.out.println(ex.getMessage());
-		                	}finally {
-                        if (conn != null) {
-                            try {
-                                conn.close();
-                            } catch (SQLException exc) {
+		                	} finally {
+		                		if (conn != null) {
+		                			try {
+		                				conn.close();
+		                			} catch (
+		                			  SQLException exc) {
 
-                            }
-                        }
+		                			}
+		                		}
 
-				   }
+		                	}
 
 	                	} else if (female.isSelected()) {
 	                    	gender = "female";
 		                	try {
-		                    	Class.forName("org.sqlite.JDBC");
-		                    	conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
-		                    	String sqlinsert = "INSERT INTO User (name, username, password, passcheck, gender, age) VALUES(?,?,?,?,?,?)";
-		                    	PreparedStatement statement = conn.prepareStatement(sqlinsert);
-		                    	statement.setString(1, tname.getText());
-		                    	statement.setString(2, tusername.getText());
-		                    	statement.setString(3, tpassword.getText());
-	                        	statement.setString(4, tpasscheck.getText());
-		                    	statement.setString(5, gender);
-		                    	statement.setString(6, tage.getText());
+		                    	Class.
+		                    	forName("org.sqlite.JDBC");
+		                    	conn = DriverManager.getConnection("jdbc:sqlite:C:\\SQLITE//InTune.db");
+		                    	String sqlinsert =
+		                    	"INSERT INTO User (name,"
+		                    	+ "username, password,"
+		                    	+ "passcheck, gender, age)"
+		                    	+ "VALUES(?,?,?,?,?,?)";
+		                    	PreparedStatement statement =
+		                    	conn.prepareStatement(sqlinsert);
+		                    	statement.
+		                    	setString(1, tname.getText());
+		                    	statement.
+		                    	setString(2, tusername.getText());
+		                    	statement.
+		                    	setString(3, tpassword.getText());
+	                        	statement.
+	                        	setString(4, tpasscheck.getText());
+		                    	statement.
+		                    	setString(5, gender);
+		                    	statement.
+		                    	setString(6, tage.getText());
 
 		                    	statement.executeUpdate();
 		                	} catch (SQLException ex) {
@@ -339,61 +368,73 @@ class Signuppage
 		                	} catch (ClassNotFoundException ex) {
 		                        System.out.println(ex.getMessage());
 							} finally {
-                        if (conn != null) {
-                            try {
-                                conn.close();
-                            } catch (SQLException exc) {
-                            }
-                        }
+								if (conn != null) {
+									try {
+										conn.close();
+									} catch (SQLException exc) {
+									}
+								}
 
-				   }
+							}
 
 	                    } else if (other.isSelected()) {
 					        gender = "other";
 						    try {
-						        Class.forName("org.sqlite.JDBC");
-								conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
-								String sqlinsert = "INSERT INTO User (name, username, password, passcheck, gender, age) VALUES(?,?,?,?,?,?)";
-								PreparedStatement statement = conn.prepareStatement(sqlinsert);
-								statement.setString(1, tname.getText());
-								statement.setString(2, tusername.getText());
-								statement.setString(3, tpassword.getText());
-							        statement.setString(4, tpasscheck.getText());
-								statement.setString(5, gender);
-								statement.setString(6, tage.getText());
+						        Class.
+						        forName("org.sqlite.JDBC");
+								conn = DriverManager.getConnection("jdbc:sqlite:C:\\SQLITE//InTune.db");
+								String sqlinsert =
+								"INSERT INTO User (name,"
+								+ "username, password,"
+								+ "passcheck, gender, age)"
+								+ "VALUES(?,?,?,?,?,?)";
+								PreparedStatement statement =
+								conn.prepareStatement(sqlinsert);
+								statement.
+								setString(1, tname.getText());
+								statement.
+								setString(2, tusername.getText());
+								statement.
+								setString(3, tpassword.getText());
+							    statement.
+							    setString(4, tpasscheck.getText());
+								statement.
+								setString(5, gender);
+								statement.
+								setString(6, tage.getText());
 
 								statement.executeUpdate();
-								} catch (SQLException ex) {
+							} catch (SQLException ex) {
 								    System.out.println(ex.getMessage());
-								} catch (ClassNotFoundException ex) {
+							} catch (ClassNotFoundException ex) {
 								    System.out.println(ex.getMessage());
-                                } finally {
-                        if (conn != null) {
-                            try {
-                                conn.close();
-                            } catch (SQLException exc) {
+                            } finally {
+                            		if (conn != null) {
+                            			try {
+                            				conn.close();
+                            			} catch (SQLException exc) {
+                            			}
+                            		}
+
                             }
-                        }
 
-				   }
+	                    }
+	                Entrancepage ep = new Entrancepage();
+	                frame.setVisible(false);
 
-                    	}
-                    	Entrancepage ep = new Entrancepage();
-                    	frame.setVisible(false);
+        			} else {
 
-	            }else {
-
-		            res.setText("Password is not repeated correctly.");
-		            tpassword.setText("");
-                    tpasscheck.setText("");
-                }
+        				res.setText("Password is not repeated correctly.");
+        				tpassword.setText("");
+        				tpasscheck.setText("");
+        			}
             } else {
 		        tout.setText("");
 		        resadd.setText("");
 	            res.setText("Please accept the"
-	                + " terms & conditions.");
+	            + " terms & conditions.");
 	        }
 	    }
 
-    }
+  }
 }

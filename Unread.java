@@ -1,4 +1,9 @@
-/**import required classes and packages*/
+/**
+ * @author Marina_Gkolfinopoulou
+ * @author Andriana_Lazana
+ */
+package application;
+//import required classes and packages
 
 import javax.swing.JTextArea;
 import javax.swing.JButton;
@@ -17,25 +22,26 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+/**Declare the class Unread.*/
 class Unread extends JFrame implements ActionListener {
 
-    /**Components of the Unread messages window*/
-    private Container cu;
-    private JButton goback;
-    private JTextArea urmes;
-    private JButton answer;
-    private JTextField tanswer;
-    private JButton read;
-    private JFrame frame;
-    private JLabel unread;
-    private static final long serialVersionUID = 7526472295622776147L;
+//Components of the Unread messages window
+   private Container cu;
+   private JButton goback;
+   private JTextArea urmes;
+   private JButton answer;
+   private JTextField tanswer;
+   private JButton read;
+   private JFrame frame;
+   private JLabel unread;
+   private static final long serialVersionUID = 7526472295622776147L;
 
-    /**constructor, to structure unread messages window*/
-    public Unread() {
+   /**constructor, to structure unread messages window.*/
+   public Unread() {
 
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+		frame.getContentPane().
+		setBackground(new java.awt.Color(232, 237, 244));
 	    frame.setTitle("InTune");
 	    frame.setBounds(320, 120, 1000, 750);
 	    frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -48,7 +54,7 @@ class Unread extends JFrame implements ActionListener {
 		unread.setForeground(new java.awt.Color(27, 38, 67));
 		unread.setSize(300, 50);
 		unread.setLocation(110, 40);
- 		cu.add(unread);
+		cu.add(unread);
 
 	    goback = new JButton("Go back to messages");
 	    goback.setBackground(new java.awt.Color(27, 38, 67));
@@ -79,8 +85,8 @@ class Unread extends JFrame implements ActionListener {
 
 	    tanswer = new JTextField(50);
 		tanswer.setFont(new Font("Arial", Font.PLAIN, 15));
-		tanswer.setSize(240,35);
-		tanswer.setLocation(110,130);
+		tanswer.setSize(240, 35);
+		tanswer.setLocation(110, 130);
 		cu.add(tanswer);
 
 		urmes = new JTextArea();
@@ -98,33 +104,38 @@ class Unread extends JFrame implements ActionListener {
 
         frame.setVisible(true);
 
-        /**show unread messages*/
+//show unread messages
         try {
 
 	        Class.forName("org.sqlite.JDBC");
-	 	    conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
-	        String sqlinsert = "SELECT textmessage, textfrom, textno, status FROM Messages WHERE texto LIKE ? AND status LIKE ?";
-	 	    PreparedStatement statement = conn.prepareStatement(sqlinsert);
+	 	    conn = DriverManager.getConnection("jdbc:sqlite:C:\\SQLITE//InTune.db");
+	        String sqlinsert =
+	        "SELECT textmessage, textfrom, textno, status FROM Messages WHERE texto LIKE ?AND status LIKE ?";
+	 	    PreparedStatement statement = 
+	 	    conn.prepareStatement(sqlinsert);
 	 	    statement.setString(1, Entrancepage.tfusername.getText());
 	 	    statement.setInt(2, 0);
 
 	        ResultSet rs = statement.executeQuery();
 
-				while (rs.next()) {
+			while (rs.next()) {
 
-			        String s = rs.getString("textno") + "\t" + rs.getString("textmessage") + "\t" + " from " + "\t" + rs.getString("textfrom") + "\n";
-				    r = r + s;
-				    urmes.setText(r);
-				    urmes.setEditable(false);
+			    String s = rs.getString("textno") + "\t" 
+			    + rs.getString("textmessage") 
+			    + "\t" + " from " + "\t" 
+			    + rs.getString("textfrom") + "\n";
+				r = r + s;
+				urmes.setText(r);
+				urmes.setEditable(false);
 
-		        }
+		    }
 
 
 	    } catch (SQLException ex) {
 	        System.out.println(ex.getMessage());
 	    } catch (ClassNotFoundException ex) {
 	 	    System.out.println(ex.getMessage());
-	    }finally {
+	    } finally {
 	        if (conn != null) {
 	            try {
 	                conn.close();
@@ -133,85 +144,98 @@ class Unread extends JFrame implements ActionListener {
 	        }
 	    }
 
-    }
+   	}
+   /**Declare the actionPerformed method.*/
+   public void actionPerformed(ActionEvent e) {
 
-    public void actionPerformed (ActionEvent e) {
-
-		if (e.getSource() == goback) { //go back to writing a message
+		if (e.getSource() == goback) {
+//go back to writing a message
 
 			Messages mes = new Messages();
 			frame.setVisible(false);
 
-		} else if(e.getSource() == read) { //establish that all current messages were read
+		} else if (e.getSource() == read) { 
+			
+//establish that all current 
+//messages were read
+			
+			Connection con = null;
 
-			 Connection con = null;
+			try {
 
-				    try {
+				Class.forName("org.sqlite.JDBC");
+				con = DriverManager.getConnection("jdbc:sqlite:C:\\SQLITE//InTune.db");
+				String sqlin = "UPDATE Messages "
+				+ "SET status = ? "
+				+ "WHERE texto LIKE ?";
+				PreparedStatement stmt = 
+				con.prepareStatement(sqlin);
+				stmt.setInt(1, 1);
+				stmt.setString(2, Entrancepage.
+				tfusername.getText());
+				stmt.executeUpdate();
 
-					    Class.forName("org.sqlite.JDBC");
-						con = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
-						String sqlin = "UPDATE Messages SET status = ? WHERE texto LIKE ?";
-						PreparedStatement stmt = con.prepareStatement(sqlin);
-						stmt.setInt(1, 1);
-						stmt.setString(2, Entrancepage.tfusername.getText());
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			} catch (ClassNotFoundException ex) {
+				System.out.println(ex.getMessage());
+			} finally {
+				if (con != null) {
+					try {
+						con.close();
+					} catch (SQLException exc) {
+					}
+				}
 
-						stmt.executeUpdate();
+		    }
 
-					} catch (SQLException ex) {
-						System.out.println(ex.getMessage());
-					} catch (ClassNotFoundException ex) {
-						System.out.println(ex.getMessage());
-					}finally {
-						if (con != null) {
-					        try {
-							    con.close();
-						    } catch (SQLException exc) {
-							}
-						}
+		    urmes.setText("");
 
-		            }
+	    } else if (e.getSource() == answer) {
+// answer to a message
 
-		      urmes.setText("");
-
-	    } else if (e.getSource() == answer) { // answer to a message
-
-            if (urmes.getText().equals("") == false) {
+	    	if (urmes.getText().equals("") == false) {
 			Connection conn = null;
 
-			    try {
-				    Class.forName("org.sqlite.JDBC");
-					conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
-					String sqlinsert = "SELECT * FROM Messages WHERE textno LIKE ?";
-					PreparedStatement statement = conn.prepareStatement(sqlinsert);
-					statement.setString(1,tanswer.getText());
-					ResultSet rs = statement.executeQuery();
+			try {
+				Class.forName("org.sqlite.JDBC");
+				conn = DriverManager.getConnection("jdbc:sqlite:C:\\SQLITE//InTune.db");
+				String sqlinsert =
+				"SELECT * "
+				+ "FROM Messages "
+				+ "WHERE textno LIKE ?";
+				PreparedStatement statement =
+				conn.prepareStatement(sqlinsert);
+				statement.setString(1, tanswer.getText());
+				ResultSet rs = statement.executeQuery();
 
-					    if (rs.next()) {
+				if (rs.next()) {
 
-							Chat chat = new Chat(rs.getString("textfrom"));
-							frame.setVisible(false);
+					Chat chat = new Chat(rs.
+					getString("textfrom"));
+					frame.setVisible(false);
 
-						}
+				}
 
-				} catch (Exception ex) {
-				} finally {
-					if (conn != null) {
-						try {
-						    conn.close();
-						} catch (SQLException exc) {
-						}
+			} catch (Exception ex) {
+			} finally {
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException exc) {
 					}
-			    }
+				}
+			}
 
 	        } else {
 
-				JOptionPane.showMessageDialog(null,"Nothing new to answer to");
+				JOptionPane.
+				showMessageDialog(null,
+				"Nothing new to answer to");
 
 			}
-
-
 		}
 
-    }
+  }
 
 }

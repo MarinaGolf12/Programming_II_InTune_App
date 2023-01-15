@@ -1,4 +1,8 @@
-/**import required classes and packages*/
+/**
+ * @author Elena_Fouka
+ * @author Antigoni_Vlassa
+ */
+package application;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -10,9 +14,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
+/**Declare Comm class.*/
 class Comm extends JFrame implements ActionListener {
 
-    /**Components of the Comment window*/
+    /**Components of the Comment window.*/
 	private Container cc;
 	private JLabel comment;
 	private JTextField text;
@@ -21,12 +26,13 @@ class Comm extends JFrame implements ActionListener {
 	private JButton goback;
 	private static final long serialVersionUID = 7526472295622776147L;
 
-    /**constructor, to structure Comment window*/
+    /**constructor, to structure Comment window.*/
     public Comm() {
 
         frame = new JFrame();
 		frame.setTitle("InTune");
-		frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+		frame.getContentPane().
+		setBackground(new java.awt.Color(232, 237, 244));
 	    frame.setBounds(320, 120, 1000, 750);
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setResizable(true);
@@ -41,7 +47,7 @@ class Comm extends JFrame implements ActionListener {
 		cc.add(comment);
 
 		text = new JTextField(30);
-		text.setFont(new Font("Arial",Font.BOLD,20));
+		text.setFont(new Font("Arial", Font.BOLD, 20));
 	    text.setSize(400, 40);
 		text.setLocation(110, 110);
 		cc.add(text);
@@ -68,18 +74,17 @@ class Comm extends JFrame implements ActionListener {
 
 	}
 
-    /**Confirms that comment was posted*/
+    /**Confirms that comment was posted.*/
 	public void actionPerformed(ActionEvent ae) {
 
 		if (ae.getSource() == post) {
 
-			JOptionPane.showMessageDialog(null,"Your comment is online!");
+			JOptionPane.
+			showMessageDialog(null, "Your comment is online!");
 			WatchPost wp = new WatchPost();
             frame.setVisible(false);
 
-		}else if (ae.getSource() == goback) {
-
-			/**redirects to homepage*/
+		} else if (ae.getSource() == goback) {
 
 			Reaction mainpage = new Reaction();
 			frame.setVisible(false);
@@ -88,4 +93,3 @@ class Comm extends JFrame implements ActionListener {
 	}
 
 }
-

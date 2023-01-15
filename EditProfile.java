@@ -1,9 +1,15 @@
+/**
+ * @author Marina_Gkolfinopoulou
+ * @author Konstantinos_Diamantoudis
+ */
+package application;
 //import required classes and packages
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
+/**Declare EditPrifile class.*/
 class EditProfile extends JFrame implements ActionListener {
 
     // Components of the profile editing window
@@ -24,7 +30,7 @@ class EditProfile extends JFrame implements ActionListener {
     private JLabel tchangevalue;
     private JLabel title;
 
-    // constructor, to structure profile editing window
+    /**constructor, to structure profile editing window.*/
     public EditProfile() {
 
     frame = new JFrame();
@@ -101,20 +107,27 @@ class EditProfile extends JFrame implements ActionListener {
 	    try {
 
 	        Class.forName("org.sqlite.JDBC");
-		conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina"+
-						   "//Desktop//DMST//sophomore year//1st semester//"+
-						   "Progr II//CODE//Original Code//INTUNE.db");
-		String sqlinsert = "SELECT * FROM User WHERE username LIKE ?";
-		PreparedStatement statement = conn.prepareStatement(sqlinsert);
-		statement.setString(1, Entrancepage.tfusername.getText());
+		conn = DriverManager.getConnection("jdbc:sqlite:C:\\SQLITE//InTune.db");
+		String sqlinsert =
+			"SELECT * FROM User WHERE username LIKE ?";
+		PreparedStatement statement =
+			conn.prepareStatement(sqlinsert);
+		statement.
+			setString(1, Entrancepage.tfusername.getText());
 		ResultSet rs = statement.executeQuery();
 
 		if (rs.next()) {
-		    String s = "1.Name: " + rs.getString("name") + "\n" + "2.User"+
-			    "name: " + rs.getString("username") + "\n" + "3.Password: " + rs.getString("password") + "\n" + "4."+
-			    "Gender: " + rs.getString("gender") + "\n" + "5.Age: " + rs.getInt("age");
-		    profile.setText(s);
-		    profile.setEditable(false);
+		    String s = "1.Name: " + rs.getString("name")
+		    	+ "\n" + "2.User" + "name: "
+		    	+ rs.getString("username") + "\n"
+		    	+ "3.Password: "
+		    	+ rs.getString("password") + "\n"
+		    	+ "4.Gender: "
+		    	+ rs.getString("gender") + "\n"
+		    	+ "5.Age: "
+		    	+ rs.getInt("age");
+		    	profile.setText(s);
+		    	profile.setEditable(false);
 
 		}
 	    } catch (SQLException ex) {
@@ -133,6 +146,7 @@ class EditProfile extends JFrame implements ActionListener {
 
     }
 
+    /**Declare actionPerformed method.*/
     public void actionPerformed(final ActionEvent e) {
 
         if (e.getSource() == subchange) { //submits change to profile
@@ -143,17 +157,26 @@ class EditProfile extends JFrame implements ActionListener {
 			    try {
 
 			        Class.forName("org.sqlite.JDBC");
-					conn = DriverManager.getConnection("jdbc:sqlite:C://Users//"+
-									   "Marina//Desktop//DMST//"+
-									   "sophomore year//1st semester//"+
-									   "Progr II//CODE//Original Code//INTUNE.db");
-                    String sqlinsert = "UPDATE User SET name = ? WHERE username LIKE ?";
-					PreparedStatement statement = conn.prepareStatement(sqlinsert);
-					statement.setString(1, changevalue.getText());
-					statement.setString(2, Entrancepage.tfusername.getText());
+					conn = DriverManager.getConnection(
+					"jdbc:sqlite:C:\\SQLITE//InTune.db");
+                    String sqlinsert =
+                    	"UPDATE User "
+                    	+ "SET name = ? "
+                    	+ "WHERE username LIKE ?";
+					PreparedStatement statement =
+						conn.
+						prepareStatement(sqlinsert);
+					statement.
+						setString(1,
+						changevalue.getText());
+					statement.
+						setString(2, Entrancepage.
+						tfusername.getText());
 					statement.executeUpdate();
 
-                    JOptionPane.showMessageDialog(null,"Profile updated!");
+                    JOptionPane.
+                    showMessageDialog(null,
+                    "Profile updated!");
                     Profile prof = new Profile();
                     frame.setVisible(false);
 
@@ -171,21 +194,31 @@ class EditProfile extends JFrame implements ActionListener {
 
 		        }
 
-			}else if (changeno.getText().equals("2")) { //changes username
+			} else if (changeno.getText().equals("2")) {
+				//changes username
 
 				Connection conn = null;
 			    try {
 
 			        Class.forName("org.sqlite.JDBC");
-					conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//"+
-									   "1st semester//Progr II//CODE//Original Code//INTUNE.db");
-                    String sqlinsert = "UPDATE User SET username = ? WHERE username LIKE ?";
-					PreparedStatement statement = conn.prepareStatement(sqlinsert);
-					statement.setString(1, changevalue.getText());
-					statement.setString(2, Entrancepage.tfusername.getText());
+					conn = DriverManager.getConnection(
+						"jdbc:sqlite:C:\\SQLITE//InTune.db");
+                    String sqlinsert =
+                    	"UPDATE User "
+                    	+ "SET username = ? "
+                    	+ "WHERE username LIKE ?";
+					PreparedStatement statement =
+					conn.
+					prepareStatement(sqlinsert);
+					statement.
+					setString(1, changevalue.getText());
+					statement.
+					setString(2, Entrancepage.
+					tfusername.getText());
 					statement.executeUpdate();
 
-                    JOptionPane.showMessageDialog(null, "Profile updated!");
+                    JOptionPane.
+                    	showMessageDialog(null, "Profile updated!");
                     Profile prof = new Profile();
                     frame.setVisible(false);
 
@@ -203,22 +236,33 @@ class EditProfile extends JFrame implements ActionListener {
 
 		        }
 
-			} else if (changeno.getText().equals("3")) { //changes password
+			} else if (changeno.getText().equals("3")) {
+				//changes password
 
 				Connection conn = null;
 			    try {
 
 			        Class.forName("org.sqlite.JDBC");
-					conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//"+
-									   "1st semester//Progr II//CODE//Original Code//INTUNE.db");
-                    String sqlinsert = "UPDATE User SET password = ?, passcheck = ? WHERE username LIKE ?";
-					PreparedStatement statement = conn.prepareStatement(sqlinsert);
-					statement.setString(1, changevalue.getText());
-					statement.setString(2, changevalue.getText());
-					statement.setString(3, Entrancepage.tfusername.getText());
+					conn = DriverManager.getConnection(
+					"jdbc:sqlite:C:\\SQLITE//InTune.db");
+                    String sqlinsert =
+                    		"UPDATE User SET password = ?,"
+                    		+ " passcheck = ?"
+                    		+ " WHERE username LIKE ?";
+					PreparedStatement
+					statement = conn.
+						prepareStatement(sqlinsert);
+					statement.
+					setString(1, changevalue.getText());
+					statement.
+					setString(2, changevalue.getText());
+					statement.
+					setString(3, Entrancepage.
+					tfusername.getText());
 					statement.executeUpdate();
 
-                    JOptionPane.showMessageDialog(null, "Profile updated!");
+                    JOptionPane.
+                    showMessageDialog(null, "Profile updated!");
                     Profile prof = new Profile();
                     frame.setVisible(false);
 
@@ -236,22 +280,31 @@ class EditProfile extends JFrame implements ActionListener {
 
 		        }
 
-			} else if (changeno.getText().equals("4")) { //changes gender
+			} else if (changeno.getText().equals("4")) {
+				//changes gender
 
 				Connection conn = null;
 			    try {
 
 			        Class.forName("org.sqlite.JDBC");
-					conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//"+
-									   "DMST//sophomore year//1st semester//"+
-									   "Progr II//CODE//Original Code//INTUNE.db");
-                    String sqlinsert = "UPDATE User SET gender = ? WHERE username LIKE ?";
-					PreparedStatement statement = conn.prepareStatement(sqlinsert);
-					statement.setString(1, changevalue.getText());
-					statement.setString(2, Entrancepage.tfusername.getText());
+					conn = DriverManager.
+						getConnection("jdbc:sqlite:C:\\SQLITE//InTune.db");
+                    String sqlinsert =
+                    	"UPDATE User SET gender = ? "
+                    	+ "WHERE username LIKE ?";
+					PreparedStatement
+					statement = conn.
+					prepareStatement(sqlinsert);
+					statement.
+					setString(1, changevalue.getText());
+					statement.
+					setString(2, Entrancepage.
+					tfusername.getText());
 					statement.executeUpdate();
 
-                    JOptionPane.showMessageDialog(null, "Profile updated!");
+                    JOptionPane.
+                    showMessageDialog(null,
+                    "Profile updated!");
                     Profile prof = new Profile();
                     frame.setVisible(false);
 
@@ -269,22 +322,30 @@ class EditProfile extends JFrame implements ActionListener {
 
 		        }
 
-			}else if (changeno.getText().equals("5")) { //changes age
+			} else if (changeno.getText().
+					equals("5")) { //changes age
 
 				Connection conn = null;
 			    try {
 
 			        Class.forName("org.sqlite.JDBC");
-					conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//"+
-									   "sophomore year//1st semester//Progr II//"+
-									   "CODE//Original Code//INTUNE.db");
-                    String sqlinsert = "UPDATE User SET age = ? WHERE username LIKE ?";
-					PreparedStatement statement = conn.prepareStatement(sqlinsert);
-					statement.setString(1, changevalue.getText());
-					statement.setString(2, Entrancepage.tfusername.getText());
+					conn = DriverManager.
+						getConnection("jdbc:sqlite:C:\\SQLITE//InTune.db");
+                    String sqlinsert =
+                    	"UPDATE User "
+                    	+ "SET age = ? "
+                    	+ "WHERE username LIKE ?";
+					PreparedStatement statement =
+					conn.prepareStatement(sqlinsert);
+					statement.
+					setString(1, changevalue.getText());
+					statement.
+					setString(2, Entrancepage.
+					tfusername.getText());
 					statement.executeUpdate();
 
-                    JOptionPane.showMessageDialog(null,"Profile updated!");
+                    JOptionPane.showMessageDialog(null,
+                    "Profile updated!");
                     Profile prof = new Profile();
                     frame.setVisible(false);
 
@@ -304,7 +365,8 @@ class EditProfile extends JFrame implements ActionListener {
 
 			}
 
-        } else if (e.getSource() == goback) { //go back to user's profile
+        } else if (e.getSource() == goback) {
+        	//go back to user's profile
 
             Profile prof = new Profile();
             frame.setVisible(false);

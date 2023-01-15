@@ -1,4 +1,7 @@
-/**import required classes and packages*/
+/**
+ * @author Elena_Fouka
+ */
+package application;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,9 +13,10 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**Declare Homepage class.*/
 class Homepage extends JFrame implements ActionListener {
 
-   /**Components of the Homepage*/
+   /**Components of the Homepage.*/
 
 	private Container ch;
 	private JFrame frame;
@@ -25,12 +29,13 @@ class Homepage extends JFrame implements ActionListener {
 	private JLabel img;
 	private static final long serialVersionUID = 7526472295622776147L;
 
-    /**constructor, to structure Homepage window*/
+    /**constructor, to structure Homepage window.*/
 
 	public  Homepage() {
 
 		 frame = new JFrame();
-		 frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+		 frame.getContentPane().
+		 setBackground(new java.awt.Color(232, 237, 244));
 		 frame.setTitle("InTune");
 		 frame.setBounds(320, 120, 1000, 750);
 		 frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -87,11 +92,8 @@ class Homepage extends JFrame implements ActionListener {
 		 img.setIcon(new ImageIcon("logo.png"));
 		 Dimension size = img.getPreferredSize();
 
-		 /**Gets the size of the image*/
 
 		 img.setBounds(380, 20, size.width, size.height);
-
-		 /**Sets the location of the image*/
 
 		 ch.add(img);
 
@@ -99,41 +101,31 @@ class Homepage extends JFrame implements ActionListener {
 
 	}
 
-    /**Redirects to different actions*/
+    /**Redirects to different actions.*/
 
 	public void actionPerformed(ActionEvent ae) {
 
         if (ae.getSource() == postbutton) {
-
-			/**Redirects to posting*/
 
 			Post post = new Post();
 			frame.setVisible(false);
 
         } else if (ae.getSource() == newpostbutton) {
 
-			/**Redirects to all posts posted*/
-
 	        WatchPost wp = new WatchPost();
 	        frame.setVisible(false);
 
-		}else if (ae.getSource() == chatbutton) {
-
-			/**Redirects to chat*/
-
+		} else if (ae.getSource() == chatbutton) {
+		
 			Messages chat = new Messages();
 			frame.setVisible(false);
 
 		} else if (ae.getSource() == profilebutton) {
 
-			/**Redirects to user's profile*/
-
 			Profile profile = new Profile();
 			frame.setVisible(false);
 
 		} else if (ae.getSource() == logoffbutton) {
-
-			/**Proceeds to log off*/
 
 			Logoff logoff = new Logoff();
 			frame.setVisible(false);
@@ -142,5 +134,3 @@ class Homepage extends JFrame implements ActionListener {
 	}
 
 }
-
-

@@ -1,4 +1,9 @@
-/**import required classes and packages*/
+/**
+ * @author Marina_Gkolfinopoulou
+ * @author Elena_Fouka
+ */
+package application;
+//import required classes and packages
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,10 +26,10 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-
+/**Declare the class WatchPost.*/
 class WatchPost extends JFrame implements ActionListener {
 
-    /**Components of the WatchPost window*/
+//Components of the WatchPost window
 	private Container cw;
 	private JTextArea space;
 	private JButton choose;
@@ -35,12 +40,13 @@ class WatchPost extends JFrame implements ActionListener {
 	private JLabel watchpost;
 	private static final long serialVersionUID = 7526472295622776147L;
 
-    /**constructor, to structure WatchPost window*/
-    public WatchPost() {
+  /**constructor, to structure WatchPost window.*/
+  public WatchPost() {
 
 		frame = new JFrame();
 	    frame.setTitle("InTune");
-	    frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+	    frame.getContentPane().
+	    setBackground(new java.awt.Color(232, 237, 244));
 	    frame.setBounds(320, 120, 1000, 750);
 	    frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	    frame.setResizable(true);
@@ -53,7 +59,7 @@ class WatchPost extends JFrame implements ActionListener {
 		watchpost.setForeground(new java.awt.Color(27, 38, 67));
 		watchpost.setSize(300, 50);
 	    watchpost.setLocation(110, 40);
- 		cw.add(watchpost);
+		cw.add(watchpost);
 
 		space = new JTextArea();
 		space.setText("");
@@ -85,7 +91,7 @@ class WatchPost extends JFrame implements ActionListener {
 		tfshowchoice = new JTextField(30);
 		tfshowchoice.setFont(new Font("Arial", Font.PLAIN, 15));
 		tfshowchoice.setSize(240, 35);
-		tfshowchoice.setLocation(110,130);
+		tfshowchoice.setLocation(110, 130);
 		cw.add(tfshowchoice);
 
 		play = new JButton("Play a post");
@@ -99,125 +105,145 @@ class WatchPost extends JFrame implements ActionListener {
 
         frame.setVisible(true);
 
-        /**Show all Posts*/
+//Show all Posts
 		Connection conn = null;
 		String r = "";
 		try {
-								        Class.forName("org.sqlite.JDBC");
-										conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
-										String sqlinsert = "SELECT * FROM Post";
-										PreparedStatement statement = conn.prepareStatement(sqlinsert);
-										ResultSet rs = statement.executeQuery();
-										    while (rs.next()) {
-												String s = rs.getString("postno") + "\t" + rs.getString("postext") + "\t" + " from " + "\t" + rs.getString("username") + "\n";
-												r = r + s;
-												space.setText(r);
-												space.setEditable(false);
 
-										    }
-										} catch (SQLException ex) {
-										    System.out.println(ex.getMessage());
-										} catch (ClassNotFoundException ex) {
-										    System.out.println(ex.getMessage());
-		                                } finally {
-		                        if (conn != null) {
-		                            try {
-		                                conn.close();
-		                            } catch (SQLException exc) {
-		                            }
-		                        }
+		    Class.forName("org.sqlite.JDBC");
+			conn = DriverManager.getConnection("jdbc:sqlite:C:\\SQLITE//InTune.db");
+			String sqlinsert =
+			"SELECT * FROM Post";
+			PreparedStatement statement =
+			conn.prepareStatement(sqlinsert);
+			ResultSet rs =
+			statement.executeQuery();
+			while (rs.next()) {
+			    String s = rs.getString("postno")
+			    + "\t" + rs.getString("postext")
+			 	+ "\t" + " from " + "\t"
+			    + rs.getString("username") + "\n";
+				r = r + s;
+				space.setText(r);
+				space.setEditable(false);
 
-				   }
+			}
+		} catch (SQLException ex) {
+		    System.out.println(ex.getMessage());
+		} catch (ClassNotFoundException ex) {
+		    System.out.println(ex.getMessage());
+		} finally {
+		    if (conn != null) {
+		        try {
+		            conn.close();
+		        } catch (SQLException exc) {
 
-    }
+		        }
+		    }
 
-    /**Choose a post to react or comment on*/
-    public void actionPerformed(ActionEvent ae) {
+		}
 
-		if (ae.getSource() == choose) {
+  }
 
+  /**Choose a post to react or comment on.*/
+  public void actionPerformed(ActionEvent ae) {
 
-			Connection conn = null;
-					try {
-											        Class.forName("org.sqlite.JDBC");
-													conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
-													String sqlinsert = "SELECT * FROM Post WHERE postno LIKE ?";
-													PreparedStatement statement = conn.prepareStatement(sqlinsert);
-													statement.setString(1,tfshowchoice.getText());
-													ResultSet rs = statement.executeQuery();
-													    if (rs.next()) {
+	    if (ae.getSource() == choose) {
 
-															Reaction reaction = new Reaction();
-															frame.setVisible(false);
-													    }
-													} catch (SQLException ex) {
-													    System.out.println(ex.getMessage());
-													} catch (ClassNotFoundException ex) {
-													    System.out.println(ex.getMessage());
-					                                } finally {
-					                        if (conn != null) {
-					                            try {
-					                                conn.close();
-					                            } catch (SQLException exc) {
-					                            }
-					                        }
+		    Connection conn = null;
+			try {
+			    Class.forName("org.sqlite.JDBC");
+			    conn = DriverManager.getConnection("jdbc:sqlite:C:\\\\SQLITE//InTune.db");
+			    String sqlinsert =
+			    "SELECT * "
+			    + "FROM Post "
+			    + "WHERE postno LIKE ?";
+			    PreparedStatement statement =
+			    conn.prepareStatement(sqlinsert);
+			    statement.
+			    setString(1, tfshowchoice.getText());
+			    ResultSet rs =
+			    statement.executeQuery();
+			    if (rs.next()) {
 
-							   }
+			        Reaction reaction = new Reaction();
+				    frame.setVisible(false);
+			    }
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			} catch (ClassNotFoundException ex) {
+				System.out.println(ex.getMessage());
+			} finally {
+				if (conn != null) {
+			        try {
+					    conn.close();
+					} catch (SQLException exc) {
+
+					}
+				}
+
+		    }
 
 
 		} else if (ae.getSource() == goback) {
 
-			/**redirects to homepage*/
+//redirects to homepage
 
 			Homepage mainpage = new Homepage();
 			frame.setVisible(false);
 
 		} else if (ae.getSource() == play) {
 
-            String url = "";
-			Connection conn = null;
-				try {
-					Class.forName("org.sqlite.JDBC");
-					conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Marina//Desktop//DMST//sophomore year//1st semester//Progr II//CODE//Original Code//INTUNE.db");
-					String sqlinsert = "SELECT postext FROM Post WHERE postno LIKE ?";
-					PreparedStatement statement = conn.prepareStatement(sqlinsert);
-					statement.setString(1,tfshowchoice.getText());
-					ResultSet rs = statement.executeQuery();
-					if (rs.next()) {
+          String url = "";
+		  Connection conn = null;
+		  try {
+			    Class.forName("org.sqlite.JDBC");
+				conn = DriverManager.getConnection("jdbc:sqlite:C:\\SQLITE//InTune.db");
+				String sqlinsert = "SELECT postext "
+				+ "FROM Post "
+				+ "WHERE postno LIKE ?";
+				PreparedStatement statement =
+				conn.prepareStatement(sqlinsert);
+				statement.
+				setString(1, tfshowchoice.getText());
+				ResultSet rs =
+				statement.executeQuery();
+				if (rs.next()) {
 
-			            url = rs.getString(1);
-				    }
-			 try {
-			     URI uri = new URI(url);
-			     Desktop desktop = null;
-			     if (Desktop.isDesktopSupported()) {
-			         desktop = Desktop.getDesktop();
-			     }
-			     if (desktop != null)
-			        desktop.browse(uri);
-			 } catch (IOException ioe) {
-			     ioe.printStackTrace();
-			 } catch (URISyntaxException use) {
-			      use.printStackTrace();
-             }
+			        url = rs.getString(1);
+				}
+			    try {
+			         URI uri = new URI(url);
+			         Desktop desktop = null;
+			         if (Desktop.isDesktopSupported()) {
+			             desktop = Desktop.getDesktop();
+			         }
+			         if (desktop != null) {
+			             desktop.browse(uri);
+			         }
+			    } catch (IOException ioe) {
+			        ioe.printStackTrace();
+			    } catch (URISyntaxException use) {
+			        use.printStackTrace();
+              }
 
-             } catch (SQLException ex) {
-			 				 	 System.out.println(ex.getMessage());
-			 				  } catch (ClassNotFoundException ex) {
-			 				 	 System.out.println(ex.getMessage());
-			                   } finally {
-			                         if (conn != null) {
-			                             try {
-			                                 conn.close();
-			                             } catch (SQLException exc) {
-			                             }
-			                         }
+          } catch (SQLException ex) {
+			    System.out.println(ex.getMessage());
+			} catch (ClassNotFoundException ex) {
+			 	System.out.println(ex.getMessage());
+			} finally {
+			    if (conn != null) {
+			        try {
+			            conn.close();
+			        } catch (SQLException exc) {
 
-				   }
+			        }
+			    }
+
+			}
 
 		}
 
 	}
 
 }
-

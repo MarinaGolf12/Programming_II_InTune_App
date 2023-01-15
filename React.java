@@ -1,5 +1,9 @@
-/**import required classes and packages*/
-
+/**
+ * @author Elena_Fouka
+ * @author Antigoni_Vlassa
+ */
+package application;
+//import required classes and packages
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
@@ -13,32 +17,33 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-
+/**Declare the class React.*/
 class React extends JFrame implements ActionListener {
 
-    /** Components of the React window*/
+// Components of the React window
 
 	private Container crr;
 	private JLabel react;
 	private ButtonGroup bg;
 	private JRadioButton r1;
-    private JRadioButton r2;
-    private JRadioButton r3;
-    private JRadioButton r4;
-    private JRadioButton r5;
-    private JButton goback;
-    private JButton sub;
-    private JTextArea ta;
-    private JFrame frame;
-    private static final long serialVersionUID = 7526472295622776147L;
+	private JRadioButton r2;
+	private JRadioButton r3;
+	private JRadioButton r4;
+	private JRadioButton r5;
+	private JButton goback;
+	private JButton sub;
+	private JTextArea ta;
+	private JFrame frame;
+	private static final long serialVersionUID = 7526472295622776147L;
 
-    /**constructor, to structure React window*/
+/**constructor, to structure React window.*/
 
-    public React() {
+	public React() {
 
 		frame = new JFrame();
 		frame.setTitle("InTune");
-		frame.getContentPane().setBackground(new java.awt.Color(232, 237, 244));
+		frame.getContentPane().
+		setBackground(new java.awt.Color(232, 237, 244));
 		frame.setBounds(320, 120, 1000, 750);
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setResizable(true);
@@ -49,12 +54,12 @@ class React extends JFrame implements ActionListener {
 		react.setFont(new Font("Arial", Font.BOLD, 30));
 		react.setForeground(new java.awt.Color(27, 38, 67));
 		react.setSize(300, 50);
-        react.setLocation(130, 30);
+		react.setLocation(130, 30);
 		crr.add(react);
 
 		bg = new ButtonGroup();
 
-		r1 = new JRadioButton("My favourite");
+		r1 = new JRadioButton("Favourite");
 		r1.setFont(new Font("Arial", Font.PLAIN, 15));
 		r1.setSelected(true);
 		r1.setSize(105, 20);
@@ -74,7 +79,7 @@ class React extends JFrame implements ActionListener {
 		r3.setFont(new Font("Arial", Font.PLAIN, 15));
 		r3.setSelected(true);
 		r3.setSize(100, 20);
-        r3.setLocation(130, 250);
+		r3.setLocation(130, 250);
 		crr.add(r3);
 		bg.add(r3);
 
@@ -82,7 +87,7 @@ class React extends JFrame implements ActionListener {
 		r4.setFont(new Font("Arial", Font.PLAIN, 15));
 		r4.setSelected(true);
 		r4.setSize(100, 20);
-        r4.setLocation(130, 310);
+		r4.setLocation(130, 310);
 		crr.add(r4);
 		bg.add(r4);
 
@@ -90,45 +95,44 @@ class React extends JFrame implements ActionListener {
 		r5.setFont(new Font("Arial", Font.PLAIN, 15));
 		r5.setSelected(true);
 		r5.setSize(100, 20);
-        r5.setLocation(130, 370);
+		r5.setLocation(130, 370);
 		crr.add(r5);
 		bg.add(r5);
 
-        goback = new JButton("Go Back");
-        goback.setBackground(new java.awt.Color(27, 38, 67));
-        goback.setForeground(Color.WHITE);
+		goback = new JButton("Go Back");
+		goback.setBackground(new java.awt.Color(27, 38, 67));
+		goback.setForeground(Color.WHITE);
 		goback.setFont(new Font("Arial", Font.BOLD, 15));
 		goback.setSize(240, 35);
 		goback.setLocation(500, 150);
-        goback.addActionListener(this);
-        crr.add(goback);
+		goback.addActionListener(this);
+		crr.add(goback);
 
-        sub = new JButton("Submit Reaction");
-        sub.setBackground(new java.awt.Color(27, 38, 67));
+		sub = new JButton("Submit Reaction");
+		sub.setBackground(new java.awt.Color(27, 38, 67));
 		sub.setForeground(Color.WHITE);
 		sub.addActionListener(this);
 		sub.setFont(new Font("Arial", Font.BOLD, 15));
 		sub.setSize(240, 35);
 		sub.setLocation(500, 100);
-        crr.add(sub);
+		crr.add(sub);
 
-        ta = new JTextArea();
+		ta = new JTextArea();
 		ta.setFont(new Font("Arial", Font.PLAIN, 15));
 		ta.setSize(240, 200);
 		ta.setLocation(500, 200);
 		ta.setLineWrap(true);
 		ta.setEditable(false);
-        crr.add(ta);
+		crr.add(ta);
 
-        frame.setVisible(true);
+		frame.setVisible(true);
 
-    }
+	}
 
-    /**show reactions to a post*/
+	/**show reactions to a post.*/
+	public void actionPerformed(ActionEvent ae) {
 
-    public void actionPerformed(ActionEvent ae) {
-
-		if(ae.getSource() == sub) {
+		if (ae.getSource() == sub) {
 
 			if (r1.isSelected()) {
 
@@ -151,9 +155,10 @@ class React extends JFrame implements ActionListener {
 
 			}
 
-
-            JOptionPane.showMessageDialog(null,"Reaction sent!");
+          JOptionPane.
+          showMessageDialog(null, "Reaction sent!");
 		}
+
 		if (ae.getSource() == goback) {
 
 			Reaction reaction = new Reaction();
@@ -169,34 +174,35 @@ class React extends JFrame implements ActionListener {
 	int x4 = 0;
 	int x5 = 0;
 
-    /**count reactions to a post*/
+/**count reactions to a post.*/
 
-	public void newPost( int a) {
+	public void newPost(int a) {
 
+	    if (a == 1) {
 
-	        if (a == 1){
+		    x1 = x1 + 1;
 
-		        x1 = x1 + 1;
+		} else if (a == 2) {
 
-			} else if (a == 2) {
+			x2 = x2 + 1;
 
-				x2= x2 + 1;
+		} else if (a == 3) {
 
-		    }else if (a == 3) {
+			x3 = x3 + 1;
 
-				x3= x3 + 1;
+		} else if (a == 4) {
 
-			}else if (a == 4) {
+			x4 = x4 + 1;
 
-				x4= x4 + 1;
+		} else if (a == 5) {
 
-			}else if (a == 5) {
+			x5 = x5 + 1;
 
-				x5= x5 + 1;
+		}
 
-			}
-
-			ta.setText(x1 +" My favourite" + "\n" + x2 + " Like" + "\n" + x3 + " Catchy" + "\n" + x4 + " Sound Off" + "\n" + x5 + " Earache");
+			ta.setText(x1 + " Favourite" + "\n"
+			+ x2 + " Like" + "\n" + x3 + " Catchy" + "\n"
+			+ x4 + " Sound Off" + "\n" + x5 + " Earache");
 
 	    }
 
