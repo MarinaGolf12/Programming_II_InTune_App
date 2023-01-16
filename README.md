@@ -56,12 +56,12 @@ Use the cd C:\\SQLITE command and after that, using the command java -jar INTUNE
 ```
 
 
->What you will find in this repositiry
+>What you will find in this repository
 
 ```
 In this repository, the main branch contains all the classes and test classes used for the app.
 Also, in the main branch is the final product and what the user needs to run the app.
-Then, there are some seperate branches formerly used by the app's developers when the app was first developed.
+Then, there are some seperate branches formerly used by the app's developers when the app was first developed. Do not take those into account, the final version is on the main branch.
 If you want to contribute to this project, please do so in the Contribute branch.
 Feel free to open an issue for any bugs.
 ```
