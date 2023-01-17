@@ -70,7 +70,7 @@ Feel free to open an issue for any bugs.
 >UML Diagram regarding the code
 
 ```
-![uml](https://auebgr-my.sharepoint.com/:w:/g/personal/t8210026_aueb_gr/EfLyu0g7li5AjhUJcyFhVmEBA3GA0JVt2PHZ836XGuCImA?e=UOthEd)
+https://auebgr-my.sharepoint.com/:w:/g/personal/t8210026_aueb_gr/EfLyu0g7li5AjhUJcyFhVmEBA3GA0JVt2PHZ836XGuCImA?e=UOthEd
 ```
 
 >Data Structure of this Project
