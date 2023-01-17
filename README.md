@@ -70,7 +70,9 @@ Feel free to open an issue for any bugs.
 >UML Diagram regarding the code
 
 ```
-https://auebgr-my.sharepoint.com/:w:/g/personal/t8210026_aueb_gr/EfLyu0g7li5AjhUJcyFhVmEBA3GA0JVt2PHZ836XGuCImA?e=UOthEd
+![Στιγμιότυπο οθόνης (136)](https://user-images.githubusercontent.com/115397442/213023092-49dd04f9-49c0-409e-a829-70c5e625730f.png)
+
+
 ```
 
 >Data Structure of this Project
