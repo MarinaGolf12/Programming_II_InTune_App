@@ -69,10 +69,11 @@ Feel free to open an issue for any bugs.
 
 >UML Diagram regarding the code
 
-![uml](https://auebgr-my.sharepoint.com/:w:/g/personal/t8210026_aueb_gr/EfLyu0g7li5AjhUJcyFhVmEBA3GA0JVt2PHZ836XGuCImA?e=UOthEd)
+![Στιγμιότυπο οθόνης (136)](https://user-images.githubusercontent.com/115397442/213023482-2c2887fb-c05e-460e-bad4-895dbf3248d6.png)
 
 
 >Data Structure of this Project
+
 
 ```
 This project uses the SQLite database. 
