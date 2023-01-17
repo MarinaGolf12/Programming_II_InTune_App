@@ -70,7 +70,7 @@ Feel free to open an issue for any bugs.
 >UML Diagram regarding the code
 
 ```
-![image](https://user-images.githubusercontent.com/115397720/212985318-615a46ce-653f-4404-a415-d74c61e40c66.png)
+file:///C:/Users/Marina/Downloads/3.3.pdf
 ```
 
 >Data Structure of this Project
